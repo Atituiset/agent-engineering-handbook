@@ -22,13 +22,17 @@
 | [工具厂商](./vendors) | VD | 20 | Cursor、Cognition、Vercel、Amp、Factory、Kiro、Manus、LangChain、HumanLayer |
 | [Thoughtworks 与 martinfowler.com](./thoughtworks) | TW | 36 | Böckeler 等人的系列文章、技术雷达条目 |
 | [独立工程师与意见领袖](./practitioners) | PR | 36 | Simon Willison、Kent Beck、Armin Ronacher、Mitchell Hashimoto 等 |
-| [X 帖子](./x-posts) | X | 11 | Karpathy、Greg Brockman、Boris Cherny、Thariq 等 |
-| [中文互联网](./chinese) | CN | 11 | 美团、蚂蚁数科、快手、火山引擎、腾讯云、阿里云、InfoQ |
+| [X 精选（按主题，v2 主力来源）](./x/) | XW/XC/XP/XV/XR/XK/XT/XA/XS/XM/XF | 205 | 141 位作者；工作流、上下文、计划、测试、评审、约束、工具、并行、安全、团队、失败与反思 |
+| [X 帖子（v1）](./x-posts) | X | 11 | Karpathy、Greg Brockman、Boris Cherny、Thariq 等 |
+| [Hacker News 高热讨论](./hackernews) | HN | 29 | 高互动讨论串与评论区代表性观点 |
+| [中文互联网](./chinese) | CN | 50 | 美团、腾讯、快手、百度、字节、蚂蚁、京东、阿里云、InfoQ、宝玉、阮一峰、少数派等 |
 | [开源项目与规范](./open-source) | OS | 15 | AGENTS.md、Spec Kit、MCP、Superpowers、架构约束工具 |
 | [研究与数据](./research) | RS | 8 | METR、DORA、GitClear、AGENTS.md 评估论文 |
 | [安全](./security) | SC | 6 + 索引 | 致命三要素、提示注入设计模式、包幻觉 |
 
-合计约 **207 条**来源条目（不含交叉索引）。
+精选合计约 **480 条**完整条目（不含交叉索引）：v1 的 207 条，加上 2026-11 扩充的 X 精选 205 条、中文 39 条、HN 29 条。
+
+此外，[全量库](/library/)收录 **2,223 条**资料（X 帖子 1,211 条、HN 讨论 443 个、GitHub 仓库 315 个、精选条目与中文网页 254 条），只列元数据，用于统计各条实践的 [共识度/佐证](/compare/evidence)。
 
 ## 如何阅读
 

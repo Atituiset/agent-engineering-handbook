@@ -35,11 +35,60 @@ const sourcesSidebar = [
       { text: '工具厂商与创业公司', link: '/sources/vendors' },
       { text: 'Martin Fowler 网站与 Thoughtworks', link: '/sources/thoughtworks' },
       { text: '独立工程师与意见领袖', link: '/sources/practitioners' },
-      { text: 'X（Twitter）上的一线声音', link: '/sources/x-posts' },
+      { text: 'X（v1 精选）', link: '/sources/x-posts' },
+      { text: 'Hacker News 高热讨论', link: '/sources/hackernews' },
       { text: '中文互联网', link: '/sources/chinese' },
       { text: 'GitHub 开源项目与规范', link: '/sources/open-source' },
       { text: '研究、调查与社区讨论', link: '/sources/research' },
       { text: '安全专题', link: '/sources/security' }
+    ]
+  },
+  {
+    text: 'X 精选（按主题）',
+    collapsed: false,
+    items: [
+      { text: '总览', link: '/sources/x/' },
+      { text: '工作流与心智模型', link: '/sources/x/workflow' },
+      { text: '上下文与说明文件', link: '/sources/x/context' },
+      { text: '计划与规格', link: '/sources/x/plan' },
+      { text: '测试与验证', link: '/sources/x/verify' },
+      { text: '评审与代码质量', link: '/sources/x/review' },
+      { text: '约束与架构', link: '/sources/x/constraints' },
+      { text: 'Hooks、Skills、子智能体与 MCP', link: '/sources/x/tools' },
+      { text: '并行与长任务', link: '/sources/x/parallel' },
+      { text: '安全与权限', link: '/sources/x/security' },
+      { text: '团队、成本与组织', link: '/sources/x/team' },
+      { text: '失败与反思', link: '/sources/x/failures' }
+    ]
+  }
+]
+
+const librarySidebar = [
+  {
+    text: '全量库',
+    items: [
+      { text: '说明与在线筛选', link: '/library/' },
+      { text: 'X · 上下文与说明文件', link: '/library/x-context' },
+      { text: 'X · 计划与规格', link: '/library/x-plan' },
+      { text: 'X · 测试与验证', link: '/library/x-verify' },
+      { text: 'X · 评审与代码质量', link: '/library/x-review' },
+      { text: 'X · 约束与架构', link: '/library/x-constraints' },
+      { text: 'X · Hooks、Skills、子智能体与 MCP（1/3）', link: '/library/x-tools-1' },
+      { text: 'X · Hooks、Skills、子智能体与 MCP（2/3）', link: '/library/x-tools-2' },
+      { text: 'X · Hooks、Skills、子智能体与 MCP（3/3）', link: '/library/x-tools-3' },
+      { text: 'X · 并行与长任务（1/2）', link: '/library/x-parallel-1' },
+      { text: 'X · 并行与长任务（2/2）', link: '/library/x-parallel-2' },
+      { text: 'X · 安全与权限', link: '/library/x-security' },
+      { text: 'X · 团队、成本与组织', link: '/library/x-team' },
+      { text: 'X · 失败与反思', link: '/library/x-failures' },
+      { text: 'Hacker News 讨论（1/3）', link: '/library/hn-1' },
+      { text: 'Hacker News 讨论（2/3）', link: '/library/hn-2' },
+      { text: 'Hacker News 讨论（3/3）', link: '/library/hn-3' },
+      { text: 'GitHub 仓库（1/3）', link: '/library/github-1' },
+      { text: 'GitHub 仓库（2/3）', link: '/library/github-2' },
+      { text: 'GitHub 仓库（3/3）', link: '/library/github-3' },
+      { text: '精选条目与中文网页（1/2）', link: '/library/curated-1' },
+      { text: '精选条目与中文网页（2/2）', link: '/library/curated-2' }
     ]
   }
 ]
@@ -60,18 +109,21 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '实践手册', link: '/handbook/' },
       { text: '原始报告', link: '/sources/' },
+      { text: '全量库', link: '/library/' },
       { text: '对比与取舍', link: '/compare/' },
       { text: '关于', link: '/about' }
     ],
     sidebar: {
       '/handbook/': handbookSidebar,
       '/sources/': sourcesSidebar,
+      '/library/': librarySidebar,
       '/compare/': [
         {
           text: '对比与取舍',
           items: [
             { text: '传统工程 vs Agent 时代：总表', link: '/compare/' },
-            { text: '决策指南：什么时候用什么', link: '/compare/decision-guide' }
+            { text: '决策指南：什么时候用什么', link: '/compare/decision-guide' },
+            { text: '共识度/佐证', link: '/compare/evidence' }
           ]
         }
       ]
@@ -80,6 +132,11 @@ export default defineConfig({
     search: {
       provider: 'local',
       options: {
+        // 全量库页面只是元数据表格（另有在线筛选），不进搜索索引，以保持索引小、加载快
+        _render(src, env, md) {
+          if (env.relativePath.startsWith('library/')) return ''
+          return md.render(src, env)
+        },
         translations: {
           button: { buttonText: '搜索', buttonAriaLabel: '搜索' },
           modal: {

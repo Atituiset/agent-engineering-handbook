@@ -5,8 +5,10 @@
 ## 内容
 
 - `docs/handbook/` 实践手册（11 章）：心智模型、上下文工程、规格驱动与计划先行、架构约束落地、验证与测试、代码评审与人机协作、工具与 harness、团队与流程、安全、反模式、速查表。每章都包含「与传统软件工程认知的对比」。
-- `docs/sources/` 原始报告：200 余条一手资料，按来源分类，每条附原文链接、中文摘要与证据性质标注。
-- `docs/compare/` 对比与取舍：传统工程 vs Agent 时代总表、决策指南。
+- `docs/sources/` 原始报告：约 480 条精选资料（X 精选按主题放在 `docs/sources/x/`，另有 Hacker News 与中文互联网），每条附原文链接、中文摘要与证据性质标注。
+- `docs/library/` 全量库：2,223 条资料的分页表格与在线筛选；数据文件在 `docs/public/data/sources.json` 与 `sources.csv`。
+- `docs/compare/evidence.md` 共识度/佐证：20 条原则的独立支持数与异议。
+- `docs/compare/` 对比与取舍：传统工程 vs Agent 时代总表、决策指南、共识度/佐证。
 
 ## 本地运行
 

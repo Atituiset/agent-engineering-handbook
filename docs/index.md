@@ -4,7 +4,7 @@ layout: home
 hero:
   name: 驾驭 Agent 实践手册
   text: 让编码智能体守住工程与架构约束
-  tagline: 整理自模型厂商、一线大厂、资深工程师、中文社区、开源项目与研究的 200 余条一手资料，每条都附原文链接，并与传统软件工程认知逐项对照。
+  tagline: 以 X 一线声音为主，整理约 480 条精选资料与 2,200 余条全量库，每条都附原文链接；统计每条实践的独立佐证数，并与传统软件工程认知逐项对照。
   actions:
     - theme: brand
       text: 阅读实践手册
@@ -12,6 +12,9 @@ hero:
     - theme: alt
       text: 原始报告
       link: /sources/
+    - theme: alt
+      text: 共识度/佐证
+      link: /compare/evidence
     - theme: alt
       text: 传统工程 vs Agent 时代
       link: /compare/

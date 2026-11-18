@@ -95,16 +95,29 @@ Armin Ronacher 质疑 MCP 的可组合性与 token 成本，主张让模型写�
 
 Anthropic 观察到 harness 编码了「模型做不到什么」的假设，这些假设随模型进步迅速过时，因此把「大脑」「手」「会话」解耦（[AN30](/sources/anthropic#an30)）。Armin Ronacher 发现高层 SDK 抽象在真实工具调用面前会破裂（[PR19](/sources/practitioners#pr19)）。12-Factor Agents 主张拥有你的提示、上下文窗口与控制流（[OS02](/sources/open-source#os02)）。实践上：**给每条规则、hook、skill 标注它要解决的失败**，换模型时逐条验证是否仍然需要（[TW20](/sources/thoughtworks#tw20)）。
 
+## 2026-11 新证据：工具越多越好？大量异议 {#new-evidence}
+
+P13「Skills 等可复用指令按需加载」的独立支持数在全库最高（355），但人工确认的异议也最多（5 条）。这说明它很热门，不等于它已被证明有效。
+
+- **确定性机制优先**：掘金作者团队用 Skill 做提交前检查时「时灵时不灵」，换成 PreToolUse Hook 后才稳定。他们的规矩是能用 Hook 表达就别退回提示词约束（[CN41](/sources/chinese#cn41)）。官方中文文档也把机制按「非确定性 vs 确定性」两列对照（[CN29](/sources/chinese#cn29)）。这**加强**了 P12（164 位独立支持）。
+- **skills/MCP 的异议**：Burke Holland 认为 99% 的 MCP、功能和 skill 都是噪声（[XT-019](/sources/x/tools#xt-019)）。Thorsten Ball 说 Amp 聚会的共识是，由人按序手动调用的 skill「金字塔」是反模式（[XT-042](/sources/x/tools#xt-042)）。Vercel 的评测里 skill 常常未被调用（[HN15](/sources/hackernews#hn15)）。Boris Cherny 也发布了清理未用 skills/MCP 的命令（[XC-018](/sources/x/context#xc-018)）。
+- **子智能体被滥用**：dex 认为子智能体自 2025 年中以来被过度使用，并行不能替代深思熟虑的上下文管理（[XT-030](/sources/x/tools#xt-030)）。另一位作者列出多智能体的问题：没有共享状态、Git 冲突、上下文污染（[XA-006](/sources/x/parallel#xa-006)）。
+- **harness 比模型更重要**：HN 高热讨论「只改 harness 就提升了 15 个模型的编码表现」（[HN07](/sources/hackernews#hn07)），与腾讯、美团把评测与门禁放进 harness 的做法一致（[CN20](/sources/chinese#cn20)、[CN24](/sources/chinese#cn24)）。
+
+**结论调整**：本章原本建议「按需加载 skills」。现在补充两条前提：先确认它真的会被调用；数量宁少勿多，并在换模型时重新评估。
+
 ## 与传统软件工程认知的对比
 
-| 维度 | 传统认知 | 智能体时代 | 判断 |
-| --- | --- | --- | --- |
-| 开发环境 | IDE 配置是个人偏好 | harness 是团队资产，应入库、评审、版本化（[X04](/sources/x-posts#x04)） | **修正** |
-| 工具选择 | 选功能最强的框架 | 选「无聊」、稳定、在训练数据中常见、可在仓库内完全推理的技术（[OA01](/sources/openai#oa01)） | **延续**「选择无聊技术」 |
-| Unix 哲学 | 小工具、可组合、文本接口 | 对智能体同样最友好（[X11](/sources/x-posts#x11)、[PR17](/sources/practitioners#pr17)） | **延续并加强** |
-| 抽象层 | 高层框架提效 | 智能体框架的高层抽象常常破裂，需要拥有控制流（[PR19](/sources/practitioners#pr19)、[OS02](/sources/open-source#os02)） | **谨慎** |
-| 并发 | 多线程写共享状态需要锁与协调 | 多智能体写同一代码库面临同样问题：读并行、写串行（[VD06](/sources/vendors#vd06)） | **延续**：经典并发智慧直接适用 |
-| 自动化脚本 | 一次性脚本可以随便写 | 脚本成为智能体的工具，要有清晰接口与报错 | **修正** |
+| 维度 | 传统认知 | 智能体时代 | 判断 | 佐证（支持／异议） |
+| --- | --- | --- | --- | --- |
+| 开发环境 | IDE 配置是个人偏好 | harness 是团队资产，应入库、评审、版本化（[X04](/sources/x-posts#x04)） | **修正** | [P13 · 355／20](/compare/evidence#p13) |
+| 工具选择 | 选功能最强的框架 | 选「无聊」、稳定、在训练数据中常见、可在仓库内完全推理的技术（[OA01](/sources/openai#oa01)） | **延续**「选择无聊技术」 | [P20 · 5／0](/compare/evidence#p20) |
+| Unix 哲学 | 小工具、可组合、文本接口 | 对智能体同样最友好（[X11](/sources/x-posts#x11)、[PR17](/sources/practitioners#pr17)） | **延续并加强** | [P14 · 304／7](/compare/evidence#p14) |
+| 抽象层 | 高层框架提效 | 智能体框架的高层抽象常常破裂，需要拥有控制流（[PR19](/sources/practitioners#pr19)、[OS02](/sources/open-source#os02)） | **谨慎** | — |
+| 并发 | 多线程写共享状态需要锁与协调 | 多智能体写同一代码库面临同样问题：读并行、写串行（[VD06](/sources/vendors#vd06)） | **延续**：经典并发智慧直接适用 | [P11 · 209／17](/compare/evidence#p11) |
+| 自动化脚本 | 一次性脚本可以随便写 | 脚本成为智能体的工具，要有清晰接口与报错 | **修正** | [P14 · 304／7](/compare/evidence#p14) |
+
+> 「佐证」列：原则编号 · 独立支持作者数／异议数（疑似 + 人工确认），关键词自动归类，口径见 [共识度/佐证](/compare/evidence)。
 
 **选择理由**：Harness 本质上是**开发者平台工程**在智能体上的投影——过去平台团队为人提供脚手架、CI 模板、内部 CLI，现在同样的东西要对智能体可读、可调用。经典的 Unix 哲学、选择无聊技术、并发控制原则都直接适用。最大的新变化是「过期速度」：传统工具链几年才变一次，harness 的最佳实践每个模型代际都会变，所以要像对待代码一样对待它——有测试、有评审、能删除。
 

@@ -85,16 +85,27 @@ Thoughtworks 把**代码库认知债**列为 Caution：系统实现与团队对�
 - 保留人与人的结对/轮换，尤其是在架构边界与核心领域。
 - 用 ADR 记录「为什么」（[TW35](/sources/thoughtworks#tw35)）。
 
+## 2026-11 新证据：瓶颈已转到评审，人工评审单独不够 {#new-evidence}
+
+P08「人工评审不可省」有 254 位独立作者支持，也有最多的人工确认异议（5 条）。新证据指向同一个**修正**：评审仍不可省，但「人逐行看」不能独自承担。
+
+- **瓶颈转移有数据**：GitLab 调研中 85% 的受访者认同瓶颈已从写代码转到审查和验证（[CN42](/sources/chinese#cn42)）。Faros AI 的数据是 PR 合并数增加 98%，审查时间增加 91%（[CN43](/sources/chinese#cn43)）。HN 上关于哈佛研究的讨论里，有专职评审者说 AI 让合并请求更大、更过度设计（[HN26](/sources/hackernews#hn26)）。
+- **人工评审的盲区**：Anthropic 的实验把危险命令藏进真实会话，让 1053 名开发者评审，人工只发现 13.6%（厂商自报，[XS-006](/sources/x/security#xs-006)）。快手指出人工 CR 容易漏掉看似简单的低级错误（[CN37](/sources/chinese#cn37)）。
+- **分层与隔离**：Anthropic 按风险分级评审，低风险变更在自动评审和安全检查通过后无需人工评审，评论区争议很大（[HN16](/sources/hackernews#hn16)）。腾讯 LoopForge 让实现、评审、测试使用独立的上下文和模型，避免「自己评审自己」（[CN21](/sources/chinese#cn21)）。美团用不同厂商的模型互审、Pre-PR 自查（[CN01](/sources/chinese#cn01)）。
+- **更激进的预测**：Bun 作者预计几个月内会变成「自动评审给出 LGTM、全新上下文的另一个模型判定、自动合并」（[XR-004](/sources/x/review#xr-004)）。Uncle Bob 在找人工评审之外的监督方式（[XR-008](/sources/x/review#xr-008)）。本手册的立场不变：**每段合并的代码都要有人负责**，但负责的方式可以从逐行阅读，转向审计划、审风险、审证据。
+
 ## 与传统软件工程认知的对比
 
-| 维度 | 传统认知 | 智能体时代 | 判断 |
-| --- | --- | --- | --- |
-| 代码评审 | 每个变更至少一人逐行评审 | 多层检查，按风险分配人的注意力（[AN19](/sources/anthropic#an19)、[TW26](/sources/thoughtworks#tw26)） | **修正**：评审从「必经关卡」变成「风险控制手段之一」 |
-| 评审对象 | 代码 diff | 计划与方案的评审杠杆更高（[VD20](/sources/vendors#vd20)、[CN01](/sources/chinese#cn01)） | **前移** |
-| 责任归属 | 作者 + 评审者共同负责 | 智能体不能负责；必须有一个人对合并代码负责（[X04](/sources/x-posts#x04)） | **延续并强化** |
-| 小 PR 原则 | 小 PR 更易评审 | 更重要：AI 倾向大批量（[PR16](/sources/practitioners#pr16)、[PR12](/sources/practitioners#pr12)） | **延续并加强** |
-| 结对编程 | 知识共享、质量 | 「与 AI 结对」不能替代人与人结对的社会功能（[TW13](/sources/thoughtworks#tw13)） | **延续**：两者互补 |
-| 集体代码所有权 | 团队共同理解代码 | 认知债威胁这一点（[TW30](/sources/thoughtworks#tw30)） | **新风险** |
+| 维度 | 传统认知 | 智能体时代 | 判断 | 佐证（支持／异议） |
+| --- | --- | --- | --- | --- |
+| 代码评审 | 每个变更至少一人逐行评审 | 多层检查，按风险分配人的注意力（[AN19](/sources/anthropic#an19)、[TW26](/sources/thoughtworks#tw26)） | **修正**：评审从「必经关卡」变成「风险控制手段之一」 | [P08 · 254／21](/compare/evidence#p08) |
+| 评审对象 | 代码 diff | 计划与方案的评审杠杆更高（[VD20](/sources/vendors#vd20)、[CN01](/sources/chinese#cn01)） | **前移** | [P01 · 260／14](/compare/evidence#p01) |
+| 责任归属 | 作者 + 评审者共同负责 | 智能体不能负责；必须有一个人对合并代码负责（[X04](/sources/x-posts#x04)） | **延续并强化** | [P16 · 190／10](/compare/evidence#p16) |
+| 小 PR 原则 | 小 PR 更易评审 | 更重要：AI 倾向大批量（[PR16](/sources/practitioners#pr16)、[PR12](/sources/practitioners#pr12)） | **延续并加强** | [P09 · 49／3](/compare/evidence#p09) |
+| 结对编程 | 知识共享、质量 | 「与 AI 结对」不能替代人与人结对的社会功能（[TW13](/sources/thoughtworks#tw13)） | **延续**：两者互补 | [P08 · 254／21](/compare/evidence#p08) |
+| 集体代码所有权 | 团队共同理解代码 | 认知债威胁这一点（[TW30](/sources/thoughtworks#tw30)） | **新风险** | [P16 · 190／10](/compare/evidence#p16) |
+
+> 「佐证」列：原则编号 · 独立支持作者数／异议数（疑似 + 人工确认），关键词自动归类，口径见 [共识度/佐证](/compare/evidence)。
 
 **选择理由**：逐行人工评审在传统团队里同时承担了「找 bug」「传播知识」「维护标准」「分担责任」四个职能。智能体时代，「找 bug」和「维护标准」可以大部分交给机械检查和 AI 评审；但「传播知识」和「承担责任」不能外包。因此新的评审体系应当：机械能做的全部自动化，把人的注意力集中在高风险变更、计划评审与团队理解上，而不是平均分配到每一行代码。
 
