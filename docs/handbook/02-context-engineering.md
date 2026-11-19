@@ -78,6 +78,13 @@ P02「上下文精简、按需加载」与 P03「项目说明文件短小且持�
 - **规则要随模型删减**：Anthropic 为新模型删掉了约 80% 的系统提示词（[XC-020](/sources/x/context#xc-020)）。Every 团队发现新模型在旧 skills 下表现变差，删掉重来反而更好（[XC-021](/sources/x/context#xc-021)）。Dirk Kok 删除了全部 skills，并精简了 agents.md（[XC-024](/sources/x/context#xc-024)）。这加强了本章「规则演进要主动删减」的判断。
 - **异议**：Mckay Wrigley 主张首先要痴迷上下文工程，宁可多给（[XC-003](/sources/x/context#xc-003)）。dex 认为自动压缩已大幅改进，显式清理不总是必要（[XC-042](/sources/x/context#xc-042)），为智能体写的摘要文档只有在提速且不降质时才值得（[XC-041](/sources/x/context#xc-041)）。中文团队把这件事称为「AI 上下文负债」：棕地代码库的隐性知识不会因为换了模型而自动可理解（[CN44](/sources/chinese#cn44)）。
 
+## 国内大厂佐证 {#cn-bigtech}
+
+> 腾讯、阿里、字节的公开材料（数字均为团队自报、尚未独立验证；横向比较见 [国内大厂对比](/compare/cn-bigtech)）：
+>
+> - 腾讯云数据库团队把团队记忆组织成“工程事实 / 项目语义 / bug 经验”三层图谱，Bug 定位成功率 58%→65%，并自注只是子任务信号（[TX01](/sources/cn-bigtech/tencent#tx01)）；QQ 音乐把大仓里的隐性规范、服务契约等五类盲区落成工程制品（[TX05](/sources/cn-bigtech/tencent#tx05)）。
+> - 字节 MarsCode/Trae 用实时代码知识图谱突破大仓上下文限制（[BD12](/sources/cn-bigtech/bytedance#bd12)），TRAE 团队建议“短对话、每次只做一件事”（[BD13](/sources/cn-bigtech/bytedance#bd13)）；阿里的判断是复杂系统的关键知识不在代码里，需要显式沉淀（[AL06](/sources/cn-bigtech/alibaba#al06)）。
+
 ## 与传统软件工程认知的对比
 
 | 维度 | 传统认知 | 智能体时代 | 判断 | 佐证（支持／异议） |

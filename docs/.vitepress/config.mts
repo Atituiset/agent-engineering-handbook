@@ -76,6 +76,17 @@ const sourcesSidebar = [
       { text: 'X 精选', link: '/sources/quality/x' },
       { text: 'Hacker News 讨论精选', link: '/sources/quality/hn' }
     ]
+  },
+  {
+    text: '国内大厂专题',
+    collapsed: false,
+    items: [
+      { text: '说明与索引', link: '/sources/cn-bigtech/' },
+      { text: '腾讯', link: '/sources/cn-bigtech/tencent' },
+      { text: '阿里（含蚂蚁）', link: '/sources/cn-bigtech/alibaba' },
+      { text: '字节', link: '/sources/cn-bigtech/bytedance' },
+      { text: '国内大厂对比', link: '/compare/cn-bigtech' }
+    ]
   }
 ]
 
@@ -117,6 +128,14 @@ const librarySidebar = [
       { text: 'GitHub 仓库（2/2）', link: '/library/q-github-2' },
       { text: '精选条目与网页', link: '/library/q-curated' }
     ]
+  },
+  {
+    text: '国内大厂专题',
+    items: [
+      { text: '腾讯', link: '/library/cn-bigtech-tencent' },
+      { text: '阿里（含蚂蚁）', link: '/library/cn-bigtech-alibaba' },
+      { text: '字节', link: '/library/cn-bigtech-bytedance' }
+    ]
   }
 ]
 
@@ -150,7 +169,8 @@ export default defineConfig({
           items: [
             { text: '传统工程 vs Agent 时代：总表', link: '/compare/' },
             { text: '决策指南：什么时候用什么', link: '/compare/decision-guide' },
-            { text: '共识度/佐证', link: '/compare/evidence' }
+            { text: '共识度/佐证', link: '/compare/evidence' },
+            { text: '国内大厂对比：腾讯 · 阿里 · 字节', link: '/compare/cn-bigtech' }
           ]
         }
       ]

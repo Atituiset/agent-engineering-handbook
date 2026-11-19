@@ -92,6 +92,13 @@ P06「验证闭环」有 298 位独立作者支持，排在前列。P07「TDD」
 - **CI 成为瓶颈**：Linear 因 AI 带来的变更量重做了 CI（[HN23](/sources/hackernews#hn23)）。Peter Steinberger 计划让 Codex 判断哪些测试真正需要跑，大幅削减 CI（[XV-007](/sources/x/verify#xv-007)）。这是对「测试越多越好」的一个实际限定。
 - **TDD 的限定**：Armin Ronacher 认为重写系统不一定需要现成的测试套件，可以让智能体专门自建（[XV-012](/sources/x/verify#xv-012)）。
 
+## 国内大厂佐证 {#cn-bigtech}
+
+> 腾讯、阿里、字节的公开材料（数字均为团队自报、尚未独立验证；横向比较见 [国内大厂对比](/compare/cn-bigtech)）：
+>
+> - 支付宝 60 万行重构把目标从“迁移代码”改为“迁移行为”，用两个相互校验的 Loop 验证（[AL27](/sources/cn-bigtech/alibaba#al27)）；字节先生成 bug 复现脚本再修（[BD06](/sources/cn-bigtech/bytedance#bd06)），NL2Test 自报 85.4% 生成用例进入 CI/CD（[BD10](/sources/cn-bigtech/bytedance#bd10)）。
+> - 防作弊的国内案例：阿里云诊断系统里 Agent 曾把 logger.error 改成 logger.warning 就宣称已修复，所以必须独立验证（[AL17](/sources/cn-bigtech/alibaba#al17)）；腾讯游戏以“编译 0 error”为量化验收（[TX07](/sources/cn-bigtech/tencent#tx07)）。
+
 ## 与传统软件工程认知的对比
 
 | 维度 | 传统认知 | 智能体时代 | 判断 | 佐证（支持／异议） |

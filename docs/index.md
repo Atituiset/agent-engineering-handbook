@@ -4,7 +4,7 @@ layout: home
 hero:
   name: 驾驭 Agent 实践手册
   text: 让编码智能体守住工程与架构约束
-  tagline: 以 X 一线声音为主，整理约 620 条精选资料与 2,900 余条全量库，每条都附原文链接；统计每条实践的独立佐证数，并与传统软件工程认知逐项对照。
+  tagline: 以 X 一线声音为主，整理约 690 条精选资料与 3,100 余条全量库（含腾讯、阿里、字节的国内大厂专题），每条都附原文链接；统计每条实践的独立佐证数，并与传统软件工程认知逐项对照。
   actions:
     - theme: brand
       text: 阅读实践手册
@@ -38,6 +38,9 @@ features:
   - title: CI 是不会被说服的评审者
     details: 测试先行、测试改动守卫、必需检查与合并队列；AI 评审只做建议性初筛，Evals 进 CI，度量解决率与变更失败率。（第 12 章）
     link: /handbook/12-quality-cicd
+  - title: 国内大厂怎么做
+    details: 腾讯、阿里、字节都自报 AI 生成代码占比冲到 50%–90%，但也都承认交付效率没有同比放大；三家正在收敛到 Harness/Loop 工程、异构模型评审与沙箱验证。（国内大厂对比）
+    link: /compare/cn-bigtech
   - title: 证据与分歧并列
     details: 厂商自报、个人经验与对照研究分开标注；上下文文件有没有用、TDD、多智能体等争议如实呈现。
     link: /sources/

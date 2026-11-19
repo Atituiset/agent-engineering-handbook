@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { withBase } from 'vitepress'
 
-type Row = { n: number; s: string; c: string; t: string; a: string; d: string; u: string; u2: string; th: string; p: string[]; k: string; m: string; tp?: string }
+type Row = { n: number; s: string; c: string; t: string; a: string; d: string; u: string; u2: string; th: string; p: string[]; k: string; m: string; tp?: string; co?: string }
 const rows = ref<Row[]>([])
 const loading = ref(true)
 const error = ref('')
@@ -11,6 +11,9 @@ const src = ref('')
 const theme = ref('')
 const pr = ref('')
 const onlyPick = ref(false)
+const topic = ref('')
+const TOPICS: Record<string, string> = { 'quality-cicd': '质量与 CI/CD 专题', 'cn-bigtech': '国内大厂专题（全部）', 'cn:腾讯': '国内大厂 · 腾讯', 'cn:阿里': '国内大厂 · 阿里（含蚂蚁）', 'cn:字节': '国内大厂 · 字节' }
+const topicOk = (r: Row) => !topic.value || (topic.value.startsWith('cn:') ? r.tp === 'cn-bigtech' && r.co === topic.value.slice(3) : r.tp === topic.value)
 const page = ref(1)
 const PER = 50
 const THEMES: Record<string, string> = {
@@ -28,6 +31,8 @@ onMounted(async () => {
   try {
     const r = await fetch(withBase('/data/sources.json'))
     rows.value = await r.json()
+    const t = new URLSearchParams(window.location.search).get('topic')
+    if (t && TOPICS[t]) topic.value = t
   } catch (e) {
     error.value = '数据加载失败，请改用下方的分页表格。'
   } finally {
@@ -42,12 +47,13 @@ const filtered = computed(() => {
     (!theme.value || r.th === (theme.value === '-' ? '' : theme.value)) &&
     (!pr.value || r.p.includes(pr.value)) &&
     (!onlyPick.value || !!r.k) &&
+    topicOk(r) &&
     (!kw || (r.t + ' ' + r.a + ' ' + r.c).toLowerCase().includes(kw))
   )
 })
 const pages = computed(() => Math.max(1, Math.ceil(filtered.value.length / PER)))
 const shown = computed(() => filtered.value.slice((page.value - 1) * PER, page.value * PER))
-watch([q, src, theme, pr, onlyPick], () => { page.value = 1 })
+watch([q, src, theme, pr, onlyPick, topic], () => { page.value = 1 })
 const distinctAuthors = computed(() => new Set(filtered.value.map(r => r.a)).size)
 </script>
 
@@ -58,6 +64,7 @@ const distinctAuthors = computed(() => new Set(filtered.value.map(r => r.a)).siz
       <select v-model="src"><option value="">全部来源</option><option v-for="s in sources" :key="s" :value="s">{{ s }}</option></select>
       <select v-model="theme"><option value="">全部主题</option><option v-for="(v, k) in THEMES" :key="k" :value="k === '' ? '-' : k">{{ v }}</option></select>
       <select v-model="pr"><option value="">全部原则</option><option v-for="p in PS" :key="p" :value="p">{{ p }}</option></select>
+      <select v-model="topic"><option value="">全部专题</option><option v-for="(v, k) in TOPICS" :key="k" :value="k">{{ v }}</option></select>
       <label><input type="checkbox" v-model="onlyPick" /> 只看精选</label>
     </div>
     <p v-if="loading">加载中…</p>
@@ -69,7 +76,7 @@ const distinctAuthors = computed(() => new Set(filtered.value.map(r => r.a)).siz
         <tbody>
           <tr v-for="r in shown" :key="r.n">
             <td>{{ r.n }}</td>
-            <td>{{ r.t }}<br /><small>{{ r.c }} · {{ THEMES[r.th] }}</small></td>
+            <td>{{ r.t }}<br /><small>{{ r.c }} · {{ THEMES[r.th] }}<template v-if="r.co"> · {{ r.co }}</template></small></td>
             <td>{{ r.a }}</td>
             <td>{{ r.d }}</td>
             <td><a v-for="p in r.p" :key="p" :href="plink(p)">{{ p }} </a></td>

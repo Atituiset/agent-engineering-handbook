@@ -84,6 +84,13 @@ P01「计划先行、规格先于代码」有 260 位独立作者支持，但人
 - **计划的价值在于人审**：Burke Holland 提醒，如果全盘接受智能体计划里的默认建议，计划这一步等于白做（[XP-006](/sources/x/plan#xp-006)）。这与本章「计划是评审对象」的论点一致。
 - **企业侧更强调 SPEC**：国内多家团队把 SPEC 当作核心资产，像管理代码一样管理，并要求写清验收与禁止事项（[CN14](/sources/chinese#cn14)、[CN13](/sources/chinese#cn13)）。SDD 的规范被定位为「促进人机对话，而非操作手册」（[CN15](/sources/chinese#cn15)）。腾讯一个团队的踩坑结论是，前置需求澄清比加并发更有效（[CN21](/sources/chinese#cn21)）。
 
+## 国内大厂佐证 {#cn-bigtech}
+
+> 腾讯、阿里、字节的公开材料（数字均为团队自报、尚未独立验证；横向比较见 [国内大厂对比](/compare/cn-bigtech)）：
+>
+> - Qoder 的 Quest Mode 要求长任务前先写清变更细节与验证标准（[AL15](/sources/cn-bigtech/alibaba#al15)）；蚂蚁把痛点概括为“文档追不上代码、验证追不上迭代”，用 SDD 四步规范驱动（[AL24](/sources/cn-bigtech/alibaba#al24)）。
+> - 火山引擎 AgentKit 把 Spec 当作人与 Agent 的任务合约（目标、边界、依赖、验收标准）（[BD15](/sources/cn-bigtech/bytedance#bd15)）；腾讯研发工具链从“配置驱动”转向“意图驱动”（[TX14](/sources/cn-bigtech/tencent#tx14)）。
+
 ## 与传统软件工程认知的对比
 
 | 维度 | 传统认知 | 智能体时代 | 判断 | 佐证（支持／异议） |

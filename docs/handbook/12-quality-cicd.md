@@ -360,3 +360,11 @@ jobs:
 - **真正有分歧的**是：Q06（AI 评审该不该进 CI、该不该默认开启）、Q01（「LLM + TDD」是否名副其实，以及成本）、Q07（评审者是否应完全独立）、Q11（功能开关的长期成本）。
 - **Q10（flaky）和 Q13（来源透明）支持者较少**，原因是讨论面较窄，不代表有争议。开源项目对 AI 贡献的态度从「披露即可」到「全面拒绝」都有（[QO01](/sources/quality/oss#qo01)–[QO03](/sources/quality/oss#qo03)）。
 :::
+
+## 国内大厂佐证 {#cn-bigtech}
+
+> 腾讯、阿里、字节的公开材料（数字均为团队自报、尚未独立验证；横向比较见 [国内大厂对比](/compare/cn-bigtech)）：
+>
+> - AI 进流水线而不只进 IDE：字节 LogSage 一年处理 107 万次 CI/CD 执行（[BD04](/sources/cn-bigtech/bytedance#bd04)），BitsAI-Fix 自动修复静态分析告警（[BD03](/sources/cn-bigtech/bytedance#bd03)），TestGPT-Server 在 1.4 万个微服务 API 上找到 50 个崩溃 bug、仅 2 个功能 bug（[BD07](/sources/cn-bigtech/bytedance#bd07)）。
+> - 评审需要可度量：阿里 AACR-Bench 带负样本集衡量评审噪声（[AL11](/sources/cn-bigtech/alibaba#al11)）；Open Code Review 的自报与社区复测分歧（[AL08](/sources/cn-bigtech/alibaba#al08)、[AL09](/sources/cn-bigtech/alibaba#al09)）说明团队自报 benchmark 需要独立复测（Q13）。
+

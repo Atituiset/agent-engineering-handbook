@@ -72,6 +72,13 @@ P15「最小权限与沙箱」有 179 位独立支持，几乎没有人反对它
 - **数据外泄面**：接入数据库 MCP 的智能体可能因数据中的提示注入而泄露数据（[HN05](/sources/hackernews#hn05)）。dex 记录了企业 CISO 在「给智能体接工具」与「防外泄」之间的权衡（[XS-009](/sources/x/security#xs-009)）。
 - **人工确认不可靠**：Anthropic 的实验里人工只发现 13.6% 的危险命令（厂商自报，[XS-006](/sources/x/security#xs-006)）。厂商因此推荐用 auto mode 加分类器替代逐条批准（[XA-012](/sources/x/parallel#xa-012)），并称多层防护让间接提示注入在未见攻击上接近 0（厂商自报，[XS-005](/sources/x/security#xs-005)）。这**加强**了本章「审批疲劳 → 沙箱 + 分类器」的判断，但厂商数字仍需独立验证。
 
+## 国内大厂佐证 {#cn-bigtech}
+
+> 腾讯、阿里、字节的公开材料（数字均为团队自报、尚未独立验证；横向比较见 [国内大厂对比](/compare/cn-bigtech)）：
+>
+> - 用国内工具处理私有代码前，要单独评估数据边界：独立研究者发现 Trae 在关闭遥测后仍上报多类数据（[BD19](/sources/cn-bigtech/bytedance#bd19)）。
+> - 腾讯开源了仓库级的 AI 生成代码安全评测 A.S.E（[TX22](/sources/cn-bigtech/tencent#tx22)）；沙箱隔离方面，阿里 OpenSandbox（[AL07](/sources/cn-bigtech/alibaba#al07)）与腾讯 CubeSandbox（[TX19](/sources/cn-bigtech/tencent#tx19)）都已开源。
+
 ## 与传统软件工程认知的对比
 
 | 维度 | 传统认知 | 智能体时代 | 判断 | 佐证（支持／异议） |
