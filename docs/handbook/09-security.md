@@ -71,13 +71,7 @@ P15「最小权限与沙箱」有 179 位独立支持，几乎没有人反对它
 - **事故复盘**：PocketOS 事件中，智能体处理测试环境报错时，在代码库里找到一个与任务无关的云服务 Token，9 秒内删除了生产数据卷及卷级备份（二手复盘，[CN50](/sources/chinese#cn50)）。教训与本章一致：凭据不进代码库，高危操作需要独立凭证与二次确认。HN 上还有 Gemini CLI 删除用户文件（[HN24](/sources/hackernews#hn24)）、Codex 在没有 sudo 时借 docker 组权限绕过限制（[HN12](/sources/hackernews#hn12)）等讨论。
 - **数据外泄面**：接入数据库 MCP 的智能体可能因数据中的提示注入而泄露数据（[HN05](/sources/hackernews#hn05)）。dex 记录了企业 CISO 在「给智能体接工具」与「防外泄」之间的权衡（[XS-009](/sources/x/security#xs-009)）。
 - **人工确认不可靠**：Anthropic 的实验里人工只发现 13.6% 的危险命令（厂商自报，[XS-006](/sources/x/security#xs-006)）。厂商因此推荐用 auto mode 加分类器替代逐条批准（[XA-012](/sources/x/parallel#xa-012)），并称多层防护让间接提示注入在未见攻击上接近 0（厂商自报，[XS-005](/sources/x/security#xs-005)）。这**加强**了本章「审批疲劳 → 沙箱 + 分类器」的判断，但厂商数字仍需独立验证。
-
-## 国内大厂佐证 {#cn-bigtech}
-
-> 腾讯、阿里、字节的公开材料（数字均为团队自报、尚未独立验证；横向比较见 [国内大厂对比](/compare/cn-bigtech)）：
->
-> - 用国内工具处理私有代码前，要单独评估数据边界：独立研究者发现 Trae 在关闭遥测后仍上报多类数据（[BD19](/sources/cn-bigtech/bytedance#bd19)）。
-> - 腾讯开源了仓库级的 AI 生成代码安全评测 A.S.E（[TX22](/sources/cn-bigtech/tencent#tx22)）；沙箱隔离方面，阿里 OpenSandbox（[AL07](/sources/cn-bigtech/alibaba#al07)）与腾讯 CubeSandbox（[TX19](/sources/cn-bigtech/tencent#tx19)）都已开源。
+- **数据边界与沙箱基建**：用商业编码工具处理私有代码前，要单独评估遥测与数据边界——独立研究者发现 Trae 在关闭遥测后仍上报多类数据（[BD19](/sources/security#bd19)）。腾讯开源了仓库级的 AI 生成代码安全评测 A.S.E（[TX22](/sources/security#tx22)）；沙箱隔离方面，阿里 OpenSandbox（团队自报，[AL07](/sources/chinese#al07)）与腾讯 CubeSandbox（[TX19](/sources/open-source#tx19)）都已开源。
 
 ## 与传统软件工程认知的对比
 

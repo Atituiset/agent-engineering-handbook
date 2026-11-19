@@ -333,6 +333,7 @@ jobs:
 - **厂商报告有利益相关**：CodeRabbit、GitClear、Veracode 都销售相关产品（[QR08](/sources/quality/research#qr08)、[QR09](/sources/quality/research#qr09)、[QR10](/sources/quality/research#qr10)），本手册已标注「厂商自报、尚未独立验证」。
 - **独立研究很少**，主要是 METR 和 DORA（[QR01](/sources/quality/research#qr01)、[QR03](/sources/quality/research#qr03)、[QR04](/sources/quality/research#qr04)、[QR06](/sources/quality/research#qr06)）以及若干 arXiv 论文；缺少「加了某个门禁后缺陷逃逸率变化」这样的对照数据。
 - **部分原文未能访问**：OpenAI 的 harness engineering 文章和 OpenAI 网站上关于 Datadog 的客户案例在本次检索中返回 403；部分中文资料是会议预告或转载。
+- **流水线里的工业案例**（数字均为团队自报、尚未独立验证）：字节 LogSage 一年处理 107 万次 CI/CD 执行（[BD04](/sources/quality/research#bd04)），BitsAI-Fix 自动修复静态分析告警（[BD03](/sources/quality/research#bd03)），TestGPT-Server 在 1.4 万个微服务 API 上找到 50 个崩溃 bug、仅 2 个功能 bug（[BD07](/sources/quality/research#bd07)）。阿里 AACR-Bench 带负样本集衡量评审噪声（[AL11](/sources/quality/research#al11)）；Open Code Review 的自报与社区复测分歧（[AL08](/sources/quality/oss#al08)、[AL09](/sources/quality/hn#al09)）说明团队自报 benchmark 需要独立复测（Q13）。腾讯一线团队不追求严格 TDD（[TX02](/sources/chinese#tx02)），与 [Q01](#q01) 有张力。
 
 ## 8. 共识度 {#consensus}
 
@@ -361,10 +362,4 @@ jobs:
 - **Q10（flaky）和 Q13（来源透明）支持者较少**，原因是讨论面较窄，不代表有争议。开源项目对 AI 贡献的态度从「披露即可」到「全面拒绝」都有（[QO01](/sources/quality/oss#qo01)–[QO03](/sources/quality/oss#qo03)）。
 :::
 
-## 国内大厂佐证 {#cn-bigtech}
-
-> 腾讯、阿里、字节的公开材料（数字均为团队自报、尚未独立验证；横向比较见 [国内大厂对比](/compare/cn-bigtech)）：
->
-> - AI 进流水线而不只进 IDE：字节 LogSage 一年处理 107 万次 CI/CD 执行（[BD04](/sources/cn-bigtech/bytedance#bd04)），BitsAI-Fix 自动修复静态分析告警（[BD03](/sources/cn-bigtech/bytedance#bd03)），TestGPT-Server 在 1.4 万个微服务 API 上找到 50 个崩溃 bug、仅 2 个功能 bug（[BD07](/sources/cn-bigtech/bytedance#bd07)）。
-> - 评审需要可度量：阿里 AACR-Bench 带负样本集衡量评审噪声（[AL11](/sources/cn-bigtech/alibaba#al11)）；Open Code Review 的自报与社区复测分歧（[AL08](/sources/cn-bigtech/alibaba#al08)、[AL09](/sources/cn-bigtech/alibaba#al09)）说明团队自报 benchmark 需要独立复测（Q13）。
 

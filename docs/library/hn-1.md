@@ -1,6 +1,6 @@
 # 全量库 · Hacker News 讨论（1/3）
 
-> HN 讨论串 443 条（2025 年以来、按标题筛选与实践相关者），「原文」为讨论串，「文章」为被讨论的原文。▲ 为 HN 分数。
+> Hacker News 讨论串。共 446 条，本页 150 条。主题与原则为**关键词自动归类**，可能有误；标「精选」的已写成完整条目。原则编号 Q01–Q13 见 [第 12 章](/handbook/12-quality-cicd#principles)，P01–P20 见 [共识度/佐证](/compare/evidence)。
 
 分页：**1** · [2](./hn-2) · [3](./hn-3)
 
@@ -156,6 +156,3 @@
 | 148 | Show HN: A plain-text cognitive architecture for Claude Code | lab.puga.com.br（提交者 marciopuga） | 2026-03-25 | [P05](/compare/evidence#p05) | [原文](https://news.ycombinator.com/item?id=47524704) · [文章](https://lab.puga.com.br/cog/) ▲157 |
 | 149 | Show HN: Optio – Orchestrate AI coding agents in K8s to go from ticket to PR | github.com（提交者 jawiggins） | 2026-03-25 | [P08](/compare/evidence#p08) | [原文](https://news.ycombinator.com/item?id=47520220) · [文章](https://github.com/jonwiggins/optio) ▲88 |
 | 150 | Show HN: ProofShot – Give AI coding agents eyes to verify the UI they build | github.com（提交者 jberthom） | 2026-03-24 | [P06](/compare/evidence#p06) | [原文](https://news.ycombinator.com/item?id=47499672) · [文章](https://github.com/AmElmo/proofshot) ▲161 |
-
-分页：**1** · [2](./hn-2) · [3](./hn-3)
-

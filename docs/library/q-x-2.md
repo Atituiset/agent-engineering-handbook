@@ -1,6 +1,8 @@
-# 全量库 · 质量专题 · X 帖子（2/2）
+# 全量库 · 质量专题 · X 帖子（2/3）
 
-> X 帖子，按日期倒序；取原帖开头原文，为作者个人观点。 共 140 条。主题与原则为**关键词自动归类**，可能有误；标「精选」的已写成完整条目，见 [质量与 CI/CD 专题](/sources/quality/)。原则编号 Q01–Q13 见 [第 12 章](/handbook/12-quality-cicd#principles)，P01–P20 见 [共识度/佐证](/compare/evidence)。
+> 质量与 CI/CD 相关的 X 帖子，按日期倒序；取原帖开头原文，为作者个人观点。共 307 条，本页 150 条。主题与原则为**关键词自动归类**，可能有误；标「精选」的已写成完整条目。原则编号 Q01–Q13 见 [第 12 章](/handbook/12-quality-cicd#principles)，P01–P20 见 [共识度/佐证](/compare/evidence)。
+
+分页：[1](./q-x-1) · **2** · [3](./q-x-3)
 
 | # | 标题 / 摘录 | 作者 | 日期 | 原则 | 链接 |
 | --- | --- | --- | --- | --- | --- |
@@ -144,3 +146,13 @@
 | 138 | AI is a fundamentally new workload that demands a fundamentally new infrastructure stack. Proud to be working… | Ankur Goyal (@ankrgyl) | 2025-06-10 | [P04](/compare/evidence#p04) [Q03](/handbook/12-quality-cicd#q03) [Q08](/handbook/12-quality-cicd#q08) | [原文](https://x.com/ankrgyl/status/1932448478099313119) ♥20 |
 | 139 | Ever shipped so fast that you couldn’t even review your own code? That’s exactly what happened at @AnthropicAI… | Serhii (@s\_panchyshyn) | 2025-06-08 | [P06](/compare/evidence#p06) [P08](/compare/evidence#p08) [Q03](/handbook/12-quality-cicd#q03) [Q05](/handbook/12-quality-cicd#q05) [Q06](/handbook/12-quality-cicd#q06) | [原文](https://x.com/s_panchyshyn/status/1931626405973864593) ♥0 |
 | 140 | OpenAI Deep Research is a dev supertool. Ask it something you need docs for. Take its analysis + codebase cont… | Mckay Wrigley (@mckaywrigley) | 2025-02-03 | [P01](/compare/evidence#p01) [P02](/compare/evidence#p02) [Q04](/handbook/12-quality-cicd#q04) | [原文](https://x.com/mckaywrigley/status/1886446797348065519) ♥1519 |
+| 141 | 腾讯开源 LoopForge：让 Coding Agents 按流程交付，再用评测改进流程  LoopForge 关注的不是让 AI 多写几行代码，是让 Coding Agents 进入团队研发：有人分工、有测试和评审、… | shao__meng (@shao__meng) | 2026-11-16 | [Q06](/handbook/12-quality-cicd#q06) [Q05](/handbook/12-quality-cicd#q05) [Q08](/handbook/12-quality-cicd#q08) [P06](/compare/evidence#p06) | [原文](https://x.com/shao__meng/status/2122473384403710005) ♥26 |
+| 142 | 🏗 腾讯开源了一个自托管的 agent 交付工作台：从需求到 PR  用 coding agent 的人都会撞上同一堵墙：自己用很爽，进团队就乱。谁在改、改到哪、什么时候能合并，没人说得清。  LoopForge 是腾讯… | a89eef9371 (@a89eef9371) | 2026-11-18 | [Q09](/handbook/12-quality-cicd#q09) [P15](/compare/evidence#p15) [P06](/compare/evidence#p06) | [原文](https://x.com/a89eef9371/status/2122980128112431430) ♥1 |
+| 143 | 🤨我靠！腾讯最新开源让 Coding Agent 不再“裸奔写代码”了！LoopForge 把 Coding Agent 塞进有边界、有流程、有验收的团队级工作流里！  单跑 Agent 容易跳方案、忘测试、自审自评、半… | NFT_Chen (@NFT_Chen) | 2026-11-15 | [Q06](/handbook/12-quality-cicd#q06) [Q05](/handbook/12-quality-cicd#q05) [P06](/compare/evidence#p06) | [原文](https://x.com/NFT_Chen/status/2121860112197582991) ♥83 |
+| 144 | 腾讯开源LoopForge，把AI编程拆成流程了??  它把一个开发任务拆成完整的研发流程 先确认需求、设计方案，AI Agent负责写代码，另一个Agent做Code Review，再跑测试，最后人工验收，不满意可以打… | OA20200911 (@OA20200911) | 2026-11-15 | [Q06](/handbook/12-quality-cicd#q06) [Q05](/handbook/12-quality-cicd#q05) [P06](/compare/evidence#p06) | [原文](https://x.com/OA20200911/status/2121963489153720633) ♥5 |
+| 145 | 腾讯开源了一个项目：LoopForge。  它想做的事情，是让 Codex、Claude Code 这些 AI 编程工具真正组成一支研发团队。  你只需要提出需求，LoopForge 就能组织 Agent 完成需求分析、… | DD7eFBO19751965 (@DD7eFBO19751965) | 2026-11-15 | [Q06](/handbook/12-quality-cicd#q06) [Q05](/handbook/12-quality-cicd#q05) [P06](/compare/evidence#p06) | [原文](https://x.com/DD7eFBO19751965/status/2121814611100070320) ♥3 |
+| 146 | 阿里 Qwen Code 1.0 发布！  Qoder 与 Qwen Code Harness 融合开源  阿里把在 Qoder 中打磨的 Harness 能力融入 Qwen Code  随 Qwen Code 1.0 … | Zhibin992 (@Zhibin992) | 2026-11-11 | [Q06](/handbook/12-quality-cicd#q06) [P06](/compare/evidence#p06) | [原文](https://x.com/Zhibin992/status/2120502689419465084) ♥1 |
+| 147 | 阿里今日官宣推出 Qwen Code 1.0 版本，Qoder 与 Qwen Code 融合开源。 阿里把在 Qoder 中打磨的 Harness 能力融入 Qwen Code，随 Qwen Code 1.0 Previ… | realNyarime (@realNyarime) | 2026-11-11 | [Q06](/handbook/12-quality-cicd#q06) [P06](/compare/evidence#p06) | [原文](https://x.com/realNyarime/status/2120428996345413848) ♥12 |
+| 148 | 这不在刚才发表的 X 在阿里的 AI 产品上就能很好的体现。  昨天阿里的 Qwen Code 1.0 Preview 发布了，据说整合了 Qoder 的部分 Agent 能力。  但是说实话，阿里的 Coding Ag… | sean_jsh (@sean_jsh) | 2026-11-12 | [Q06](/handbook/12-quality-cicd#q06) | [原文](https://x.com/sean_jsh/status/2120735288817246310) ♥1 |
+| 149 | 这不刚才发表的 X 在阿里的 AI 产品上就能很好的体现。  昨天阿里的 Qwen Code 1.0 Preview 发布了，据说整合了 Qoder 的部分 Agent 能力。  但是说实话，阿里的 Coding Age… | sean_jsh (@sean_jsh) | 2026-11-12 | [Q06](/handbook/12-quality-cicd#q06) | [原文](https://x.com/sean_jsh/status/2120735846869410194) ♥0 |
+| 150 | 阿里把 Qoder 的底子开源进了 Qwen Code。 11 月 11 日 Qwen Code 1.0 Preview：Qoder 的 Agent harness 合进来了，长任务不断线，还能嵌进自己的产品。 不用装 … | zhidekan (@zhidekan) | 2026-11-15 | [Q06](/handbook/12-quality-cicd#q06) | [原文](https://x.com/zhidekan/status/2121884158569877826) ♥0 |

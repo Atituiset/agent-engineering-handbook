@@ -84,3 +84,17 @@ Agent Skills 的官方示例仓库：skill 是由指令、脚本和资源组成�
 **作者**：David Seddon｜**日期**：持续更新｜[原文](https://github.com/seddonym/import-linter)
 
 「给你的 Python 架构做 lint」：对 Python 模块间的 import 施加约束（分层、独立性、禁止依赖），并提供浏览器界面探索包的架构。Python 项目中落实分层约束的轻量方案。
+
+
+## 沙箱与执行环境 {#sandbox}
+
+以下为开源的智能体执行环境相关条目。
+
+### 腾讯 · TX19 · AI Agent 执行环境的规模化难题：CubeSandbox 的解法与实践（QCon 上海 2026 议题） {#tx19}
+**作者/机构**：龙进（腾讯云 CubeSandbox 核心 maintainer）｜**日期**：2026-10（QCon 上海）｜[原文](https://qcon.infoq.cn/2026/shanghai/presentation/7393)｜[相关链接](https://github.com/TencentCloud/CubeSandbox)
+
+Agent 负载从一次性执行走向长周期、有状态、大规模并行，既要安全承载不可信代码又要扛突发并发。CubeSandbox 走 MicroVM + 快照路线，以沙箱为基本计算单元，提供暂停恢复、快照克隆，自报冷启动约 60ms、单实例内存 5MB 以内。
+
+> “基于MicroVM + 快照路线，以沙箱为基本计算单元，实现算力与状态两个维度的弹性”
+
+**证据类型**：议题摘要（演讲者自述）｜**对应原则**：[P15](/compare/evidence#p15) [Q09](/handbook/12-quality-cicd#q09)

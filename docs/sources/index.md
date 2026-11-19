@@ -25,16 +25,15 @@
 | [X 精选（按主题，v2 主力来源）](./x/) | XW/XC/XP/XV/XR/XK/XT/XA/XS/XM/XF | 205 | 141 位作者；工作流、上下文、计划、测试、评审、约束、工具、并行、安全、团队、失败与反思 |
 | [X 帖子（v1）](./x-posts) | X | 11 | Karpathy、Greg Brockman、Boris Cherny、Thariq 等 |
 | [Hacker News 高热讨论](./hackernews) | HN | 29 | 高互动讨论串与评论区代表性观点 |
-| [中文互联网](./chinese) | CN | 50 | 美团、腾讯、快手、百度、字节、蚂蚁、京东、阿里云、InfoQ、宝玉、阮一峰、少数派等 |
-| [开源项目与规范](./open-source) | OS | 15 | AGENTS.md、Spec Kit、MCP、Superpowers、架构约束工具 |
-| [研究与数据](./research) | RS | 8 | METR、DORA、GitClear、AGENTS.md 评估论文 |
-| [安全](./security) | SC | 6 + 索引 | 致命三要素、提示注入设计模式、包幻觉 |
-| [质量与 CI/CD 专题](./quality/)（2026-11 新增） | QB/QT/QP/QR/QO/QC/QX/QH | 143 | 测试、CI 门禁、AI 评审、Evals、沙箱验证、合并队列与发布、护栏、度量与反模式；大厂、工具、工程师、研究、开源、中文、X、HN |
-| [国内大厂专题](./cn-bigtech/)（2026-11 新增） | TX/AL/BD | 74 | 腾讯 23、阿里（含蚂蚁）31、字节 20：AI 编码规模、Harness/Loop 工程、AI 评审、测试智能体、沙箱、评测与度量；横向比较见 [国内大厂对比](/compare/cn-bigtech) |
+| [中文互联网](./chinese) | CN / TX / AL / BD | 89 | 美团、腾讯、快手、百度、字节、蚂蚁、京东、阿里云、InfoQ、宝玉、阮一峰、少数派等；含 2026-11 增补的腾讯、阿里（含蚂蚁）、字节团队材料（TX / AL / BD） |
+| [开源项目与规范](./open-source) | OS / TX | 16 | AGENTS.md、Spec Kit、MCP、Superpowers、架构约束工具；含 CubeSandbox |
+| [研究与数据](./research) | RS / AL / BD | 11 | METR、DORA、GitClear、AGENTS.md 评估论文；含 Qwen3-Coder、Trae Agent、Repo2Run 等工业论文 |
+| [安全](./security) | SC / TX / BD | 8 + 索引 | 致命三要素、提示注入设计模式、包幻觉；含 A.S.E 安全评测与 Trae 遥测分析 |
+| [质量与 CI/CD 专题](./quality/)（2026-11 新增） | QB/QT/QP/QR/QO/QC/QX/QH / TX/AL/BD | 172 | 测试、CI 门禁、AI 评审、Evals、沙箱验证、合并队列与发布、护栏、度量与反模式；大厂、工具、工程师、研究、开源、中文、X、HN；含按主题分散进来的腾讯、阿里、字节条目 |
 
-精选合计约 **690 条**完整条目（不含交叉索引）：v1 的 207 条，加上 2026-11 扩充的 X 精选 205 条、中文 39 条、HN 29 条，质量与 CI/CD 专题的 143 条（其中 14 条链接与此前条目重复，从质量角度重读），以及国内大厂专题的 74 条。
+精选合计约 **690 条**完整条目（不含交叉索引）：v1 的 207 条，加上 2026-11 扩充的 X 精选 205 条、中文 39 条、HN 29 条，质量与 CI/CD 专题（含后来按主题并入的测试、评审、评测等条目），以及分散到中文互联网、研究、安全与开源分类中的腾讯、阿里、字节团队材料。
 
-此外，[全量库](/library/)收录 **3,195 条**资料（X 帖子 1,525 条、HN 讨论 542 个、GitHub 仓库 630 个、精选条目与网页 498 条；其中质量专题新增 681 条、国内大厂专题新增 291 条），只列元数据，用于统计各条实践的 [共识度/佐证](/compare/evidence)。
+此外，[全量库](/library/)收录 **3,195 条**资料（X 帖子 1,525 条、HN 讨论 542 个、GitHub 仓库 630 个、精选条目与网页 498 条），只列元数据，用于统计各条实践的 [共识度/佐证](/compare/evidence)。腾讯、阿里、字节相关条目带有公司字段，可在 [在线筛选](/library/#explorer) 中按公司查看。
 
 ## 如何阅读
 

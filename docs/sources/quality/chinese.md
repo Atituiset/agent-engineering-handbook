@@ -145,3 +145,166 @@
 > “如果由同一个会话同时编写两者，测试最终描述的将是它自己的代码，而不是需求。”
 
 **证据类型**：作者自述｜**对应原则**：[Q01](/handbook/12-quality-cicd#q01) [Q04](/handbook/12-quality-cicd#q04) [Q07](/handbook/12-quality-cicd#q07)
+
+
+### 腾讯 · TX08 · 腾讯 2025 研发大数据报告：50% 新增代码由 AI 辅助生成，AI 参与 94% 的代码评审 {#tx08}
+**作者/机构**：雷峰网（报道腾讯官方报告）｜**日期**：2025-10-24｜[原文](https://www.leiphone.com/category/industrynews/vULCngEsMJdQ2yxs.html)
+
+腾讯官方年度报告的公开口径：超 90% 工程师使用 CodeBuddy，50% 新增代码由 AI 辅助生成，平均编码时间缩短 40%，整体研发效能提升超 20%；代码评审环节 AI 参与度 94%，28% 的缺陷由 AI 直接发现并被采纳；另列腾讯云“65% 新增代码来自 CodeBuddy、人均千行 BUG 率降低 31.5%”。注意“AI 辅助生成”与“AI 生成”的口径不同。
+
+> “代码评审环节，AI参与度也高达94%”
+
+**证据类型**：团队自报（官方报告，媒体转述）｜**对应原则**：[Q06](/handbook/12-quality-cicd#q06) [Q12](/handbook/12-quality-cicd#q12)
+
+### 腾讯 · TX09 · 腾讯发布 AI CLI 并开启 CodeBuddy IDE 公测：AI 评审贡献占比从 12% 到 35% {#tx09}
+**作者/机构**：量子位（梦晨，报道腾讯 CodeBuddy 团队）｜**日期**：2025-09-09｜[原文](https://www.qbitai.com/2025/09/329704.html)
+
+CodeBuddy 团队对比 2024 与 2025 的内部实践：重心从代码补全转向以智能体为代表的项目级生成，并“更加关注 AI 代码评审环节”。这是腾讯较早把“AI 在评审中的贡献占比”单列为指标的公开数据。
+
+> “AI 生成代码占比从35% 增加到50%；AI在代码评审中贡献占比从12%增加到35%。”
+
+**证据类型**：团队自报（媒体转述）｜**对应原则**：[Q06](/handbook/12-quality-cicd#q06) [Q12](/handbook/12-quality-cicd#q12)
+
+### 腾讯 · TX15 · 测试智能体驱动质量工程新范式（AICon 上海 2026 议题） {#tx15}
+**作者/机构**：张晔（腾讯端服务质效技术负责人）｜**日期**：2026-06（AICon 上海）｜[原文](https://aicon.infoq.cn/2026/shanghai/presentation/7101)
+
+把测试智能体定义为“质量执行系统”而非模型能力展示：围绕测试目标完成理解、规划、感知、执行、判定和恢复，在 Web、移动端、桌面端形成多端闭环；工程难点是认知稳定性、GUI 感知准确性、动作可靠性和结果判定可信度。
+
+> “测试智能体并不是单一模型能力的展示，而是由多模型协同、端侧工具编排、执行反馈、证据沉淀和治理机制共同组成的质量执行系统。”
+
+**证据类型**：议题摘要（演讲者自述）｜**对应原则**：[Q02](/handbook/12-quality-cicd#q02) [Q05](/handbook/12-quality-cicd#q05) [Q10](/handbook/12-quality-cicd#q10)
+
+### 腾讯 · TX16 · 失败一次，受益多次：测试 Agent 从记忆到持续学习（QCon 上海 2026 议题） {#tx16}
+**作者/机构**：赵旭峰（腾讯 Agent 端到端落地负责人）｜**日期**：2026-10（QCon 上海）｜[原文](https://qcon.infoq.cn/2026/shanghai/presentation/7341)
+
+针对“版本一改脚本就要重写、失败只留一行 fail、踩坑留在个人脑子里”：先设计稳定的数据结构（知识库、脚本、执行产物），再设计 Agent 行为；失败时基于截图、报告、埋点证据自动归因并升版重试，区分成功路径、失败经验和负向知识，并权衡模型反思、运行证据与人工审核的可信度。
+
+> “先设计稳定的数据结构（知识库、脚本、执行产物），再设计Agent行为”
+
+**证据类型**：议题摘要（演讲者自述）｜**对应原则**：[P19](/compare/evidence#p19) [P18](/compare/evidence#p18) [Q10](/handbook/12-quality-cicd#q10)
+
+### 腾讯 · TX18 · 从“能审”到“审出闭环”：AI Code Review 规模化实践（QCon 上海 2026 议题） {#tx18}
+**作者/机构**：李阳杰（腾讯音乐集团 TME/酷狗研效中心）｜**日期**：2026-10（QCon 上海）｜[原文](https://qcon.infoq.cn/2026/shanghai/presentation/7339)
+
+腾讯音乐（腾讯控股子公司）的 AICR：MCP 动态拉取需求文档、仓库文件与运行时数据做上下文；异构模型多轮采样 + 垂类 Agent 矩阵；只审 Commit/Push 增量并语义去重；与 SonarQube、单测、接口自动化联动“双向印证、降噪”；Push 触发→报告→企微通知→修复→追踪验证，一键采纳/忽略回流自学习。
+
+> “Vibe Coding 时代，代码生产力激增，质量债加速累积，传统 AI 审查“只发现不闭环”。”
+
+**证据类型**：议题摘要（演讲者自述）｜**对应原则**：[Q06](/handbook/12-quality-cicd#q06) [Q07](/handbook/12-quality-cicd#q07) [Q03](/handbook/12-quality-cicd#q03)
+
+### 腾讯 · TX21 · Tencent WeTest AI 测试智能体：从固定脚本到自主 Agent（游戏测试） {#tx21}
+**作者/机构**：腾讯 WeTest 官方博客｜**日期**：2026-09-09｜[原文](https://kr.wetest.net/blog/tencent-wetest-ai-agents-automated-testing-qa-1263.html)
+
+WeTest 两套游戏测试方案：一类用“感知—操作—判断”的 Agent 结合游戏知识、实时状态与日志证据，决策调用稳定脚本并闭环验证；另一类训练对战型 Agent 并检验泛化（对训练集外 Boss 的胜率）。质量判断按功能覆盖是否达到 100%/90% 并追查失败根因。
+
+> “We analyze whether each feature coverage reaches 100% or 90%, identify where failures occurred, and continue to investigate the root causes.”
+
+**证据类型**：团队自述（产品博客）｜**对应原则**：[Q02](/handbook/12-quality-cicd#q02) [Q05](/handbook/12-quality-cicd#q05)
+
+### 阿里 · AL05 · 采纳率如何提升至 50%？AI 自动编写单元测试实践总结 {#al05}
+**作者/机构**：阿里技术（腾讯新闻转载）｜**日期**：2025-11-10｜[原文](https://news.qq.com/rain/a/20251110A01D5000)
+
+用 Aone Copilot Agent + 精心设计的 prompt 自动生成单测并修改代码，给出采纳率约 50% 的坦率数字，结论是效果上限取决于 prompt 质量与持续优化。
+
+> “从实践来看，AI 代码采纳率约 50%，要获得更好效果需要持续优化 prompt 质量。”
+
+**证据类型**：团队自报｜**对应原则**：[Q01](/handbook/12-quality-cicd#q01) [Q05](/handbook/12-quality-cicd#q05)
+
+### 阿里 · AL10 · Open Code Review：百万真实任务验证的确定性工程与 Agent 协同（QCon 上海 2026 议题） {#al10}
+**作者/机构**：李峥峰（Open Code Review 作者、阿里集团 AI 代码评审负责人）｜**日期**：2026-10（QCon 上海）｜[原文](https://qcon.infoq.cn/2026/shanghai/presentation/7216)
+
+评审系统的设计依据来自阿里内部规模化数据：哪些环节必须用确定性工程兜底，哪些交给 Agent；如何在召回、精度与成本之间取舍。可与 AL08 README、AL09 社区复测对照阅读。
+
+> “分享还将结合百万真实任务、阿里内部 2 万余名开发者的使用数据以及 Open Code Review 开源项目实践”
+
+**证据类型**：议题摘要（演讲者自述）｜**对应原则**：[Q06](/handbook/12-quality-cicd#q06) [Q12](/handbook/12-quality-cicd#q12)
+
+### 阿里 · AL17 · Loop Engineering 实战：AI 云诊断系统从日志扫描到预发部署的自主闭环 {#al17}
+**作者/机构**：阿里云开发者（公众号原文 2026-07-07；此处链接为技术栈转载）｜**日期**：2026-07-07｜[原文](https://jishuzhan.net/article/2077288701192445954)｜[相关链接](https://ai.lzw.me/best-blogs/article/adfa3571)
+
+阿里云诊断团队的维护循环：用 MCP 打通连接器、定时巡检与实时告警自动发现问题，诊断/修复/发布固化为 SKILL.md，Git Worktree 并行修复，六层独立验证防“假修复”，State 沉淀经验。自报一周 ERROR 从 1210 条降到 47 条、同类问题修复从 48 分钟降到 15 分钟。最有价值的是失败教训：Agent 会用降级日志级别“修复”问题，所以必须由独立验证判定。
+
+> “曾出现 Agent 把 logger.error 改成 logger.warning 就宣称 "已修复" 的情况”
+
+**证据类型**：团队自报（原文在公众号，引用自转载页）｜**对应原则**：[Q04](/handbook/12-quality-cicd#q04) [Q03](/handbook/12-quality-cicd#q03) [P06](/compare/evidence#p06) [P11](/compare/evidence#p11)
+
+### 阿里 · AL21 · AI Native 质量保障的体系化实践（飞猪，QCon 上海 2026） {#al21}
+**作者/机构**：李桐馨（飞猪测试开发工程师）｜**日期**：2026-10（QCon 上海）｜[原文](https://qcon.infoq.cn/2026/shanghai/presentation/7301)
+
+测试侧把用例生成、自动执行、UI 自动化串成体系，并以“采纳率、自动执行比例、UI 自动化成功率”度量。同一会场还有飞猪“交付大脑”议题。
+
+> “目前用例采纳率稳定在 85% 以上”
+
+**证据类型**：议题摘要（团队自报）｜**对应原则**：[Q05](/handbook/12-quality-cicd#q05) [Q12](/handbook/12-quality-cicd#q12)
+
+### 阿里 · AL22 · AgentLoop：用观测、评估与实验驱动 Agent 持续优化（AICon 北京 2026） {#al22}
+**作者/机构**：易星尘（阿里云云原生应用平台资深架构师）｜**日期**：2026-12（议题预告）｜[原文](https://aicon.infoq.cn/2026/beijing/presentation/7452)
+
+把 Agent 的线上观测、评估、实验做成闭环：评估 Agent 调用工具查证并给出分数与依据，而不是只让 LLM 打分；评估结果驱动迭代。
+
+> “由评估 Agent 调用工具查证，给出分数与依据”
+
+**证据类型**：议题摘要（演讲者自述，尚未开讲）｜**对应原则**：[Q08](/handbook/12-quality-cicd#q08) [Q02](/handbook/12-quality-cicd#q02)
+
+### 阿里 · AL27 · 支付宝 60 万行巨石应用 AI 重构的可验证交付工程（QCon 上海 2026） {#al27}
+**作者/机构**：蒋宇（蚂蚁集团研发工程师）｜**日期**：2026-10（QCon 上海）｜[原文](https://qcon.infoq.cn/2026/shanghai/presentation/7297)
+
+高风险重构（60 万行、600+ 接口）的关键转向：以“行为是否被正确迁移”为验收对象，而不是“代码看起来迁过去了”，并建立两个相互校验的 Loop：一个从老系统提取业务行为、生成场景（人机协同），另一个用这些场景校验新系统。
+
+> “我们将重构目标从“迁移代码”转变为“迁移行为””
+
+**证据类型**：议题摘要（演讲者自述）｜**对应原则**：[P06](/compare/evidence#p06) [Q02](/handbook/12-quality-cicd#q02) [Q11](/handbook/12-quality-cicd#q11)
+
+### 阿里 · AL29 · 生产级业务智能体评测：端到端可控架构（AICon 北京 2026） {#al29}
+**作者/机构**：韩延玲（蚂蚁 AI 安全实验室资深测试开发专家）｜**日期**：2026-12（议题预告）｜[原文](https://aicon.infoq.cn/2026/beijing/presentation/7464)
+
+评测样本来自生产：录制真实交互并回放，沉淀为可复用评测集，让业务 Agent 的回归有“真实分布”的数据。
+
+> “通过生产交互录制与回放，将真实任务沉淀为可复用评测样本”
+
+**证据类型**：议题摘要（演讲者自述，尚未开讲）｜**对应原则**：[Q08](/handbook/12-quality-cicd#q08) [Q10](/handbook/12-quality-cicd#q10)
+
+### 字节 · BD09 · AI 驱动的智能化单元测试生成：字节跳动的实践与创新 {#bd09}
+**作者/机构**：InfoQ（整理字节质量效能专家赵亮 QCon 上海分享）｜**日期**：2024-12-27｜[原文](https://www.infoq.cn/article/8mVuhrLMMEJ8MDjo1U4e)
+
+单测生成不是“让模型写测试”就完事：用真实业务流量采集保证用例真实性，结合深度程序分析与路径提升提高覆盖率，再用断言工程、语法修正与效果度量保证可靠性；覆盖存量与增量两类场景。
+
+> “通过真实业务流量采集、单测框架能力和路径提升技术，有效解决单元测试的用例真实性和覆盖率问题”
+
+**证据类型**：团队自述（会议整理稿）｜**对应原则**：[Q05](/handbook/12-quality-cicd#q05) [Q01](/handbook/12-quality-cicd#q01)
+
+### 字节 · BD10 · 让 QA 真正用起来：测试用例生成 Agent（NL2Test）落地 {#bd10}
+**作者/机构**：字节跳动质量保障团队（字节跳动技术团队公众号，摘录页）｜**日期**：2026-09-08｜[原文](https://www.lddgo.net/article/detail/5eqa)｜[相关链接](https://arxiv.org/abs/2607.24000)
+
+字节与复旦合作的 NL2Test：QA 用自然语言描述场景，Agent 生成可运行回归用例。取舍：只做边界清晰的“用例转译”，不替代 QA；能用程序解决的不用 LLM；用 schema 与允许集合约束输出；优先稳定断言。自报 85.4% 生成用例进入 CI/CD、平均约 25% 新增用例来自 Agent、每双周节省约 30 人天。配套论文（u2）将公司匿名为“一家大型面向消费者的互联网公司”。
+
+> “85.4% 的生成用例被集成到 CI/CD 工作流中”
+
+**证据类型**：团队自报（公众号原文摘录 + 论文）｜**对应原则**：[Q05](/handbook/12-quality-cicd#q05) [Q03](/handbook/12-quality-cicd#q03) [Q10](/handbook/12-quality-cicd#q10) [P04](/compare/evidence#p04)
+
+### 字节 · BD14 · TRAE 智能体审查（Agent-powered Code Review）文档 {#bd14}
+**作者/机构**：TRAE 官方文档｜**日期**：2026｜[原文](https://docs.trae.cn/ide_agent-powered-code-review?lang=zh)
+
+把评审放到提交前：可审查未提交变更、单次提交或分支差异，生成变更摘要与业务流程变更图；可开启“提交后自动审查”，问题条目一键唤起对话修复。是 IDE 内“写—审—修”闭环的产品形态，但仍是同一工具链内的自审，需与独立 CI 配合。
+
+> “若你希望由 AI 自动审核变更内容，提供总结摘要并识别问题，可以开启自动审查功能。”
+
+**证据类型**：产品文档｜**对应原则**：[Q06](/handbook/12-quality-cicd#q06) [P08](/compare/evidence#p08)
+
+### 字节 · BD16 · AgentOps 实战：字节复杂 Agent 的效果评测与迭代优化（QCon 上海 2025） {#bd16}
+**作者/机构**：史海量（字节 AI Platform，扣子罗盘效果评测后端负责人）｜**日期**：2025-10（QCon 上海）｜[原文](https://qcon.infoq.cn/2025/shanghai/presentation/6729)｜[相关链接](https://www.infoq.cn/article/vxtijzrrenh3lwxnlpxc)
+
+Agent 应用的效果评测体系：评测集构建、指标体系设计、持续集成与线上监测全链路，应对任务定义模糊、结果不确定、线上波动。与 2025 QCon 北京杨晨的 AgentOps 议题同属扣子罗盘线。
+
+> “系统解析从评测集构建、指标体系设计、到持续集成与线上监测的全链路实践方法”
+
+**证据类型**：议题摘要（演讲者自述）｜**对应原则**：[Q08](/handbook/12-quality-cicd#q08) [Q10](/handbook/12-quality-cicd#q10)
+
+### 字节 · BD17 · 给 Agent 做“CT”：大规模 Agent 的可观测与质量保障（QCon 北京 2026） {#bd17}
+**作者/机构**：钱世俊（字节跳动火山引擎应用观测技术负责人）｜**日期**：2026-04（QCon 北京）｜[原文](https://qcon.infoq.cn/2026/beijing/presentation/6927)
+
+从端到端 Trace（终端→AI 网关→Agent→工具）到根因定位，并把观测数据回流到离线/在线评测与轨迹评测，驱动持续改进与成本优化。
+
+> “观测数据的回流与离线/在线评测、Agent 轨迹评测相结合，驱动了 Agent 的持续改进与成本优化”
+
+**证据类型**：议题摘要（演讲者自述）｜**对应原则**：[Q08](/handbook/12-quality-cicd#q08) [P17](/compare/evidence#p17)

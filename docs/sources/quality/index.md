@@ -4,7 +4,7 @@
 
 ## 规模 {#stats}
 
-- **精选 143 条**：每条都有中文摘要、原文引文和原文链接。引文已与原文逐字核对：网页用抓取的正文，X 用 API 返回的帖子全文，HN 用 Firebase API 返回的评论正文。其中 14 条的链接 v2 已收录，这里从质量保障的角度重新解读。
+- **精选 172 条**：每条都有中文摘要、原文引文和原文链接。引文已与原文逐字核对：网页用抓取的正文，X 用 API 返回的帖子全文，HN 用 Firebase API 返回的评论正文。其中 14 条的链接 v2 已收录，这里从质量保障的角度重新解读。另有 29 条腾讯、阿里、字节的测试、评审、评测与 CI 条目按主题并入本专题（标题前有公司标注，编号仍为 TX / AL / BD）。
 - **全量库新增 681 条**（主题标记为「质量保障与 CI/CD」）：X 帖子 290 条、GitHub 仓库 211 个、Hacker News 讨论串 96 个、本专题新增的精选条目 77 条、其他网页 7 条。见 [全量库 · 质量专题](/library/q-curated)，也可在 [在线筛选](/library/#explorer) 中选主题「质量保障与 CI/CD」。
 - 检索和核对时间为 2026-11 中旬（北京时间）。
 
@@ -15,11 +15,11 @@
 | [大厂与平台团队实践](./bigtech) | QB | 19 | Stripe、Spotify、Uber、Meta、Google、Microsoft、Airbnb、Shopify、Atlassian、Datadog |
 | [工具与官方文档](./tools) | QT | 23 | Anthropic、OpenAI、GitHub、Google、Cursor、Hypothesis |
 | [一线工程师与方法论](./practitioners) | QP | 15 | Kent Beck、Simon Willison、Addy Osmani、Birgitta Böckeler、Hamel Husain、Eugene Yan、Shreya Shankar |
-| [研究与数据](./research) | QR | 10 | METR、ImpossibleBench、SWE-bench 实证、DORA，以及厂商报告（已标注） |
-| [开源项目政策与工具](./oss) | QO | 5 | LLVM、QEMU、Ghostty、curl、Mutahunter |
-| [中文互联网](./chinese) | QC | 16 | 美团、阿里、腾讯、字节、快手、得物、百度、京东、手淘等 |
+| [研究与数据](./research) | QR / TX / AL / BD | 19 | METR、ImpossibleBench、SWE-bench 实证、DORA，以及厂商报告（已标注）；含 AACR-Bench、LogSage、BitsAI-Fix、TestGPT、NL2Test 等工业论文 |
+| [开源项目政策与工具](./oss) | QO / AL | 6 | LLVM、QEMU、Ghostty、curl、Mutahunter、Open Code Review |
+| [中文互联网](./chinese) | QC / TX / AL / BD | 34 | 美团、阿里、腾讯、字节、快手、得物、百度、京东、手淘等；含按主题并入的测试、评审、评测条目 |
 | [X 精选](./x) | QX | 39 | Boris Cherny、DHH、Addy Osmani、Matt Pocock、Simon Willison、Hamel Husain 等 |
-| [Hacker News 讨论精选](./hn) | QH | 16 | 包含明确的反对意见 |
+| [Hacker News 讨论精选](./hn) | QH / AL | 17 | 包含明确的反对意见；含 Open Code Review 社区复测 |
 
 ## 证据类型标注 {#evidence-types}
 

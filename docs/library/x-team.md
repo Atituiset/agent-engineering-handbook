@@ -1,6 +1,6 @@
 # 全量库 · X · 团队、成本与组织
 
-> X 帖子 71 条，按日期倒序。主题与原则为**关键词自动归类**，可能有误；标「精选」的已写成完整条目。帖子为作者个人观点。
+> X 帖子，取原帖开头原文，为作者个人观点。共 77 条。主题与原则为**关键词自动归类**，可能有误；标「精选」的已写成完整条目。原则编号 Q01–Q13 见 [第 12 章](/handbook/12-quality-cicd#principles)，P01–P20 见 [共识度/佐证](/compare/evidence)。
 
 | # | 标题 / 摘录 | 作者 | 日期 | 原则 | 链接 |
 | --- | --- | --- | --- | --- | --- |
@@ -75,4 +75,9 @@
 | 69 | 我刚刚发布了第一个AI编程风格指南！🤖💻 传统的代码风格指南是为人类设计的。但如果我们为AI智能体优化代码会怎样？ 我创建了一个全面的指南，在保持大语言模型可读性的同时最大化代码压缩。这很重要，原因如下：👇 问题所在：… | lidang 立党 （劝人卖房/学CS/买SP500/纳100/OpenAI/Anthrop第一人） (@lidangzzz) | 2025-07-08 | [P02](/compare/evidence#p02) [P06](/compare/evidence#p06) [P08](/compare/evidence#p08) [P17](/compare/evidence#p17) | [原文](https://x.com/lidangzzz/status/1942496718383202348) ♥123 |
 | 70 | Tired of hitting usage limits on your AI tools? Check out the Claude Code Usage Monitor. This real-time tracke… | Mudit Juneja (@being_mudit) | 2025-06-19 | [P17](/compare/evidence#p17) | [原文](https://x.com/being_mudit/status/1935729445836341592) ♥0 |
 | 71 | This vscode extension is super useful. Pre-Pull-Request AI code review, embedded right where you develop—your… | Rohan Paul (@rohanpaul_ai) | 2025-05-14 | [P02](/compare/evidence#p02) [P06](/compare/evidence#p06) [P08](/compare/evidence#p08) [P17](/compare/evidence#p17) | [原文](https://x.com/rohanpaul_ai/status/1922690408498286797) ♥14 |
-
+| 72 | Real brilliance from @qoder_ai_ide team. I installed @Alibaba_Qwen Qwen code and planned to use my qoder id to… | 19thAug (@19thAug) | 2026-11-14 |  | [原文](https://x.com/19thAug/status/2121485893399925204) ♥0 |
+| 73 | Qwen Code 1.0 is out: Alibaba merged its Qoder agent harness into the open-source terminal agent.  Apache 2.0,… | senthazalravi (@senthazalravi) | 2026-11-15 |  | [原文](https://x.com/senthazalravi/status/2122085388290253116) ♥5 |
+| 74 | 阿里有 qoder， 腾讯有 workbuddy， 智谱有 zcode， 字节有 trae， deepseek 有 harness  国产 Agent 谁最终能胜出？ | DavisNc9527 (@DavisNc9527) | 2026-10-23 |  | [原文](https://x.com/DavisNc9527/status/2113479909012308013) ♥0 |
+| 75 | 字节全面禁止个人使用 Claude Code 和 Codex 了  那用什么？Trae？DeepSeek Harness？总不会是 WorkBuddy 吧 | PojuBro (@PojuBro) | 2026-11-04 | [P06](/compare/evidence#p06) | [原文](https://x.com/PojuBro/status/2117956458902110270) ♥9 传闻，未经核实 |
+| 76 | 字节全面禁止个人使用 Claude Code 和 Codex 了，那用什么？Trae？DeepSeek Harness？总不会是 WorkBuddy 吧。 | salsensei (@salsensei) | 2026-11-03 | [P06](/compare/evidence#p06) | [原文](https://x.com/salsensei/status/2117598029020844082) ♥3 传闻，未经核实 |
+| 77 | 国内 AI 编程工具现在的正确用法：早上起来先打卡。  腾讯 WorkBuddy/CodeBuddy、阿里 Qoder、字节 Trae、Kimi Code、智谱 Zcode、DeepSeek harness、MiniMa… | im_morganwang (@im_morganwang) | 2026-10-22 |  | [原文](https://x.com/im_morganwang/status/2113258313878208749) ♥0 |

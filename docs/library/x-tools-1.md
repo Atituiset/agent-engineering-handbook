@@ -1,6 +1,6 @@
 # 全量库 · X · Hooks、Skills、子智能体与 MCP（1/3）
 
-> X 帖子 412 条，按日期倒序。主题与原则为**关键词自动归类**，可能有误；标「精选」的已写成完整条目。帖子为作者个人观点。
+> X 帖子，取原帖开头原文，为作者个人观点。共 413 条，本页 150 条。主题与原则为**关键词自动归类**，可能有误；标「精选」的已写成完整条目。原则编号 Q01–Q13 见 [第 12 章](/handbook/12-quality-cicd#principles)，P01–P20 见 [共识度/佐证](/compare/evidence)。
 
 分页：**1** · [2](./x-tools-2) · [3](./x-tools-3)
 
@@ -156,6 +156,3 @@
 | 148 | A quick update on my AI development process. I have cancelled my ＄200 Codex plan and downgraded my Claude plan… | Dirk Kok · AI agents (@dirkkok) | 2026-08-19 | [P01](/compare/evidence#p01) [P03](/compare/evidence#p03) [P13](/compare/evidence#p13) [P17](/compare/evidence#p17) | [原文](https://x.com/dirkkok/status/2090040410152300632) · [精选](/sources/x/context#xc-024) ♥0 |
 | 149 | 10 GitHub repos with ⭐459K+ combined stars that take Claude Code way beyond the default setup 1) anthropics/cl… | Lummox (@Lummox_eth) | 2026-08-18 | [P02](/compare/evidence#p02) [P05](/compare/evidence#p05) [P10](/compare/evidence#p10) [P12](/compare/evidence#p12) [P13](/compare/evidence#p13) [P15](/compare/evidence#p15) [P18](/compare/evidence#p18) | [原文](https://x.com/Lummox_eth/status/2089749312976691364) ♥44 |
 | 150 | 实践 Vibe Coding 工程化的重要概念： - AGENTS.md/CLAUDE.md - SDD (Spec-Driven Development) - Agent-Friendly Repository 相应的… | Sterling (@sjh_sterling) | 2026-08-18 | [P01](/compare/evidence#p01) [P03](/compare/evidence#p03) [P13](/compare/evidence#p13) [P16](/compare/evidence#p16) | [原文](https://x.com/sjh_sterling/status/2089555673436856324) ♥0 |
-
-分页：**1** · [2](./x-tools-2) · [3](./x-tools-3)
-

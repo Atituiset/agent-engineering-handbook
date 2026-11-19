@@ -77,17 +77,6 @@ const sourcesSidebar = [
       { text: 'Hacker News 讨论精选', link: '/sources/quality/hn' }
     ]
   },
-  {
-    text: '国内大厂专题',
-    collapsed: false,
-    items: [
-      { text: '说明与索引', link: '/sources/cn-bigtech/' },
-      { text: '腾讯', link: '/sources/cn-bigtech/tencent' },
-      { text: '阿里（含蚂蚁）', link: '/sources/cn-bigtech/alibaba' },
-      { text: '字节', link: '/sources/cn-bigtech/bytedance' },
-      { text: '国内大厂对比', link: '/compare/cn-bigtech' }
-    ]
-  }
 ]
 
 const librarySidebar = [
@@ -114,29 +103,23 @@ const librarySidebar = [
       { text: 'GitHub 仓库（1/3）', link: '/library/github-1' },
       { text: 'GitHub 仓库（2/3）', link: '/library/github-2' },
       { text: 'GitHub 仓库（3/3）', link: '/library/github-3' },
-      { text: '精选条目与中文网页（1/2）', link: '/library/curated-1' },
-      { text: '精选条目与中文网页（2/2）', link: '/library/curated-2' }
+      { text: '精选条目与中文网页（1/3）', link: '/library/curated-1' },
+      { text: '精选条目与中文网页（2/3）', link: '/library/curated-2' },
+      { text: '精选条目与中文网页（3/3）', link: '/library/curated-3' }
     ]
   },
   {
     text: '质量与 CI/CD 专题',
     items: [
-      { text: 'X 帖子（1/2）', link: '/library/q-x-1' },
-      { text: 'X 帖子（2/2）', link: '/library/q-x-2' },
+      { text: 'X 帖子（1/3）', link: '/library/q-x-1' },
+      { text: 'X 帖子（2/3）', link: '/library/q-x-2' },
+      { text: 'X 帖子（3/3）', link: '/library/q-x-3' },
       { text: 'Hacker News 讨论', link: '/library/q-hn' },
       { text: 'GitHub 仓库（1/2）', link: '/library/q-github-1' },
       { text: 'GitHub 仓库（2/2）', link: '/library/q-github-2' },
       { text: '精选条目与网页', link: '/library/q-curated' }
     ]
   },
-  {
-    text: '国内大厂专题',
-    items: [
-      { text: '腾讯', link: '/library/cn-bigtech-tencent' },
-      { text: '阿里（含蚂蚁）', link: '/library/cn-bigtech-alibaba' },
-      { text: '字节', link: '/library/cn-bigtech-bytedance' }
-    ]
-  }
 ]
 
 export default defineConfig({
@@ -169,8 +152,7 @@ export default defineConfig({
           items: [
             { text: '传统工程 vs Agent 时代：总表', link: '/compare/' },
             { text: '决策指南：什么时候用什么', link: '/compare/decision-guide' },
-            { text: '共识度/佐证', link: '/compare/evidence' },
-            { text: '国内大厂对比：腾讯 · 阿里 · 字节', link: '/compare/cn-bigtech' }
+            { text: '共识度/佐证', link: '/compare/evidence' }
           ]
         }
       ]

@@ -60,6 +60,37 @@
 
 围绕 RS06 论文的社区讨论帖。热度不高（核对时约 20 分），列出仅为方便读者查看从业者对该结论的不同反应；本报告不据此得出任何结论。
 
+## 工业论文与基准（2026-11 增补） {#industry-papers}
+
+以下论文与基准来自腾讯、阿里、字节团队，数字均为团队自报、尚未独立验证。
+
+### 阿里 · AL12 · Qwen3-Coder：在世界中自主编程（Agent RL 与 2 万并行环境） {#al12}
+**作者/机构**：通义千问 Qwen 团队｜**日期**：2025-07｜[原文](https://qwenlm.github.io/zh/blog/qwen3-coder/)
+
+模型侧的“验证闭环”：通过自动扩展测试样例构造可验证的 RL 训练实例；Agent RL 的主要难点是环境扩展，借助阿里云基础设施同时运行 2 万个独立环境做多轮交互训练。与 AL07 的沙箱规模互为印证。
+
+> “借助阿里云的基础设施，实现同时运行 20k 独立环境。”
+
+**证据类型**：团队自述（模型发布博客）｜**对应原则**：[Q09](/handbook/12-quality-cicd#q09) [Q02](/handbook/12-quality-cicd#q02)
+
+### 字节 · BD05 · Trae Agent：测试时扩展的软件工程 Agent（SWE-bench Verified 第一） {#bd05}
+**作者/机构**：Trae Research Team（字节跳动，arXiv）｜**日期**：2025-07｜[原文](https://arxiv.org/abs/2507.23370)｜[相关链接](https://github.com/bytedance/trae-agent)
+
+把 issue 修复当作“最优解搜索”：生成多个候选补丁，再由剪枝与选择 Agent 收敛，解决集成空间大与仓库级理解两大难题；开源为 bytedance/trae-agent。注意 75.20% 是排行榜成绩，不代表内部业务交付质量。
+
+> “Trae Agent has achieved first place on the SWE-bench Verified leaderboard, with a notable Pass@1 score of 75.20%.”
+
+**证据类型**：论文（基准成绩，团队自报）｜**对应原则**：[P10](/compare/evidence#p10) [Q07](/handbook/12-quality-cicd#q07) [Q08](/handbook/12-quality-cicd#q08)
+
+### 字节 · BD20 · Repo2Run：大规模自动构建代码仓库可执行环境（NeurIPS 2025） {#bd20}
+**作者/机构**：字节跳动（GitHub 开源）｜**日期**：2025｜[原文](https://github.com/bytedance/Repo2Run)
+
+Agent 能不能验证，取决于仓库能不能跑起来：LLM Agent 在 Docker 沙箱里自动配置环境、为 Python 仓库生成无错的 Dockerfile。是 SWE 训练与评测（Multi-SWE-bench 等）背后的环境基建。
+
+> “Repo2Run: Automated Building Executable Environment for Code Repository at Scale”
+
+**证据类型**：开源仓库（论文配套）｜**对应原则**：[Q09](/handbook/12-quality-cicd#q09) [P15](/compare/evidence#p15)
+
 ## 另见
 
 - Meta TestGen-LLM 论文（LLM 生成测试 + 确定性过滤）：[BT10](./bigtech#bt10)

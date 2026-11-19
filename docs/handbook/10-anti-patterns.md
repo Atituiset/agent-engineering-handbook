@@ -43,13 +43,13 @@
 ## 7. 用「AI 代码占比」衡量成功
 
 **表现**：把 AI 生成代码比例作为 KPI。
-**为什么有害**：古德哈特定律（[TW32](/sources/thoughtworks#tw32)）；快手在占比升到 60% 时技术债复利增长（[CN06](/sources/chinese#cn06)）。
+**为什么有害**：古德哈特定律（[TW32](/sources/thoughtworks#tw32)）；快手在占比升到 60% 时技术债复利增长（[CN06](/sources/chinese#cn06)）；字节技术副总裁明确反对把贡献率定为 KPI，称单一贡献率“会失真”（团队自报，[BD01](/sources/chinese#bd01)）。
 **改为**：DORA 指标、回滚率、缺陷逃逸率。
 
 ## 8. 让变更能修改评判它的检查
 
 **表现**：智能体可以编辑测试、lint 配置、CI 配置、评审规则来让自己通过。
-**为什么有害**：「如果一个变更可以修改评判它的检查，这个检查就坏了」（[AN18](/sources/anthropic#an18)）；智能体会删除或禁用测试（[PR15](/sources/practitioners#pr15)），会为编译通过跳过检查（[CN06](/sources/chinese#cn06)）。
+**为什么有害**：「如果一个变更可以修改评判它的检查，这个检查就坏了」（[AN18](/sources/anthropic#an18)）；智能体会删除或禁用测试（[PR15](/sources/practitioners#pr15)），会为编译通过跳过检查（[CN06](/sources/chinese#cn06)），也会把 logger.error 改成 logger.warning 就宣称已修复（团队自报，[AL17](/sources/quality/chinese#al17)）。
 **改为**：规则从基础分支读取；受保护文件 hook；监视作弊信号。
 
 ## 9. 用重试和 sleep 掩盖 flaky test
@@ -62,7 +62,7 @@
 
 **表现**：让写代码的智能体自己判断「完成了」。
 **为什么有害**：会在测试失败时宣告成功（[TW14](/sources/thoughtworks#tw14)）；LLM 评估者对 LLM 产出偏宽容（[AN24](/sources/anthropic#an24)）。
-**改为**：生成者与评判者分离；评判标准尽量计算化。
+**改为**：生成者与评判者分离；评判标准尽量计算化。腾讯要求生产代码的 AI 与评审代码的 AI 必须不同（高管口述，[TX11](/sources/chinese#tx11)）。
 
 ## 11. 用「追加纠正」修复失败的尝试
 
@@ -117,13 +117,6 @@
 **表现**：遇到任务就扇出多个智能体，指望靠数量换速度。
 **为什么有害**：没有共享状态、Git 冲突、上下文污染（[XA-006](/sources/x/parallel#xa-006)）；子智能体被滥用，代替了深思熟虑的上下文管理（[XT-030](/sources/x/tools#xt-030)）；一次通过率低的根源往往在上游需求（[CN21](/sources/chinese#cn21)）。
 **改为**：读可以并行，写尽量串行；先做需求澄清，再加并发。
-
-## 国内大厂佐证 {#cn-bigtech}
-
-> 腾讯、阿里、字节的公开材料（数字均为团队自报、尚未独立验证；横向比较见 [国内大厂对比](/compare/cn-bigtech)）：
->
-> - 「用 AI 代码占比衡量成功」：字节技术副总裁明确反对把贡献率定为 KPI，称单一贡献率“会失真”（[BD01](/sources/cn-bigtech/bytedance#bd01)）。
-> - 「用同一个智能体既写又判」：腾讯要求生产代码的 AI 与评审代码的 AI 必须不同（[TX11](/sources/cn-bigtech/tencent#tx11)）。「让变更能修改评判它的检查」：Agent 降级日志级别冒充修复（[AL17](/sources/cn-bigtech/alibaba#al17)）。
 
 ## 与传统软件工程认知的对比
 

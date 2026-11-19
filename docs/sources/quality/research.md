@@ -91,3 +91,85 @@ GitClear 基于其代码分析数据库报告：重复代码块显著增加，�
 > “45% of code samples failed security tests and introduced OWASP Top 10 security vulnerabilities into the code.”
 
 **证据类型**：厂商自报｜**对应原则**：[Q03](/handbook/12-quality-cicd#q03) [Q09](/handbook/12-quality-cicd#q09)
+
+
+### 腾讯 · TX20 · CAT：基于检索增强 LLM 的低成本 UI 自动化测试——微信案例 {#tx20}
+**作者/机构**：Sidong Feng 等（含微信团队，arXiv / ASE 2024）｜**日期**：2024-09-12｜[原文](https://arxiv.org/abs/2409.07829)
+
+用 RAG 检索微信历史测试样例作为 few-shot，生成动作序列；用传统机器学习做 UI 元素匹配、LLM 只作补充优化器，以控制成本。已集成进微信测试平台。是“LLM 不单干、与确定性方法分工”的工业样本。
+
+> “achieving 90% UI automation with $0.34 cost, outperforming the state-of-the-art”
+
+**证据类型**：论文（工业部署，团队自报）｜**对应原则**：[Q05](/handbook/12-quality-cicd#q05) [P06](/compare/evidence#p06)
+
+### 阿里 · AL11 · AACR-Bench：带仓库上下文的多语言代码评审基准 {#al11}
+**作者/机构**：阿里巴巴（GitHub 开源）｜**日期**：2026｜[原文](https://github.com/alibaba/aacr-bench)
+
+评审能力怎么量：200 个真实 PR、50 个开源项目、10 种语言，参考意见来自原始评审讨论与模型生成反馈并经专家标注，另附 155 个 PR 的负样本集（不该报问题的场景）。负样本集是对“评审噪声”的直接度量。
+
+> “The original dataset covers 200 unique pull requests (PRs) from 50 open-source projects across 10 programming languages .”
+
+**证据类型**：开源基准（团队自建）｜**对应原则**：[Q06](/handbook/12-quality-cicd#q06) [Q08](/handbook/12-quality-cicd#q08)
+
+### 阿里 · AL14 · Lingma SWE-GPT：面向软件改进的开源过程中心模型 {#al14}
+**作者/机构**：Yingwei Ma 等（通义灵码团队，arXiv）｜**日期**：2024-11｜[原文](https://arxiv.org/abs/2411.00622)
+
+不只用静态代码训练，而是学习“真实代码提交过程”——开发者的思考、工具使用、多角色交互，在 SWE-bench Verified 上评测 7B/72B 模型。代表阿里“把软件过程数据当训练信号”的路线。
+
+> “Lingma SWE-GPT systematically incorporates the dynamic interactions and iterative problem-solving inherent in software development process”
+
+**证据类型**：论文（团队自评）｜**对应原则**：[P06](/compare/evidence#p06)
+
+### 阿里 · AL31 · Alipay-PIBench：支付集成场景的 Coding Agent 基准 {#al31}
+**作者/机构**：支付宝 / inclusionAI（GitHub 开源）｜**日期**：2026｜[原文](https://github.com/inclusionAI/PIBench)
+
+领域化评测：在真实支付集成任务上评 Coding Agent，并比较“带 Skill / 不带 Skill”两种条件下的 Rubric 通过率。是 Skill 价值的可量化评测思路。
+
+> “Alipay-PIBench is a repository-level benchmark proposed by Alipay”
+
+**证据类型**：开源基准（团队自建）｜**对应原则**：[Q08](/handbook/12-quality-cicd#q08) [P13](/compare/evidence#p13)
+
+### 字节 · BD03 · BitsAI-Fix：字节用 LLM 自动修复 Lint 问题的工业实践 {#bd03}
+**作者/机构**：Yuanpeng Li 等（字节跳动，arXiv）｜**日期**：2025-08｜[原文](https://arxiv.org/abs/2508.03487)
+
+把静态分析告警的修复交给 LLM：冷启动阶段自动获取可验证训练数据，上线后用线上反馈持续迭代；奖励函数同时看格式与正确性，并惩罚冗余修改；用“code diff 匹配”持续追踪线上真实效果。与 QC09（BitsAI-CR）同属字节 BitsAI 体系。
+
+> “In production deployment at ByteDance, our solution has supported over 5,000 engineers, resolved more than 12,000 static analysis issues, achieved approximately 85% remediation accuracy, with around 1,000 weekly active adopters.”
+
+**证据类型**：论文（工业部署，团队自报）｜**对应原则**：[Q03](/handbook/12-quality-cicd#q03) [Q12](/handbook/12-quality-cicd#q12) [P19](/compare/evidence#p19)
+
+### 字节 · BD04 · LogSage：LLM 驱动的 CI/CD 失败检测与修复（ASE 2025） {#bd04}
+**作者/机构**：Weiyuan Xu 等（字节跳动，arXiv）｜**日期**：2025-06｜[原文](https://arxiv.org/abs/2506.03691)
+
+CI/CD 失败日志的根因分析与修复建议：用 LLM 做根因分析，再用 RAG 复用历史修复、通过工具调用执行自动修复。字节内部一年部署，处理超过 107 万次执行，端到端精度超 80%。是“AI 进流水线”而不是“AI 进 IDE”的样本。
+
+> “In a year-long industrial deployment at ByteDance, it processed over 1.07M executions”
+
+**证据类型**：论文（工业部署，团队自报）｜**对应原则**：[Q03](/handbook/12-quality-cicd#q03) [Q10](/handbook/12-quality-cicd#q10)
+
+### 字节 · BD06 · AEGIS：基于 Agent 的通用 Bug 复现脚本生成（FSE 2025） {#bd06}
+**作者/机构**：Xinchen Wang 等（字节跳动 Trae 团队与高校，arXiv）｜**日期**：2024-11｜[原文](https://arxiv.org/abs/2411.18015)
+
+先复现再修：从 issue 描述自动生成能复现 bug 的脚本，用“精简上下文构建”和“有限状态机约束的多反馈优化”约束 Agent 行为，避免长上下文和无序动作。是测试先行（先有失败用例）在 Agent 场景的工程化。
+
+> “we propose an Automated gEneral buG reproductIon Scripts generation framework, named AEGIS, which is the first agent-based framework for the task.”
+
+**证据类型**：论文｜**对应原则**：[Q01](/handbook/12-quality-cicd#q01) [P07](/compare/evidence#p07) [P04](/compare/evidence#p04)
+
+### 字节 · BD07 · TestGPT-Server：在字节用 LLM 自动测试微服务（FSE 2025 工业论文） {#bd07}
+**作者/机构**：Jue Wang 等（字节跳动）｜**日期**：2025-06｜[原文](https://conf.researchr.org/details/fse-2025/fse-2025-industry-papers/17/TestGPT-Server-Automatically-Testing-Microservices-with-Large-Language-Models-at-Byt)
+
+LLM 生成测试请求，LLM 辅助的响应分析器识别崩溃，断言挖掘器自动提取功能断言。在 14,366 个微服务 API 上发现 50 个崩溃 bug 和 2 个功能 bug——功能 bug 数量之少本身说明“自动断言”仍是难点。（ACM 全文页 403，这里引用会议页摘要）
+
+> “identifying 50 crash bugs and 2 functional bugs across 14,366 microservice APIs, with minimal manual effort”
+
+**证据类型**：论文（工业部署，团队自报）｜**对应原则**：[Q05](/handbook/12-quality-cicd#q05) [Q02](/handbook/12-quality-cicd#q02)
+
+### 字节 · BD08 · Multi-SWE-bench：多语言 issue 修复基准 {#bd08}
+**作者/机构**：Daoguang Zan 等（字节跳动 Seed，arXiv）｜**日期**：2025-04｜[原文](https://arxiv.org/abs/2504.02605)
+
+把 SWE-bench 扩展到 Java、TS、JS、Go、Rust、C、C++，并重视人工标注质量；同时开放 RL 训练用实例社区。是字节在“评测基础设施”上的公共贡献。
+
+> “It includes a total of 1,632 high-quality instances, which were carefully annotated from 2,456 candidates by 68 expert annotators”
+
+**证据类型**：论文（开源基准）｜**对应原则**：[Q08](/handbook/12-quality-cicd#q08)

@@ -46,3 +46,13 @@ curl 作者描述 AI 生成的低质量漏洞报告如何消耗维护者精力�
 > “Open-Source Language Agnostic LLM-based Mutation Testing”
 
 **证据类型**：项目自述｜**对应原则**：[Q05](/handbook/12-quality-cicd#q05)
+
+
+### 阿里 · AL08 · Open Code Review：阿里开源的 AI 代码评审 CLI（精度优先的取舍） {#al08}
+**作者/机构**：阿里巴巴（GitHub 开源）｜**日期**：2026｜[原文](https://github.com/alibaba/open-code-review)
+
+阿里集团 AI 代码评审团队开源的 CLI：批评通用 Agent 做评审会“偷工减料”、只看部分文件、定位漂移，于是用确定性工程（文件全覆盖、定位校准）+ Agent 协同；README 自报相同模型下 Precision/F1 高于 Claude Code、token 约 1/9，并明说 Recall 更低是有意取舍。独立复测见 AL09。
+
+> “Note that its Recall is lower than general-purpose agents — a deliberate trade-off favoring precision over noise.”
+
+**证据类型**：开源仓库 README（团队自报 benchmark）｜**对应原则**：[Q06](/handbook/12-quality-cicd#q06) [Q04](/handbook/12-quality-cicd#q04)

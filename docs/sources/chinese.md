@@ -1,6 +1,6 @@
 # 中文互联网
 
-> 国内大厂技术团队与技术媒体的公开实践。会议预告、产品宣传类文章已明确标注；数据均为 **「团队自报」**。CN01–CN11 于 2026-11-18、CN12 起于 2026-11-19 打开核对；InfoQ 页面未显示发布日期的标注为「2026」。
+> 美团、腾讯、阿里、字节、快手、百度等技术团队与技术媒体的公开实践。会议预告、产品宣传类文章已明确标注；数据均为 **「团队自报」**。CN01–CN11 于 2026-11-18、CN12 起于 2026-11-19 打开核对；InfoQ 页面未显示发布日期的标注为「2026」。TX / AL / BD 编号为 2026-11 增补的腾讯、阿里（含蚂蚁）、字节团队公开材料，按主题穿插在本页后半部分；数字均为团队自报、尚未独立验证。
 
 [[toc]]
 
@@ -428,3 +428,367 @@ GitLab 2026 AI 问责报告显示，78% 受访者称编码更快，但 85% 认�
 > 「Token不应存在于代码库中」
 
 `作者自述`
+
+以下 TX / AL / BD 条目为 2026-11 增补，标题前的公司名标出来源团队。数字均为团队自报、尚未独立验证；会议条目只有议题摘要。
+
+## Harness 与 Loop 工程 {#harness-loop}
+
+### 腾讯 · TX03 · Harness Engineering：AI 能在真正“出事会炸”的后端系统里写代码吗？（腾讯 CDN LEGO） {#tx03}
+**作者/机构**：腾讯技术工程（lancelotluo，腾讯 CDN 团队）｜**日期**：2026-04-21｜[原文](https://news.qq.com/rain/a/20260421A06DXU00)
+
+在百万行级 C++ CDN 核心框架里落地 AI Coding：围绕“上下文、约束、反馈”设计五层 Harness，Hook 自动采集、踩坑日志（Pitfall Journal）等多条反馈通道，以及 3 个模型并行、辩论式、“全员无新发现自动收敛”的对抗式 CR。案例里一次读写竞争修复从 5 天压到 1 天，但作者同时写明方案没考虑线程初始化、并非最优解——是少见的同时报收益与缺陷的记录。
+
+> “LEGO的对抗式CR通过多模型并行审查和交叉验证，能够发现更深层的问题”
+
+**证据类型**：团队自报｜**对应原则**：[Q07](/handbook/12-quality-cicd#q07) [P19](/compare/evidence#p19) [P12](/compare/evidence#p12) [P06](/compare/evidence#p06)
+
+### 腾讯 · TX05 · QQ 音乐 Harness Engineering 实践（大仓多服务） {#tx05}
+**作者/机构**：腾讯云开发者（QQ 音乐团队）｜**日期**：2026-05-21｜[原文](https://cloud.tencent.com/developer/article/2671876)
+
+面向 monorepo 多服务场景的开源工程框架：把“隐性规范、历史决策、服务契约（IDL 字段冻结）、跨服务依赖、演进轨迹”五类 AI 盲区分别落成工程制品——服务矩阵自动解析依赖、IDL 门禁防止 AI 猜依赖、Self-Refinement 闭环把纠错沉淀为团队资产，并要求每个关键节点有可机读的质量门禁与审计记录。
+
+> “提升上下文质量，是比提升模型能力更高效的杠杆。”
+
+**证据类型**：团队自述｜**对应原则**：[P05](/compare/evidence#p05) [P04](/compare/evidence#p04) [P19](/compare/evidence#p19) [P02](/compare/evidence#p02)
+
+### 腾讯 · TX06 · Harness Engineering 如何驱动云端智能体：腾讯云 ADP 的设计实践 {#tx06}
+**作者/机构**：腾讯云 ADP 团队｜**日期**：2026-07-17｜[原文](https://adp.tencent.com/zh/blog/agent-harness-engineering-adp-practice)
+
+平台团队视角：Agent = Model + Harness。ADP 把 Agent Loop、Memory、Sandbox、Tools/MCP 解耦并用稳定接口连接，以便容器崩溃可恢复、沙箱可替换重建、模型或 Loop 升级不牵动底层；Harness 负责工具、状态、权限、上下文、恢复、评估、观测与反馈闭环，并记录轨迹以支持 replay/eval。
+
+> “Agent Harness不是一个花哨的新名词，而是 Agent 从 demo 走向生产之后必然出现的工程抽象。”
+
+**证据类型**：团队自述（产品博客）｜**对应原则**：[P15](/compare/evidence#p15) [P18](/compare/evidence#p18) [Q08](/handbook/12-quality-cicd#q08) [Q09](/handbook/12-quality-cicd#q09)
+
+### 腾讯 · TX07 · 游戏开发生产力重构：从单点 AIGC 到 Harness 工程闭环 {#tx07}
+**作者/机构**：gawain2048（腾讯云开发者社区；整理腾讯游戏技术专家杨梦舟的分享）｜**日期**：2026-06-11｜[原文](https://developer.cloud.tencent.com/article/2686566)
+
+游戏工程（UE 的 C++、蓝图、资产引用）里很多问题只有进编辑器和运行时才暴露。做法：把 SVN/Git 作为 AI 参与项目的底层安全机制（基于 diff 与日志可回滚）；建立“启动引擎→运行游戏→取日志→修复/输出结论”的自循环证据链；把“编译 0 error”作为量化验收，新坑点写回 Memory。
+
+> “实现“编译已通过 (0 error)”的量化验证指标”
+
+**证据类型**：团队自报（会议整理稿）｜**对应原则**：[P06](/compare/evidence#p06) [P09](/compare/evidence#p09) [P19](/compare/evidence#p19) [Q02](/handbook/12-quality-cicd#q02)
+
+### 腾讯 · TX17 · 用 Harness 工程打造 SRE 可控的生产环境（QCon 上海 2026 议题） {#tx17}
+**作者/机构**：王杰（腾讯游戏高级 SRE 工程师）｜**日期**：2026-10（QCon 上海）｜[原文](https://qcon.infoq.cn/2026/shanghai/presentation/7292)
+
+腾讯游戏先把应用交付代码化、GitOps 化，于是“发布变更”变成“改代码改配置”，正好落在 AI Coding 最成熟的区间；所有变更必经 Git 与人工 Review，多 SRE Agent 参与扩缩容、配置调整、故障修复，过程完整记录、评估后沉淀为跨业务能力。核心观点：不让 LLM 变确定，而用 Harness 管住不确定性。
+
+> “我们的解决方案不是让 LLM 变确定，而是用 Harness 工程管控它的不确定性”
+
+**证据类型**：议题摘要（演讲者自述）｜**对应原则**：[P15](/compare/evidence#p15) [P08](/compare/evidence#p08) [P04](/compare/evidence#p04) [Q11](/handbook/12-quality-cicd#q11)
+
+### 阿里 · AL20 · Harness For Hybrid Coding：AliExpress 重构实践（QCon 上海 2026） {#al20}
+**作者/机构**：何伟（阿里巴巴 AliExpress 技术专家）｜**日期**：2026-10（QCon 上海）｜[原文](https://qcon.infoq.cn/2026/shanghai/presentation/7318)
+
+AE 用 Harness 管住“人 + AI 混合编码”的大规模重构：先评测再上线，覆盖多个场景。少数同时给出“线上 Bug”结果指标而不只是代码量的自报。
+
+> “实践覆盖 10 大场景、约 65.5 万行代码重构与评测上线，线上 Bug 下降 80%”
+
+**证据类型**：议题摘要（团队自报，尚未独立验证）｜**对应原则**：[Q12](/handbook/12-quality-cicd#q12) [P06](/compare/evidence#p06) [Q11](/handbook/12-quality-cicd#q11)
+
+### 阿里 · AL23 · Qoder Desktop 的 Quest 与 Harness 实践（AICon 上海 2026） {#al23}
+**作者/机构**：左志鹏（阿里巴巴高级技术专家，Qoder）｜**日期**：2026-06（AICon 上海）｜[原文](https://aicon.infoq.cn/2026/shanghai/presentation/7144)
+
+从“实时指挥”到“任务委派”：任务视窗、工作区与产物区让执行过程可管理、结果可审查；Harness 侧设计“专家团”模式——调研、编码、验证、自动评审多 Agent 协作，一次性端到端交付。
+
+> “如何设计专家团模式，实现包括调研、编码、验证和自动评审的多Agent协作系统，一次性端到端交付高质量结果。”
+
+**证据类型**：议题摘要（演讲者自述）｜**对应原则**：[P10](/compare/evidence#p10) [P11](/compare/evidence#p11) [Q07](/handbook/12-quality-cicd#q07)
+
+### 阿里 · AL28 · 阿福：Agent 小队如何处理持续涌入的线上 Badcase（QCon 上海 2026） {#al28}
+**作者/机构**：肖汉松（蚂蚁集团阿福 Harness 架构组负责人）｜**日期**：2026-10（QCon 上海）｜[原文](https://qcon.infoq.cn/2026/shanghai/presentation/7232)
+
+两层工程：先用 Harness 解决“单个 badcase 能否可靠修好”，再用 Loop 解决“持续涌入时能否持续修复”。是 Harness→Loop 演进的清晰表述。
+
+> “先用 Harness Engineering 解决“如何可靠修好 badcase”，再用 Loop Engineering 解决“如何持续修复 badcase””
+
+**证据类型**：议题摘要（演讲者自述）｜**对应原则**：[P06](/compare/evidence#p06) [P19](/compare/evidence#p19) [Q08](/handbook/12-quality-cicd#q08)
+
+### 字节 · BD01 · 洪定坤：AI Coding 的实践与探索（火山引擎 FORCE 大会） {#bd01}
+**作者/机构**：洪定坤（字节跳动技术副总裁），火山引擎公众号｜**日期**：2026-06-23｜[原文](https://mp.weixin.qq.com/s/mdmaAyUIvxE8WT_GEbF2wQ)｜[相关链接](https://cloud.tencent.com/developer/article/2700072)
+
+字节最完整的一手口径：一年内 AI 代码贡献率增长 6 倍多、AI Coding token 消耗增长 5 倍、AI 代码合入率增长超 2 倍；TRAE 团队过去半年 90% 以上代码由 AI 写，但人均需求吞吐率只提升 60%（到 1.6 倍）。他明确反对把贡献率当 KPI，并用“3 模型 × 3 框架、同一 Prompt”实验说明：功能正确率约 80%，但“可交付性”只有 40–60 分；接入 Harness 基建后正确率接近 90%、可交付性升到约 80 分。
+
+> “单一的代码贡献率，其实很难完全衡量我们实际效率的提升，它会失真。”
+
+**证据类型**：高管演讲（团队自报，尚未独立验证）｜**对应原则**：[Q12](/handbook/12-quality-cicd#q12) [P06](/compare/evidence#p06) [P04](/compare/evidence#p04) [Q05](/handbook/12-quality-cicd#q05)
+
+### 字节 · BD18 · 飞书 CodeM 通过信通院“驾驭工程（Harness）能力成熟度”L4 评估 {#bd18}
+**作者/机构**：飞书项目官方新闻｜**日期**：2026-10-15｜[原文](https://project.feishu.cn/home/news/feishu-codem-ccna-l4-harness-engineering)
+
+Harness Engineering 在国内开始出现行业标准化评估：信通院《智能原生软件工程驾驭工程能力成熟度》覆盖连接、编排、循环、效能、安全、评估优化六个维度。属厂商新闻，评估细节未公开。
+
+> “该认证覆盖连接、编排、循环、效能、安全、评估优化六大核心能力维度”
+
+**证据类型**：厂商自述（第三方评估结果，细节未公开）｜**对应原则**：[P04](/compare/evidence#p04) [P15](/compare/evidence#p15)
+
+## 上下文与知识沉淀 {#context-knowledge}
+
+### 腾讯 · TX01 · 不只是 Memory：用本体与三层图谱让 Coding Agent 越用越懂项目 {#tx01}
+**作者/机构**：腾讯技术工程（云数据库研发团队）｜**日期**：2026-11-13｜[原文](https://news.qq.com/rain/a/20261113A0BF6G00)
+
+团队让 Agent 承担“设计完成到上线前测试”这一段 Loop：人定目标、设计与业务取舍，Agent 把设计转成可观察的验收条件，实现、验证、失败后定位修复；构建、部署、等待等常规步骤交给确定性工具。团队 Memory 由 Chat Memory、Wiki、CodeGraph、Skill 四类资产组成，并以“工程事实 / 项目语义 / bug_fixed 经验”三层互索引图谱组织。作者明确说明 58%→65% 只是 Bug 定位子任务的初步信号，不能换算成整体效率。
+
+> “在一项内部代码 Bug 定位试验中, 加入上述图谱能力后, Agent 的问题定位成功率从 58% 提升到 65%, 增加了 7 个百分点。”
+
+**证据类型**：团队自报（内部试验，作者自注局限）｜**对应原则**：[P18](/compare/evidence#p18) [P19](/compare/evidence#p19) [P06](/compare/evidence#p06) [Q02](/handbook/12-quality-cicd#q02)
+
+### 阿里 · AL06 · “架构师 Agent” 系统化落地 {#al06}
+**作者/机构**：阿里技术（腾讯新闻转载；作者声明仅代表个人观点）｜**日期**：2026-09-09｜[原文](https://news.qq.com/rain/a/20260909A0876Z00)
+
+先落地技术方案设计而非直接编码：用渐进式披露把领域知识、架构约束、历史决策分层喂给 Agent，产出方案再进入编码。核心判断是复杂系统的关键知识不在代码里，需要显式沉淀。
+
+> “复杂系统真正重要的知识并不完整地存在于代码中”
+
+**证据类型**：个人实践（阿里官方号发布）｜**对应原则**：[P01](/compare/evidence#p01) [P05](/compare/evidence#p05) [P18](/compare/evidence#p18)
+
+### 字节 · BD12 · 当代码遇上大模型：智能编程助手的架构设计与工程实践 {#bd12}
+**作者/机构**：InfoQ（整理豆包 MarsCode / Trae IDE 架构师段潇涵 QCon 北京分享）｜**日期**：2025-08-22｜[原文](https://www.infoq.cn/article/dshjgpfg5sgvahlilgtg)
+
+MarsCode/Trae 的架构要点：Agent 把需求分解为步骤并在执行中自我反思修正；上下文侧实时构建代码知识图谱（结构与依赖），解决大仓库超出上下文的问题。可与腾讯 TX01 的三层图谱对照。
+
+> “在上下文感知方面，构建代码知识图谱，实时构建代码的结构和依赖关系等，解决了大语言模型处理大型代码库时的上下文限制问题”
+
+**证据类型**：团队自述（会议整理稿）｜**对应原则**：[P05](/compare/evidence#p05) [P18](/compare/evidence#p18)
+
+### 字节 · BD13 · 第一性原理拆解 Agentic Coding：从理论到实操（下） {#bd13}
+**作者/机构**：小夏（TRAE 技术专家），火山引擎开发者社区｜**日期**：2026｜[原文](https://developer.volcengine.com/articles/7598410716190375962)
+
+TRAE 团队给用户的最佳实践：短对话优于长对话，每个对话只做一件事；借助 git diff 等外部状态在对话间传递上下文；把 bug 修复、代码审查经验沉淀为项目知识库（“复利工程”）；清晰文档和快速测试既帮人也帮 AI。
+
+> “保持对话简短、专注，每个对话只做一件事。”
+
+**证据类型**：团队自述（官方技术文章）｜**对应原则**：[P18](/compare/evidence#p18) [P19](/compare/evidence#p19) [P10](/compare/evidence#p10) [P17](/compare/evidence#p17)
+
+## 规范、计划与意图驱动 {#spec-plan}
+
+### 腾讯 · TX14 · AI Native 企业研发工具链：架构重构与持续演进（AICon 北京 2026 议题） {#tx14}
+**作者/机构**：陈偲颖（腾讯资深研发工程师）｜**日期**：2026-12（议题预告）｜[原文](https://aicon.infoq.cn/2026/beijing/presentation/7424)
+
+平台从“配置驱动”转向“意图驱动”：业务操作工具协议化、能力原子化（明确输入输出、副作用、幂等），Agent 运行时工程化，上下文平台化，以及由用户打断、连续失败、方案修正等“摩擦信号”驱动的改进闭环；权限、审计、评测与人工审批贯穿，高风险操作必须审批。
+
+> “我们的实践从配置驱动转向意图驱动：用户表达业务目标，系统结合专家知识生成方案，通过低代码 Harness 编排执行。”
+
+**证据类型**：议题摘要（演讲者自述，尚未开讲）｜**对应原则**：[P14](/compare/evidence#p14) [P15](/compare/evidence#p15) [P19](/compare/evidence#p19) [Q08](/handbook/12-quality-cicd#q08)
+
+### 阿里 · AL15 · Quest Mode：把任务委派给智能体（Spec First） {#al15}
+**作者/机构**：Qoder 官方博客｜**日期**：2025-08-21｜[原文](https://blog.qoder.com/zh/quest-mode)
+
+Qoder 的自主编程模式：执行长任务前先写 Spec，描述清楚变更细节与验证标准，Spec 是开发者与 AI 目标对齐的核心；随后由 Action Flow 执行并汇报。是阿里系“规范驱动 + 委派”的产品化表达。
+
+> “因此我们期望在执行复杂长任务之前，开发者可以详尽的、准确的表达软件逻辑，描述清楚变更细节和验证标准，以指导智能体更准确的完成任务。”
+
+**证据类型**：厂商自述｜**对应原则**：[P01](/compare/evidence#p01) [P02](/compare/evidence#p02) [Q01](/handbook/12-quality-cicd#q01)
+
+### 阿里 · AL24 · 蚂蚁全链路 AI 研发：SDD 规范驱动与 Harness 工程实践（AICon 上海 2026） {#al24}
+**作者/机构**：InfoQ（蚂蚁智能研发产品专家的 AICon 议题介绍）｜**日期**：2026-06-16｜[原文](https://www.infoq.cn/article/5Ke1HD7F6R7aYr4jERyk)
+
+蚂蚁把痛点归纳为两个“追不上”：文档追不上代码（需求与实现两张皮）、验证追不上迭代（流水线后置）。方案是 SDD 四步规范驱动 + 知识库 + 一站式研发，从“写代码”变成“提需求”。
+
+> “验证追不上迭代：流水线后置发现问题，返工成本高”
+
+**证据类型**：议题摘要（演讲者自述）｜**对应原则**：[P01](/compare/evidence#p01) [P02](/compare/evidence#p02) [Q03](/handbook/12-quality-cicd#q03)
+
+### 字节 · BD15 · AgentKit：从编码提效到组织效能跃迁（AICon 北京 2026） {#bd15}
+**作者/机构**：朱杰（火山引擎技术专家，AgentKit 核心研发）｜**日期**：2026-12（议题预告）｜[原文](https://aicon.infoq.cn/2026/beijing/presentation/7416)
+
+火山引擎的端到端交付方案：Spec 作为人与 Agent 的任务合约（目标、边界、依赖、验收标准），定义任务如何委托、结果如何验收、异常如何转交人工；用交付周期、一次通过率、人工介入率和缺陷四个结果指标决定自治等级是否上调。
+
+> “最后给出以交付周期、一次通过率、人工介入率和缺陷为依据，逐步提升自治等级的落地方法。”
+
+**证据类型**：议题摘要（演讲者自述，尚未开讲）｜**对应原则**：[Q12](/handbook/12-quality-cicd#q12) [P01](/compare/evidence#p01) [P16](/compare/evidence#p16)
+
+## 团队采纳、度量与组织效能 {#team-metrics}
+
+### 腾讯 · TX10 · 腾讯研发模式被 AI 重塑：需求吞吐率成为 AI Coding 的核心指标 {#tx10}
+**作者/机构**：第一财经（郑栩彤，采访汤道生、刘毅等）｜**日期**：2026-06-05｜[原文](https://www.yicai.com/news/103218044.html)
+
+CodeBuddy/WorkBuddy 负责人刘毅：2022 年 AI 代码接受程度不到 30%，到 2025 年底大部分团队 90% 以上代码由 AI 生成，程序员同时开多个任务。指标从“生成率”转向“需求吞吐率”；挑战是 AI 幻觉把风险带到生产、人类专家被评审淹没，因此要“用 AI 发现 AI 代码的错误、用 AI 自动测试”。团队组织更扁平、上下文对全员透明。
+
+> “现在，需求吞吐率成为了AI Coding的核心指标，代表组织的创新速度。”
+
+**证据类型**：高管口述（媒体采访）｜**对应原则**：[Q12](/handbook/12-quality-cicd#q12) [Q06](/handbook/12-quality-cicd#q06) [P08](/compare/evidence#p08)
+
+### 腾讯 · TX11 · 腾讯 AI 三年：代码 AI 率从 23% 到 90%，最大的坑不是技术 {#tx11}
+**作者/机构**：CSDN（搜狐转载，采访刘毅）｜**日期**：2026-06-08｜[原文](https://www.sohu.com/a/1033866890_115128)
+
+同一位负责人的另一篇访谈，补充了“踩过的坑”：Token 成本是第一关，需要精细化成本治理；2026 年行业强调 harness，即给 AI 更多约束和更快的校验迭代；引入 AI 评审时，生产代码的 AI 与评审代码的 AI 必须不同。最难的是组织：个人提效≠组织提效。
+
+> “不能让同一个 AI 自己检查自己”
+
+**证据类型**：高管口述（媒体采访）｜**对应原则**：[Q07](/handbook/12-quality-cicd#q07) [P17](/compare/evidence#p17) [Q12](/handbook/12-quality-cicd#q12)
+
+### 腾讯 · TX12 · 腾讯健康：我们有 40% 的代码是 AI 写的 {#tx12}
+**作者/机构**：CodeBuddy（腾讯云开发者社区专栏）｜**日期**：2024-11-20｜[原文](https://cloud.tencent.com/developer/article/2467438)
+
+早期（补全时代）推广样本：先组建跨岗位“先锋小组”记录 Good/Badcase、双周会反馈，再全面推广；累计 600+ Badcase。用生成率、采纳率、活跃率等多维指标做运营，并发现命名不规范、缺注释、逻辑复杂、复制大块代码会降低 AI 效果。可与 2026 年的“需求吞吐率”口径对照，看指标如何演变。
+
+> “团队通过对 AI 代码助手的使用数据统计分析后发现，代码补全采纳率与使用的熟练度呈正相关”
+
+**证据类型**：团队自报｜**对应原则**：[Q12](/handbook/12-quality-cicd#q12) [P03](/compare/evidence#p03)
+
+### 腾讯 · TX23 · WorkBuddy 企业版与 AI Coding 的组织账：个人提效≠组织提效 {#tx23}
+**作者/机构**：新浪财经（报道腾讯）｜**日期**：2026-06-09｜[原文](https://finance.sina.com.cn/jjxw/2026-06-09/doc-iniauvas6486062.shtml)
+
+报道 WorkBuddy 企业版发布时引述的内部数据：初期 AI 生成代码接受度不足 30%，到 2025 年底 CodeBuddy 覆盖 90% 工程师、多数团队超 90% 代码由 AI 生成、编码时间缩短 40%。负责人把“需求从立项到上线的流转效率”作为是否真正赋能组织的判据。
+
+> “刘毅强调，单纯的个人效率提升没有意义，只有需求从立项到上线的流转效率提升，才代表AI真正赋能组织。”
+
+**证据类型**：高管口述（媒体报道）｜**对应原则**：[Q12](/handbook/12-quality-cicd#q12)
+
+### 阿里 · AL01 · 从 Copilot 到 Agent：阿里在 AI Coding 上的应用和挑战 {#al01}
+**作者/机构**：InfoQ（整理向邦宇 QCon 北京 2025 分享）｜**日期**：2025-06-30｜[原文](https://www.infoq.cn/article/5X7q545Ua4GYJOQ7g9lt)
+
+阿里集团研发平台的“全量”视角：内部 AI Coding 插件日活约 1.2 万、渗透率约 65%，补全采纳率约 28%（IDEA 约 33%），约 20% 的 CR 问题由 AI 发现；随后把重点从补全转到“模型驱动、少编排”的通用 Agent（Aone Agent），在容器里异步执行任务。这是少见的同时公开渗透率与采纳率“天花板”的数据。
+
+> “在 Code Review 方面，目前大约 20% 的代码审查问题是由 AI 生成的。”
+
+**证据类型**：团队自报（会议整理稿）｜**对应原则**：[Q06](/handbook/12-quality-cicd#q06) [Q12](/handbook/12-quality-cicd#q12) [P11](/compare/evidence#p11)
+
+### 阿里 · AL03 · 阿里云内部 AI 辅助代码生成比例近 40%；员工可自由选择工具 {#al03}
+**作者/机构**：第一财经（陈杨园，采访通义灵码负责人神秀）｜**日期**：2025-05-30｜[原文](https://www.yicai.com/news/102643443.html)
+
+2025 年中阿里云的公开口径：通义灵码内部覆盖率很高，AI 辅助代码生成比例接近 40%、半年提升约 50%；同时强调内部对 AI 编程工具持开放态度——只要注意数据安全合规，员工可自由选择工具（同文提到字节将禁用第三方工具的传闻，字节未回应）。
+
+> “内部最新的AI辅助代码生成的比例已接近40%，较半年前提升50%左右。”
+
+**证据类型**：团队自报（媒体采访）｜**对应原则**：[Q12](/handbook/12-quality-cicd#q12)
+
+### 阿里 · AL04 · 通义灵码获员工工号 AI001：“未来 20% 的代码将由通义灵码编写” {#al04}
+**作者/机构**：中国金融信息网（报道阿里云）｜**日期**：2024-04-02｜[原文](https://www.cnfin.com/gs-lb/detail/20240402/4030999_1.html)
+
+2024 年阿里云给 AI 编程工具分配正式工号、公开 20% 代码目标，并强调“程序员仍是研发核心”。可作为时间轴起点：对比 2025 年约 40%、2026 年部分团队 80%–90% 的自报数据。
+
+> “阿里云还专门给通义灵码分配了一个正式的员工工号——AI001。”
+
+**证据类型**：团队自报（媒体报道）｜**对应原则**：[Q12](/handbook/12-quality-cicd#q12) [P16](/compare/evidence#p16)
+
+### 阿里 · AL07 · 代码生成越来越快，软件交付真正的瓶颈转向了哪里？（云栖大会 AI Native 研发论坛） {#al07}
+**作者/机构**：机器之心（凤凰网转载；许晓斌、黄挺等发言）｜**日期**：2026-09-24｜[原文](https://feng.ifeng.com/c/8wgLzD4BqNX)｜[相关链接](https://qcon.infoq.cn/2026/shanghai/presentation/7347)
+
+阿里研发基础设施负责人许晓斌：在阿里编码通常只占软件交付总时长的 20%–30%；极端链路里编码约 1 小时，但从需求进入到交付仍约 21 天，时间耗在影响分析、环境准备、联调、审批、灰度与封网。因此投入转向运行与验证环境：OpenSandbox 内部周创建量超千万，另一套环境体系可完整复原约两三千个应用。同场蚂蚁黄挺介绍沙箱底座。
+
+> “阿里开源的 OpenSandbox，在内部每周创建量已经超过千万级，服务于 Agent 运行、训练和评测。”
+
+**证据类型**：团队自报（论坛报道）｜**对应原则**：[P15](/compare/evidence#p15) [Q09](/handbook/12-quality-cicd#q09) [Q12](/handbook/12-quality-cicd#q12)
+
+### 阿里 · AL18 · 从辅助编码到 Agent 主导交付：淘宝 AI 原生研发系统（AICon 北京 2026 Keynote） {#al18}
+**作者/机构**：吕承飞（吕行，淘天集团 AI 研发负责人）｜**日期**：2026-12（议题预告）｜[原文](https://aicon.infoq.cn/2026/beijing/presentation/7477)
+
+淘宝的问题定义很直白：局部生码提速，但全局交付不提效。议题讲从半托管到全托管的 Agent 交付系统，需求、开发、测试、发布全链路。
+
+> “破局“局部生码提速、全局交付不提效””
+
+**证据类型**：议题摘要（演讲者自述，尚未开讲）｜**对应原则**：[Q12](/handbook/12-quality-cicd#q12) [P16](/compare/evidence#p16)
+
+### 阿里 · AL19 · 从 AI 编码助手到需求托管交付 Agent：菜鸟 AI 研发效能实践（AICon 上海 2026） {#al19}
+**作者/机构**：郭凤钊（菜鸟网络研发总监）｜**日期**：2026-06（AICon 上海）｜[原文](https://aicon.infoq.cn/2026/shanghai/presentation/7062)
+
+菜鸟把规范、经验沉淀为 Playbook，让“硅基程序员”托管需求交付；自报 AI 代码贡献率大幅提升。属于高比例自报数据，未见交付周期或缺陷率的同口径披露。
+
+> “AI代码贡献率从 10% 提升至 80%+，部分团队接近100%”
+
+**证据类型**：议题摘要（团队自报，尚未独立验证）｜**对应原则**：[Q12](/handbook/12-quality-cicd#q12) [P13](/compare/evidence#p13)
+
+### 阿里 · AL25 · 蚂蚁数科企业级 AGI 研发体系重塑（AICon 上海 2026） {#al25}
+**作者/机构**：刘秀婷（蚂蚁数科 PMO & AI 研发效能负责人）｜**日期**：2026-06（AICon 上海）｜[原文](https://aicon.infoq.cn/2026/shanghai/presentation/7122)
+
+组织层做法：AGI 研发指数、L1–L5 分级与“苏格拉底式”质量追问，把人从环内（in the loop）挪到环上（on the loop）。与 CN03（蚂蚁数科 Harness）同源不同侧面。
+
+> “Agent In The Loop, Human On The Loop”
+
+**证据类型**：议题摘要（演讲者自述）｜**对应原则**：[P16](/compare/evidence#p16) [P08](/compare/evidence#p08) [Q12](/handbook/12-quality-cicd#q12)
+
+### 阿里 · AL26 · 蚂蚁生产级软件交付基建和实践（AICon 深圳 2026） {#al26}
+**作者/机构**：刘仁权（弈阁，蚂蚁集团 CIO 总架构师、Agentic Delivery 团队）｜**日期**：2026（AICon 深圳）｜[原文](https://aicon.infoq.cn/2026/shenzhen/presentation/7226)
+
+蚂蚁的交付基建：在 AI 生成占比极高的前提下，如何让交付 7×24 可持续，靠的是基建（环境、验证、发布）而非更多生成。
+
+> “在蚂蚁很多团队 AI 生成代码占比已经达到 90% 以上”
+
+**证据类型**：议题摘要（团队自报，尚未独立验证）｜**对应原则**：[Q12](/handbook/12-quality-cicd#q12) [Q03](/handbook/12-quality-cicd#q03)
+
+### 字节 · BD02 · TRAE CN 企业版发布：字节超 92% 工程师使用 TRAE {#bd02}
+**作者/机构**：火山引擎开发者社区（TRAE 官方发布稿）｜**日期**：2025-12-18｜[原文](https://developer.volcengine.com/articles/7587308091345698822)
+
+企业版发布稿里的内部数据：字节超过 92% 工程师用 TRAE，能力在内部 50 余项业务验证；抖音生活服务 AI 代码贡献率超 43%、测试用例生成每周节省 44.56 人/天、无人发布单次节省 25 分钟。属厂商发布稿，适合作“规模”而非“效果”证据。
+
+> “在字节跳动，超过 92%的工程师都在使用 TRAE 辅助开发。”
+
+**证据类型**：厂商自述（团队自报）｜**对应原则**：[Q12](/handbook/12-quality-cicd#q12)
+
+## 工具、工作流与平台 {#tools-workflow}
+
+### 腾讯 · TX02 · 从 Vibe Coding 到 AI 原生研发团队：一套能落地的工程实践（Vibe Flowing） {#tx02}
+**作者/机构**：腾讯技术工程（masoncai，海外网络运营平台团队）｜**日期**：2026-07-21｜[原文](https://news.qq.com/rain/a/20260721A09ALQ00)
+
+一个“所有组件都由 AI 维护”的内部运营平台：monorepo 让 AI 一次看到前后端；AGENTS.md 集中写分层规则（只能向下调用）、文件红线和检查命令；提交前必须过 ruff/ty、oxlint/vue-tsc；Playwright 截图做 AI 自测，最终由提需求的运营同事验收，MR 仍需管理员审批合并。对 TDD 的取舍很务实：AI 易写“自欺欺人”的测试，所以用规则兜底，而不追求严格先写测试。
+
+> “覆盖率目标定在 70%，作为参考值不阻断。”
+
+**证据类型**：团队自报｜**对应原则**：[P03](/compare/evidence#p03) [P04](/compare/evidence#p04) [P05](/compare/evidence#p05) [P06](/compare/evidence#p06) [Q02](/handbook/12-quality-cicd#q02) [Q05](/handbook/12-quality-cicd#q05)
+
+### 腾讯 · TX04 · 从 Vibe Coding 到 Agentic Engineering：重构后台开发全流程 {#tx04}
+**作者/机构**：腾讯技术工程（seanguo，网易号转载）｜**日期**：2026-04-17｜[原文](https://www.163.com/dy/article/KQO1VBLM0518R7MO.html)
+
+一线后台工程师用 Claude Code + 自定义 Skill/Command/MCP，把 PM、代码平台、DevOps、日志平台串进一个终端会话：人定义目标、约束和质量标准，AI 在结构化流程里执行，关键节点人工审核。两条教训：自定义 Skill 的价值是编排串联而非从零实现；AI 生成的 MR 审查意见必须逐条人工判断。
+
+> “所以 reviewer 拿到 AI 的审查结果后，每一条都要过脑子判断，该采纳的采纳，不靠谱的直接丢掉。”
+
+**证据类型**：个人实践（腾讯工程师）｜**对应原则**：[P13](/compare/evidence#p13) [P14](/compare/evidence#p14) [P08](/compare/evidence#p08) [Q06](/handbook/12-quality-cicd#q06)
+
+### 腾讯 · TX13 · 腾讯 CodeBuddy IDE 如何成为一个“全栈高级工程师”？ {#tx13}
+**作者/机构**：AI 前线（褚杏娟，采访腾讯 CodeBuddy 团队）｜**日期**：2025-07-29｜[原文](https://news.qq.com/rain/a/20250729A05FAH00)
+
+产品立项依据来自内部调研：程序员大部分时间花在沟通对齐而非 IDE 里；因此 CodeBuddy 想覆盖“需求拆解—架构设计—UI—前后端—测试部署”全链路，并内置 200+ 场景知识库生成结构化需求文档再交给 Code Agent。报道同时给出“43% 代码由 AI 生成、千行 bug 率降 31.5%”的内部口径。
+
+> “腾讯内部调研发现，一个程序员只有 37% 的时间在真正使用 IDE 做开发”
+
+**证据类型**：团队自报（媒体采访）｜**对应原则**：[P01](/compare/evidence#p01) [Q12](/handbook/12-quality-cicd#q12)
+
+### 阿里 · AL02 · Vibe Coding 在代码生成与协作中的实践与思考（Aone Agent） {#al02}
+**作者/机构**：InfoQ（整理向邦宇 QCon 上海 2025 分享，腾讯新闻转载）｜**日期**：2026-02-10｜[原文](https://news.qq.com/rain/a/20260210A03Q4Y00)
+
+续篇：Aone Agent 是“以外部容器发起的异步任务工具”，用户用自然语言发起任务，容器里的 Agent 自行调用搜索、读文件、Shell 等工具。意外发现：用户从后端扩展到测试、前端、算法、产品、运营、设计和运维，任务也从改代码扩展到代码分析、单测等。体现“隔离容器 + 异步委派”的工程形态。
+
+> “另一个我主导的项目是 Aone Agent 。这是一个以外部容器发起的异步任务工具。”
+
+**证据类型**：团队自述（会议整理稿）｜**对应原则**：[P11](/compare/evidence#p11) [P15](/compare/evidence#p15)
+
+### 阿里 · AL13 · Qwen Code 1.0 Preview：Qoder 与 Qwen Code 的 Agent 能力合流 {#al13}
+**作者/机构**：QwenLM（GitHub Release）｜**日期**：2026-11-11｜[原文](https://github.com/QwenLM/qwen-code/releases/tag/v1.0.0-preview)｜[相关链接](https://github.com/QwenLM/qwen-code-action)
+
+阿里两条 Coding Agent 产品线（Qwen Code 开源 CLI 与 Qoder）在 1.0 预览版中合流，支持多模型提供商、会话恢复与非交互执行；同组织还有把 Qwen Code 接入 GitHub 的 qwen-code-action（PR 评审、issue 分诊）。
+
+> “Brings together the agent capabilities of Qoder and Qwen Code for code understanding, implementation, debugging, and testing.”
+
+**证据类型**：官方发布说明｜**对应原则**：[P14](/compare/evidence#p14) [Q03](/handbook/12-quality-cicd#q03)
+
+### 阿里 · AL16 · 对话叔同：Qoder 上线 60 天 {#al16}
+**作者/机构**：十字路口 Crossing（Qoder 博客园转载）｜**日期**：2025-10-31｜[原文](https://www.cnblogs.com/qoder/p/19180020)
+
+Qoder 创始人访谈：阿里为何要做面向全球的 Agentic 编码平台，以及产品设计取舍。用户量为团队自报，可与 AL13（Qoder 与 Qwen Code 合流）对照看产品线演进。
+
+> “上线 5 天用户迅速突破 10 万，仅 60 天斩获 50 万开发者用户”
+
+**证据类型**：团队自报（播客访谈）｜**对应原则**：[P18](/compare/evidence#p18)
+
+### 阿里 · AL30 · LoongSuite Pilot：本地 Coding Agent 遥测采集 {#al30}
+**作者/机构**：阿里巴巴（GitHub 开源）｜**日期**：2026｜[原文](https://github.com/alibaba/loongsuite-pilot)
+
+把“Agent 用得怎么样”变成可观测数据：自动发现本机 Claude Code/Qwen Code 等 Agent，统一事件模式采集模型、会话、轮次、工具调用与 token，并在导出前控制敏感 prompt 与密钥。是度量 Agent 成本与行为的基础设施。
+
+> “Which agents are being used? What model, session, turn, and tool activity happened?”
+
+**证据类型**：开源仓库 README（团队自述）｜**对应原则**：[P17](/compare/evidence#p17) [Q12](/handbook/12-quality-cicd#q12)
+
+### 字节 · BD11 · Agentic Edit：Trae 在代码编辑上的落地与进化 {#bd11}
+**作者/机构**：冯绪（Trae 团队），InfoQ/AICon｜**日期**：2025-12-04｜[原文](https://www.infoq.cn/article/ep5bs0fmyalbanwhohoe)
+
+一个具体的工程取舍：代码修改用 Apply（二次模型调用重写文件）还是 Search/Replace。Apply 体验好但长文件差、误差叠加；Search/Replace 不受文件长度限制、更准。按模式选择：Chat 用 Apply，Builder（Agent）用 Search/Replace。
+
+> “基于上述判断，我们在这一阶段转向了 Search/Replace 方案。”
+
+**证据类型**：团队自述（会议整理稿）｜**对应原则**：[P14](/compare/evidence#p14) [P09](/compare/evidence#p09)
+

@@ -90,14 +90,9 @@ P06「验证闭环」有 298 位独立作者支持，排在前列。P07「TDD」
 - **红绿测试作为 AI 结论的判决**：美团存储团队对 AI 全仓评审给出的 117 个疑似问题逐条写测试验证：36 条变红确认，3 条被证伪，其余靠源码确认或尚未验证。他们还发现 CI 报告里硬编码了 failures="0"，所以要让 AI 自己构建、看原始输出（[CN12](/sources/chinese#cn12)）。这同时**加强**了验证闭环，也**修正**了「CI 绿灯即可信」的默认假设。
 - **评测看异常值而非分数**：百度文心快码发现，同样的分数下答对的可能是另一组题，因此关注异常值，并从经人审核的真实提交里挖掘评测集（[CN40](/sources/chinese#cn40)）。
 - **CI 成为瓶颈**：Linear 因 AI 带来的变更量重做了 CI（[HN23](/sources/hackernews#hn23)）。Peter Steinberger 计划让 Codex 判断哪些测试真正需要跑，大幅削减 CI（[XV-007](/sources/x/verify#xv-007)）。这是对「测试越多越好」的一个实际限定。
-- **TDD 的限定**：Armin Ronacher 认为重写系统不一定需要现成的测试套件，可以让智能体专门自建（[XV-012](/sources/x/verify#xv-012)）。
-
-## 国内大厂佐证 {#cn-bigtech}
-
-> 腾讯、阿里、字节的公开材料（数字均为团队自报、尚未独立验证；横向比较见 [国内大厂对比](/compare/cn-bigtech)）：
->
-> - 支付宝 60 万行重构把目标从“迁移代码”改为“迁移行为”，用两个相互校验的 Loop 验证（[AL27](/sources/cn-bigtech/alibaba#al27)）；字节先生成 bug 复现脚本再修（[BD06](/sources/cn-bigtech/bytedance#bd06)），NL2Test 自报 85.4% 生成用例进入 CI/CD（[BD10](/sources/cn-bigtech/bytedance#bd10)）。
-> - 防作弊的国内案例：阿里云诊断系统里 Agent 曾把 logger.error 改成 logger.warning 就宣称已修复，所以必须独立验证（[AL17](/sources/cn-bigtech/alibaba#al17)）；腾讯游戏以“编译 0 error”为量化验收（[TX07](/sources/cn-bigtech/tencent#tx07)）。
+- **TDD 的限定**：Armin Ronacher 认为重写系统不一定需要现成的测试套件，可以让智能体专门自建（[XV-012](/sources/x/verify#xv-012)）。腾讯一线团队明确不追求严格 TDD，用规则和自测兜底（团队自报，[TX02](/sources/chinese#tx02)），与第 12 章 [Q01 测试先行](/handbook/12-quality-cicd#q01) 有张力；字节 AEGIS 的“先复现再修”则是测试先行的变体（论文，团队自报，[BD06](/sources/quality/research#bd06)）。
+- **把目标从“迁移代码”改成“迁移行为”**（数字均为团队自报、尚未独立验证）：支付宝 60 万行重构用两个相互校验的 Loop 验证（议题摘要，[AL27](/sources/quality/chinese#al27)）；字节先生成 bug 复现脚本再修（[BD06](/sources/quality/research#bd06)），NL2Test 自报 85.4% 生成用例进入 CI/CD（[BD10](/sources/quality/chinese#bd10)）。
+- **防作弊的国内案例**：阿里云诊断系统里 Agent 曾把 logger.error 改成 logger.warning 就宣称已修复，所以必须独立验证（团队自报，[AL17](/sources/quality/chinese#al17)）；腾讯游戏以“编译 0 error”为量化验收（团队自报，[TX07](/sources/chinese#tx07)）——这是必要但不充分的完成标准，见本章第 7 节。
 
 ## 与传统软件工程认知的对比
 

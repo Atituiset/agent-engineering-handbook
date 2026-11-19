@@ -42,3 +42,23 @@ LLM 应用的十大风险清单（2025 版），提示注入（LLM01:2025）居�
 **作者/机构**：Anthropic、Thoughtworks｜**日期**：见各条｜[原文](./anthropic#an27)
 
 与本页相关、已在其他分类收录的条目：Claude Code 沙箱（文件系统与网络双重隔离，[AN27](./anthropic#an27)）、跨产品的隔离策略（[AN28](./anthropic#an28)）、auto mode 的分类器式权限审批（[AN26](./anthropic#an26)）、Thoughtworks 雷达将「智能体沙箱」列为 Adopt（[TW24](./thoughtworks#tw24)）、「有毒流分析」（[TW25](./thoughtworks#tw25)）、编码助手扩大供应链攻击面——被攻陷的 MCP 服务器或规则文件可向智能体注入指令（[TW12](./thoughtworks#tw12)）。
+
+
+
+### 腾讯 · TX22 · A.S.E（AICGSecEval）：仓库级 AI 生成代码安全评测基准 {#tx22}
+**作者/机构**：腾讯悟空代码安全团队（GitHub 开源）｜**日期**：2026｜[原文](https://github.com/Tencent/AICGSecEval)
+
+不在函数片段上评“AI 写的代码安不安全”，而是在真实仓库上下文里评，支持 LLM 直接生成与 Claude Code 等 Agent 生成两种模式，用 Docker 复现构建与验证。腾讯同组织下还开源了 VulnGym（白盒漏洞挖掘 Agent 基准）与 AI-Infra-Guard（Agent/MCP/Skills 扫描）。
+
+> “A.S.E (AICGSecEval) is a repository-level AI-generated code security evaluation benchmark developed by Tencent Wukong Code Security Team.”
+
+**证据类型**：开源仓库 README（团队自述）｜**对应原则**：[Q08](/handbook/12-quality-cicd#q08) [P15](/compare/evidence#p15)
+
+### 字节 · BD19 · Trae IDE 遥测与隐私分析：关闭遥测后仍持续上报 {#bd19}
+**作者/机构**：segmentationf4u1t（独立研究者，GitHub）｜**日期**：2025-07｜[原文](https://github.com/segmentationf4u1t/trae_telemetry_research)｜[相关链接](https://news.ycombinator.com/item?id=44703164)
+
+独立研究者抓包分析：即使开启遥测退出（opt-out），Trae 仍上报系统信息、多种设备标识与使用数据；在 HN 获 954 分讨论。对“用这类商业编码工具处理私有代码”的团队，是需要单独评估的数据边界问题（官方回应未在本次检索中核到）。
+
+> “Trae continues to transmit a broad set of data even with telemetry opt-out enabled”
+
+**证据类型**：第三方独立分析（单一研究者）｜**对应原则**：[P15](/compare/evidence#p15) [Q13](/handbook/12-quality-cicd#q13)

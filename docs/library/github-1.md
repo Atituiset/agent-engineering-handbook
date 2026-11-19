@@ -1,6 +1,6 @@
 # 全量库 · GitHub 仓库（1/3）
 
-> GitHub 仓库 315 个（GitHub 搜索 API，★≥300、2025-06 后仍有更新），按星数排序。描述为**项目自述**，未逐一评估质量。
+> GitHub 仓库（描述为项目自述，未逐一评估质量）。共 388 条，本页 150 条。主题与原则为**关键词自动归类**，可能有误；标「精选」的已写成完整条目。原则编号 Q01–Q13 见 [第 12 章](/handbook/12-quality-cicd#principles)，P01–P20 见 [共识度/佐证](/compare/evidence)。
 
 分页：**1** · [2](./github-2) · [3](./github-3)
 
@@ -156,6 +156,3 @@
 | 148 | wesammustafa/Claude-Code-Quest — Claude Code guide in three levels, Beginner to Advanced: hands-on lessons wit… | wesammustafa | 2025-08-17 | — | [原文](https://github.com/wesammustafa/Claude-Code-Quest) ★3717 |
 | 149 | twinnydotdev/twinny — Open-source AI coding assistant for VS Code. Coding agent, code completion, chat, edits… | twinnydotdev | 2023-08-21 | [P08](/compare/evidence#p08) | [原文](https://github.com/twinnydotdev/twinny) ★3701 |
 | 150 | PleasePrompto/notebooklm-mcp — MCP server for NotebookLM - Let your AI agents (Claude Code, Codex) research do… | PleasePrompto | 2025-10-16 | [P14](/compare/evidence#p14) | [原文](https://github.com/PleasePrompto/notebooklm-mcp) ★3448 |
-
-分页：**1** · [2](./github-2) · [3](./github-3)
-

@@ -109,13 +109,7 @@ Böckeler 的 harness 框架（[TW01](/sources/thoughtworks#tw01)）把控制手
 - **加强：纠正写成 lint，而不是写进说明文件**。Cline 创始人认为模型读不完整个代码库，但可以在提交时用 linter 强制架构模式（[XK-001](/sources/x/constraints#xk-001)）。Lauren Tan 的演讲要点是：每纠正一次，就写成一条 lint 规则，而不是往 agents.md 里加话（[XK-005](/sources/x/constraints#xk-005)）。平安科技用 AI 把私域架构规范批量转成 Lint、ArchUnit 等 CI 检查（[CN16](/sources/chinese#cn16)）。快手代码评审沉淀了 1,100+ 条确定性规则，采纳率从 7.9% 升到 54%（团队自报，[CN37](/sources/chinese#cn37)）。Boris Cherny 也说，lint 规则与 e2e 测试的杠杆比以前更大了（[XV-002](/sources/x/verify#xv-002)）。
 - **修正：harness 的严格程度要跟着模型走**。Robert C. Martin（Uncle Bob）花几周搭了一个严格约束智能体的 harness，期间模型进步让它变得多余（[XK-003](/sources/x/constraints#xk-003)）。他公开反思自己可能在过度约束，但仍保留单元测试与变异测试（[XK-002](/sources/x/constraints#xk-002)）。**结论调整**：本章的机械约束主张不变，但应优先保留「检查结果」的约束（测试、类型、架构规则），谨慎对待「规定步骤」的约束（强制流程、关卡）。后者最容易被模型进步淘汰。
 - **并行放大架构缺陷**：Peter Steinberger 说，同步数据库访问在一个智能体时没问题，到 50 个并行会话就成了瓶颈（[XK-004](/sources/x/constraints#xk-004)）。
-
-## 国内大厂佐证 {#cn-bigtech}
-
-> 腾讯、阿里、字节的公开材料（数字均为团队自报、尚未独立验证；横向比较见 [国内大厂对比](/compare/cn-bigtech)）：
->
-> - 腾讯一个由 AI 维护的运营平台把分层规则、文件红线和检查命令写进 AGENTS.md，提交前必须过 lint/类型检查（[TX02](/sources/cn-bigtech/tencent#tx02)）；QQ 音乐用 IDL 门禁防止 AI 猜依赖（[TX05](/sources/cn-bigtech/tencent#tx05)）。
-> - 腾讯游戏 SRE 让所有变更必经 Git 与人工 Review，用 Harness 管住 LLM 的不确定性（[TX17](/sources/cn-bigtech/tencent#tx17)）；国内已出现针对“驾驭工程（Harness）能力”的信通院成熟度评估（[BD18](/sources/cn-bigtech/bytedance#bd18)）。
+- **把红线写成检查，而不是只写进说明文件**（数字均为团队自报、尚未独立验证）：腾讯一个由 AI 维护的运营平台把分层规则、文件红线和检查命令写进 AGENTS.md，提交前必须过 lint/类型检查（[TX02](/sources/chinese#tx02)）；QQ 音乐用 IDL 门禁防止 AI 猜依赖（[TX05](/sources/chinese#tx05)）。腾讯游戏 SRE 让所有变更必经 Git 与人工 Review，用 Harness 管住 LLM 的不确定性（议题摘要，[TX17](/sources/chinese#tx17)）。飞书 CodeM 通过了信通院“驾驭工程（Harness）能力”成熟度评估（团队自报，[BD18](/sources/chinese#bd18)），说明“约束写进可执行检查”已经被当成可评估的工程能力，而不只是个人习惯。
 
 ## 与传统软件工程认知的对比
 
@@ -133,4 +127,4 @@ Böckeler 的 harness 框架（[TW01](/sources/thoughtworks#tw01)）把控制手
 
 **选择理由**：传统团队里，大量架构约束是靠「人的共识 + 评审」维持的，这在人与人之间可行，因为人有记忆、有声誉、会学习。智能体没有这些，每次会话都从零开始，且会完美地复制它看到的任何模式。因此，**凡是你希望「永远成立」的东西，都必须从文档升级为可执行检查**——这正是传统工程中「规范即代码」「Policy as Code」思想的彻底应用。好消息是，这类工具（ArchUnit、dependency-cruiser、自定义 lint）早已成熟，而且智能体能帮你低成本地写出它们。
 
-**证据强度**：「确定性检查优于提示」是**共识**（厂商文档、Thoughtworks、国内大厂一致）；OpenAI 的具体规模数字是**厂商自报**；门禁严格程度是**分歧**。
+**证据强度**：「确定性检查优于提示」是**共识**（厂商文档、Thoughtworks、以及腾讯、阿里、字节等团队的公开实践，方向一致）；OpenAI 的具体规模数字是**厂商自报**；门禁严格程度是**分歧**。

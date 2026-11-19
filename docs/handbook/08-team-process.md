@@ -80,17 +80,11 @@ OpenAI 内部总结了七类高价值用例（代码理解、重构迁移、性�
 
 ## 2026-11 新证据：个人提效 ≠ 组织提效 {#new-evidence}
 
-- **悖论被大厂数据证实**：快手在 1 万+ 研发规模下观察到，AI 代码生成率 30%+、个人体感提效 20–40%，但需求交付效率没有相应提升，并据此把度量从代码生成率改为交付指标（团队自报，[CN36](/sources/chinese#cn36)）。GitLab 调研中 79% 的受访者说整体交付没有同速加速（[CN42](/sources/chinese#cn42)）。这**加强**了本章「AI 代码占比是坏指标」的判断。
+- **悖论被大厂数据证实**：快手在 1 万+ 研发规模下观察到，AI 代码生成率 30%+、个人体感提效 20–40%，但需求交付效率没有相应提升，并据此把度量从代码生成率改为交付指标（团队自报，[CN36](/sources/chinese#cn36)）。GitLab 调研中 79% 的受访者说整体交付没有同速加速（[CN42](/sources/chinese#cn42)）。腾讯、阿里、字节同样自报 AI 生成代码比例已经很高（腾讯“大部分团队 90% 以上”、蚂蚁“很多团队 90% 以上”、TRAE 团队“90% 以上”），但也都公开承认交付效率没有同比放大：TRAE 团队 90% 以上代码由 AI 写，人均需求吞吐率只提升到 1.6 倍（[BD01](/sources/chinese#bd01)）；腾讯把北极星指标改为“需求吞吐率”（[TX10](/sources/chinese#tx10)、[TX23](/sources/chinese#tx23)）；阿里称编码只占交付总时长的 20%–30%（[AL07](/sources/chinese#al07)），淘宝的问题定义是“局部生码提速、全局交付不提效”（[AL18](/sources/chinese#al18)）。以上数字均为团队自报、尚未独立验证。这**加强**了本章「AI 代码占比是坏指标」的判断。
+- **可借鉴的结果指标**：火山引擎用交付周期、一次通过率、人工介入率和缺陷决定自治等级（议题摘要，[BD15](/sources/chinese#bd15)）；阿里集团研发平台公开了渗透率约 65%、补全采纳率约 28% 的“天花板”数据（团队自报，[AL01](/sources/chinese#al01)）。
 - **研究仍然缺位**：Ethan Mollick 指出，对近期的自主编码工具几乎没有好的生产力研究（[XM-005](/sources/x/team#xm-005)）。METR 的随机对照研究在 HN 上引发激烈争论，焦点是个人体感是否可靠（[HN27](/sources/hackernews#hn27)）。
 - **把错误沉淀为规则**：每次 Code Review 发现 AI 违规就追加到项目规则（[CN17](/sources/chinese#cn17)）；腾讯 LoopForge 让每次运行后的复盘改写 SOP 与门禁（[CN20](/sources/chinese#cn20)）。同时要注意：沉淀下来的规则在换模型后可能成为负担（[XC-021](/sources/x/context#xc-021)）。
 - **团队吞吐受最低一环制约**：《智能体工程的 8 个等级》指出，如果审批者还在手动审 PR，你的后台智能体再多也会被卡住（[CN33](/sources/chinese#cn33)）。
-
-## 国内大厂佐证 {#cn-bigtech}
-
-> 腾讯、阿里、字节的公开材料（数字均为团队自报、尚未独立验证；横向比较见 [国内大厂对比](/compare/cn-bigtech)）：
->
-> - 三家都承认“个人提效≠组织提效”：TRAE 团队 90% 以上代码由 AI 写，人均需求吞吐率只提升到 1.6 倍（[BD01](/sources/cn-bigtech/bytedance#bd01)）；腾讯把北极星指标改为“需求吞吐率”（[TX10](/sources/cn-bigtech/tencent#tx10)、[TX23](/sources/cn-bigtech/tencent#tx23)）；阿里称编码只占交付总时长的 20%–30%（[AL07](/sources/cn-bigtech/alibaba#al07)），淘宝的问题定义是“局部生码提速、全局交付不提效”（[AL18](/sources/cn-bigtech/alibaba#al18)）。
-> - 可借鉴的结果指标：火山引擎用交付周期、一次通过率、人工介入率和缺陷决定自治等级（[BD15](/sources/cn-bigtech/bytedance#bd15)）；阿里集团研发平台公开了渗透率约 65%、补全采纳率约 28% 的“天花板”数据（[AL01](/sources/cn-bigtech/alibaba#al01)）。
 
 ## 与传统软件工程认知的对比
 

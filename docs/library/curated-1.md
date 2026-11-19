@@ -1,8 +1,8 @@
-# 全量库 · 精选条目与中文网页（1/2）
+# 全量库 · 精选条目与中文网页（1/3）
 
-> 「原始报告」各页的精选条目（含中文 CN 系列）与其他已核对的中文网页，共 254 条。
+> 「原始报告」各页的精选条目与其他已核对的网页。共 362 条，本页 150 条。主题与原则为**关键词自动归类**，可能有误；标「精选」的已写成完整条目。原则编号 Q01–Q13 见 [第 12 章](/handbook/12-quality-cicd#principles)，P01–P20 见 [共识度/佐证](/compare/evidence)。
 
-分页：**1** · [2](./curated-2)
+分页：**1** · [2](./curated-2) · [3](./curated-3)
 
 | # | 标题 / 摘录 | 作者 | 日期 | 原则 | 链接 |
 | --- | --- | --- | --- | --- | --- |
@@ -156,6 +156,3 @@
 | 148 | PR28 · How to write a good spec for AI agents | 独立工程师 | 2026-01-13 | [P01](/compare/evidence#p01) [P05](/compare/evidence#p05) [P06](/compare/evidence#p06) [P09](/compare/evidence#p09) | [原文](https://addyosmani.com/blog/good-spec/) · [精选](/sources/practitioners#pr28)  |
 | 149 | PR29 · My LLM codegen workflow atm | 独立工程师 | 2025-02-16 | [P01](/compare/evidence#p01) [P02](/compare/evidence#p02) [P18](/compare/evidence#p18) | [原文](https://harper.blog/2025/02/16/my-llm-codegen-workflow-atm/) · [精选](/sources/practitioners#pr29)  |
 | 150 | PR30 · Basic Claude Code | 独立工程师 | 2025-05-08 | [P04](/compare/evidence#p04) [P06](/compare/evidence#p06) [P07](/compare/evidence#p07) [P12](/compare/evidence#p12) | [原文](https://harper.blog/2025/05/08/basic-claude-code/) · [精选](/sources/practitioners#pr30)  |
-
-分页：**1** · [2](./curated-2)
-

@@ -145,3 +145,13 @@ TDD 技能讨论中的经验：派生独立智能体评审原智能体的实现�
 > “If the code is particularly load-bearing, I then ask a fourth agent, usually from the other frontier lab.”
 
 **证据类型**：个人经验｜**对应原则**：[Q07](/handbook/12-quality-cicd#q07)
+
+
+### 阿里 · AL09 · HN：社区在第三方基准上复测 Open Code Review，作者回应已修复 {#al09}
+**作者/机构**：Hacker News（eranation 等）｜**日期**：2026-06（约）｜[原文](https://news.ycombinator.com/item?id=48406358)
+
+一位用户在 withmartian 代码评审基准的 50 个 PR 中抽 10 个复测：召回约 74%，但精度只有约 12%、F1 约 20%，与 README 的“精度优先”叙述相反；OCR 作者回帖称测试版本里一个关键工具调用异常导致误报偏高，已复现并修复。样本很小，但说明团队自报 benchmark 需要独立复测。
+
+> “very good recall (~74%, e.g. found a lot of the golden issues) - not so good precision (~12%, e.g. lots of false positives)”
+
+**证据类型**：第三方独立复测（单人、小样本）｜**对应原则**：[Q06](/handbook/12-quality-cicd#q06) [Q13](/handbook/12-quality-cicd#q13)

@@ -106,12 +106,7 @@ P13「Skills 等可复用指令按需加载」的独立支持数在全库最高�
 
 **结论调整**：本章原本建议「按需加载 skills」。现在补充两条前提：先确认它真的会被调用；数量宁少勿多，并在换模型时重新评估。
 
-## 国内大厂佐证 {#cn-bigtech}
-
-> 腾讯、阿里、字节的公开材料（数字均为团队自报、尚未独立验证；横向比较见 [国内大厂对比](/compare/cn-bigtech)）：
->
-> - 字节洪定坤的对照实验：同一 Prompt 下功能正确率约 80%，但“可交付性”只有 40–60 分，接入 Harness 基建后升到约 80 分（[BD01](/sources/cn-bigtech/bytedance#bd01)）；腾讯云 ADP：Agent = Model + Harness（[TX06](/sources/cn-bigtech/tencent#tx06)）。
-> - 从 Harness 到 Loop：蚂蚁阿福“先可靠修好单个 badcase，再持续修复”（[AL28](/sources/cn-bigtech/alibaba#al28)）；Qoder 的“专家团”把调研、编码、验证、自动评审拆给多个 Agent（[AL23](/sources/cn-bigtech/alibaba#al23)）；沙箱成为基建：OpenSandbox 内部周创建量超千万（[AL07](/sources/cn-bigtech/alibaba#al07)）、腾讯 CubeSandbox（[TX19](/sources/cn-bigtech/tencent#tx19)）。
+同一 Prompt 下，功能正确并不等于可交付。字节洪定坤的对照实验（团队自报、尚未独立验证）：功能正确率约 80%，但“可交付性”只有 40–60 分，接入 Harness 基建后升到约 80 分（[BD01](/sources/chinese#bd01)）。腾讯云 ADP 把这个关系写成 Agent = Model + Harness（[TX06](/sources/chinese#tx06)）。从单次 Harness 再往上，蚂蚁阿福的做法是“先可靠修好单个 badcase，再持续修复”（议题摘要，[AL28](/sources/chinese#al28)）；Qoder 的“专家团”把调研、编码、验证、自动评审拆给多个 Agent（议题摘要，[AL23](/sources/chinese#al23)）。沙箱也正在变成基建：阿里 OpenSandbox 内部周创建量超千万（团队自报，[AL07](/sources/chinese#al07)），腾讯则开源了 CubeSandbox（议题摘要，[TX19](/sources/open-source#tx19)）。
 
 ## 与传统软件工程认知的对比
 
