@@ -2,7 +2,7 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { withBase } from 'vitepress'
 
-type Row = { n: number; s: string; c: string; t: string; a: string; d: string; u: string; u2: string; th: string; p: string[]; k: string; m: string }
+type Row = { n: number; s: string; c: string; t: string; a: string; d: string; u: string; u2: string; th: string; p: string[]; k: string; m: string; tp?: string }
 const rows = ref<Row[]>([])
 const loading = ref(true)
 const error = ref('')
@@ -16,9 +16,13 @@ const PER = 50
 const THEMES: Record<string, string> = {
   workflow: '工作流与心智模型', context: '上下文与说明文件', plan: '计划与规格', verify: '测试与验证',
   review: '评审与代码质量', constraints: '约束与架构', tools: 'Hooks、Skills、子智能体与 MCP',
-  parallel: '并行与长任务', security: '安全与权限', team: '团队、成本与组织', failures: '失败与反思', '': '未归类'
+  parallel: '并行与长任务', security: '安全与权限', team: '团队、成本与组织', failures: '失败与反思', quality: '质量保障与 CI/CD', '': '未归类'
 }
-const PS = Array.from({ length: 20 }, (_, i) => 'P' + String(i + 1).padStart(2, '0'))
+const PS = [
+  ...Array.from({ length: 20 }, (_, i) => 'P' + String(i + 1).padStart(2, '0')),
+  ...Array.from({ length: 13 }, (_, i) => 'Q' + String(i + 1).padStart(2, '0'))
+]
+const plink = (p: string) => withBase((p.startsWith('Q') ? '/handbook/12-quality-cicd#' : '/compare/evidence#') + p.toLowerCase())
 
 onMounted(async () => {
   try {
@@ -68,7 +72,7 @@ const distinctAuthors = computed(() => new Set(filtered.value.map(r => r.a)).siz
             <td>{{ r.t }}<br /><small>{{ r.c }} · {{ THEMES[r.th] }}</small></td>
             <td>{{ r.a }}</td>
             <td>{{ r.d }}</td>
-            <td><a v-for="p in r.p" :key="p" :href="withBase('/compare/evidence#' + p.toLowerCase())">{{ p }} </a></td>
+            <td><a v-for="p in r.p" :key="p" :href="plink(p)">{{ p }} </a></td>
             <td>
               <a :href="r.u" target="_blank" rel="noopener">原文</a>
               <template v-if="r.u2"> · <a :href="r.u2" target="_blank" rel="noopener">文章</a></template>

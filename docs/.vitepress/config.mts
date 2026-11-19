@@ -19,7 +19,8 @@ const handbookSidebar = [
       { text: '08 团队、流程与度量', link: '/handbook/08-team-process' },
       { text: '09 安全', link: '/handbook/09-security' },
       { text: '10 反模式与踩坑清单', link: '/handbook/10-anti-patterns' },
-      { text: '11 速查表与 Checklist', link: '/handbook/11-checklists' }
+      { text: '11 速查表与 Checklist', link: '/handbook/11-checklists' },
+      { text: '12 质量保障：测试、CI/CD 与评审', link: '/handbook/12-quality-cicd' }
     ]
   }
 ]
@@ -60,6 +61,21 @@ const sourcesSidebar = [
       { text: '团队、成本与组织', link: '/sources/x/team' },
       { text: '失败与反思', link: '/sources/x/failures' }
     ]
+  },
+  {
+    text: '质量与 CI/CD 专题',
+    collapsed: false,
+    items: [
+      { text: '说明与索引', link: '/sources/quality/' },
+      { text: '大厂与平台团队实践', link: '/sources/quality/bigtech' },
+      { text: '工具与官方文档', link: '/sources/quality/tools' },
+      { text: '一线工程师与方法论', link: '/sources/quality/practitioners' },
+      { text: '研究与数据', link: '/sources/quality/research' },
+      { text: '开源项目政策与工具', link: '/sources/quality/oss' },
+      { text: '中文互联网', link: '/sources/quality/chinese' },
+      { text: 'X 精选', link: '/sources/quality/x' },
+      { text: 'Hacker News 讨论精选', link: '/sources/quality/hn' }
+    ]
   }
 ]
 
@@ -89,6 +105,17 @@ const librarySidebar = [
       { text: 'GitHub 仓库（3/3）', link: '/library/github-3' },
       { text: '精选条目与中文网页（1/2）', link: '/library/curated-1' },
       { text: '精选条目与中文网页（2/2）', link: '/library/curated-2' }
+    ]
+  },
+  {
+    text: '质量与 CI/CD 专题',
+    items: [
+      { text: 'X 帖子（1/2）', link: '/library/q-x-1' },
+      { text: 'X 帖子（2/2）', link: '/library/q-x-2' },
+      { text: 'Hacker News 讨论', link: '/library/q-hn' },
+      { text: 'GitHub 仓库（1/2）', link: '/library/q-github-1' },
+      { text: 'GitHub 仓库（2/2）', link: '/library/q-github-2' },
+      { text: '精选条目与网页', link: '/library/q-curated' }
     ]
   }
 ]
