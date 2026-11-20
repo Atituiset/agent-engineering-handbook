@@ -42,6 +42,7 @@
 | **Unix 哲学** | 智能体最友好的接口 | 加强 | CLI、文本、可组合（[X11](/sources/x-posts#x11)、[PR17](/sources/practitioners#pr17)） | [07](/handbook/07-harness-tools) | [P14 · 304／7](/compare/evidence#p14) |
 | **最小权限** | 智能体必须默认沙箱 | 加强 | 提示注入无根治方案（[SC01](/sources/security#sc01)、[TW24](/sources/thoughtworks#tw24)） | [09](/handbook/09-security) | [P15 · 179／10](/compare/evidence#p15) |
 | **人工审批危险操作** | 审批疲劳；改为沙箱 + 分类器 + 风险分级 | 修正 | 93% 请求被批准（[AN26](/sources/anthropic#an26)） | [09](/handbook/09-security) | [P15 · 179／10](/compare/evidence#p15) |
+| **职责分离（作者不批准自己的变更）** | 扩展到智能体本身和触发它的人；异步委派时全部写成机制 | 加强 | 人不在现场，智能体又能开 PR（[QT15](/sources/quality/tools#qt15)、[QB01](/sources/quality/bigtech#qb01)） | [14](/handbook/14-async-agents) | [Q03 · 89／5](/handbook/12-quality-cicd#q03) |
 | **技术债专项治理** | 持续、自动化、随需求消化 | 修正 | 清理成本骤降（[OA01](/sources/openai#oa01)、[CN01](/sources/chinese#cn01)） | [08](/handbook/08-team-process) | — |
 | **「写代码很贵」** | 写代码便宜，好代码依然贵 | 修正 | 成本从打字转向验证与设计（[PR08](/sources/practitioners#pr08)） | [01](/handbook/01-mental-model) | [P16 · 190／10](/compare/evidence#p16) |
 | **「写测试太费时」** | 不再成立 | 反转 | [PR10](/sources/practitioners#pr10) | [05](/handbook/05-verification) | [P07 · 67／6](/compare/evidence#p07) |

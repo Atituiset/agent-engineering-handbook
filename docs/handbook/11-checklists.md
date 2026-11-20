@@ -79,6 +79,8 @@
 - [ ] 附手工验证记录
 ```
 
+交给云端或 CI 里的智能体异步执行之前，再对照 [第 14 章 §3](./14-async-agents#_3-什么任务适合交出去) 的委派清单。
+
 依据：Goal / Context / Constraints / Done when（[OA04](/sources/openai#oa04)）；red/green（[PR09](/sources/practitioners#pr09)）；手工验证（[PR13](/sources/practitioners#pr13)）。
 
 ## 4. 选流程：任务规模速查

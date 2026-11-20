@@ -21,7 +21,8 @@ const handbookSidebar = [
       { text: '10 反模式与踩坑清单', link: '/handbook/10-anti-patterns' },
       { text: '11 速查表与 Checklist', link: '/handbook/11-checklists' },
       { text: '12 质量保障：测试、CI/CD 与评审', link: '/handbook/12-quality-cicd' },
-      { text: '13 Skills 生态：官方与高星仓库清单', link: '/handbook/13-skills-catalog' }
+      { text: '13 Skills 生态：官方与高星仓库清单', link: '/handbook/13-skills-catalog' },
+      { text: '14 异步与后台智能体', link: '/handbook/14-async-agents' }
     ]
   }
 ]

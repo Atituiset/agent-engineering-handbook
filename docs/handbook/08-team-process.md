@@ -53,7 +53,7 @@ Thoughtworks 把「以编码吞吐量衡量生产率」列为 Caution，建议�
 - **评审**：见第 06 章；美团用 Pre-PR + AI CR 应对（[CN01](/sources/chinese#cn01)）。
 - **源码管理与合并**：Anthropic 日均合并从约 2,500 到 30,000 以上，迁移到自研 VCS（[AN25](/sources/anthropic#an25)）。
 - **CI**：测试要快（[X04](/sources/x-posts#x04)）；每个 worktree 可独立启动（[OA01](/sources/openai#oa01)）。
-- **云端与异步**：容器隔离、等待 CI 的空档、数百个智能体的编排与治理（[VD10](/sources/vendors#vd10)）。
+- **云端与异步**：容器隔离、等待 CI 的空档、数百个智能体的编排与治理（[VD10](/sources/vendors#vd10)）。并发度要按评审容量来定，见 [第 14 章 §7](./14-async-agents#_7-并发、成本与可恢复)。
 
 ## 5. 技术债：从「专项」到「随需求消化」
 

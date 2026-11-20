@@ -12,7 +12,7 @@
 
 ## 1. 验证是放大器的「闸门」
 
-Mitchell Hashimoto 总结得最简洁：让智能体一次就做对的最可靠方法，是给它快速、高质量的工具，自动告诉它哪里错了（[PR22](/sources/practitioners#pr22)）。Anthropic 把通用智能体循环归纳为**收集上下文 → 采取行动 → 验证工作 → 重复**（[AN13](/sources/anthropic#an13)）。Claude Code 团队的文章称验证回路决定了能并行多少智能体（[AN18](/sources/anthropic#an18)）。Cognition 观察到异步会话已超过交互式会话，开发者回来时必须看到「已验证、可合并」的结果（[VD09](/sources/vendors#vd09)）。
+Mitchell Hashimoto 总结得最简洁：让智能体一次就做对的最可靠方法，是给它快速、高质量的工具，自动告诉它哪里错了（[PR22](/sources/practitioners#pr22)）。Anthropic 把通用智能体循环归纳为**收集上下文 → 采取行动 → 验证工作 → 重复**（[AN13](/sources/anthropic#an13)）。Claude Code 团队的文章称验证回路决定了能并行多少智能体（[AN18](/sources/anthropic#an18)）。Cognition 观察到异步会话已超过交互式会话，开发者回来时必须看到「已验证、可合并」的结果（[VD09](/sources/vendors#vd09)）。异步委派的完整做法见 [第 14 章](./14-async-agents)。
 
 Simon Willison 的一句话可以作为本章的总纲（[PR04](/sources/practitioners#pr04)）：
 

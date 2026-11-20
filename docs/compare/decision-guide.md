@@ -97,3 +97,14 @@
 3. 它与其他规则冲突吗？
 
 **默认**：每换一代模型做一次 progression testing。来源：[TW20](/sources/thoughtworks#tw20)、[X07](/sources/x-posts#x07)、[AN30](/sources/anthropic#an30)。
+
+## 11. 交给后台智能体，还是自己在会话里做？
+
+| 交给云端或 CI 里的智能体 | 留在交互式会话里 |
+| --- | --- |
+| 范围清楚、有可执行的完成标准 | 需求还模糊，需要边做边澄清 |
+| 能在环境里自证（测试、启动、截图） | 验证要靠人看、靠人判断 |
+| 批量迁移、补测试、依赖升级、告警清理 | 跨模块架构改动、安全敏感逻辑 |
+| PR 可以单独评审、单独回滚 | 改动牵连多处、难以拆分 |
+
+**默认**：先在会话里把计划做完，再把拆好的小任务交出去；智能体与触发人都不能批准它的 PR，CI 回合设上限。来源：[BT14](/sources/bigtech#bt14)、[OA05](/sources/openai#oa05)、[QT15](/sources/quality/tools#qt15)、[QB01](/sources/quality/bigtech#qb01)；详见 [第 14 章](/handbook/14-async-agents)。

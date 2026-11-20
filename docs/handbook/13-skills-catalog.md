@@ -30,6 +30,7 @@
 | [09 安全](./09-security#_3-供应链-新的攻击面) | skills 是供应链的一部分，要像代码一样评审 | 第三方 skill 要先审查、锁版本，再放进沙箱运行（本章 §6） |
 | [10 反模式](./10-anti-patterns#_17-由人手动编排的-skill「金字塔」) | 由人手动编排的 skill「金字塔」是反模式 | 不要用 skill 搭人工流水线 |
 | [12 质量](./12-quality-cicd#q08) | Evals 即 CI；`skills/**` 的变更要触发评测 | skill 是会回归的代码，变更要能拦下 |
+| [14 异步智能体](./14-async-agents#_4-环境就是能力上限) | 云端智能体使用的是仓库里的配置：Copilot 委派任务可用 agent skills（[BT20](/sources/bigtech#bt20)），Cursor 云端照常执行仓库级 hooks、不执行用户级 hooks（[VD21](/sources/vendors#vd21)） | 团队要依赖的 skill 与 hook 应提交进仓库，并在云端环境里实际跑通 |
 
 ### 0.2 推荐起步组合（按采用路径排列） {#starter-set}
 

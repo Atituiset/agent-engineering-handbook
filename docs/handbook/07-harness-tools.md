@@ -90,7 +90,7 @@ Armin Ronacher 质疑 MCP 的可组合性与 token 成本，主张让模型写�
 - **初始化 + 增量**：初始化智能体建立 `init.sh`、进度日志、功能清单与首个提交；增量智能体每次推进一项并留下交接产物（[AN17](/sources/anthropic#an17)）。
 - **规格 + 里程碑 + 进度**：OpenAI 25 小时任务的组合（[OA06](/sources/openai#oa06)）。
 - **循环**：Ralph 技术就是一个 bash 循环加规格与强反馈，但作者明确只用于绿地项目（[PR31](/sources/practitioners#pr31)）。
-- **自主运行的条件**：auto mode 处理权限、/goal 或 /loop 推动、云端运行、**端到端自我验证**（[X06](/sources/x-posts#x06)）。
+- **自主运行的条件**：auto mode 处理权限、/goal 或 /loop 推动、云端运行、**端到端自我验证**（[X06](/sources/x-posts#x06)）。把任务交给云端或 CI 里的智能体时，环境、权限、交接与并发怎么管，见 [第 14 章](./14-async-agents)。
 - **审批疲劳**：用户批准了 93% 的权限请求，所以 Anthropic 用分类器代替逐条确认（[AN26](/sources/anthropic#an26)，厂商自报）。
 
 ## 8. harness 会过期

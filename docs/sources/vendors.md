@@ -36,6 +36,15 @@ Cursor 团队的智能体使用指南。最重要的一条是「先计划后编�
 
 `厂商自报`
 
+### VD21 · Cloud Agents（Cursor 文档，原 Background Agents） {#vd21}
+**机构**：Cursor｜**日期**：持续更新（2026-11 核对）｜[原文](https://cursor.com/docs/background-agent)
+
+云端智能体在隔离的虚拟机里运行完整开发环境，可从桌面、网页、Slack、GitHub/Bitbucket 评论、Linear 或 API 发起，并行数量不受本机限制。文档把环境放在第一位：环境可以由智能体引导配置、用快照或仓库里的 Dockerfile 定义；可添加密钥、限制出站域名。仓库里的 command 类 hooks 在云端照常运行，用户级 hooks 不可用。产出是附截图、视频与日志的 PR。按所选模型计费，首次使用时要求设置花费上限；需要对仓库有读写权限。
+
+> "Agents are only as capable as the environments they run in."
+
+`厂商文档`
+
 ## Cognition（Devin / Windsurf）
 
 ### VD05 · Don’t Build Multi-Agents {#vd05}
@@ -137,3 +146,10 @@ Cursor 团队的智能体使用指南。最重要的一条是「先计划后编�
 在大型、复杂的存量代码库中使用编码智能体的工作流：**研究 → 计划 → 实现**，围绕「频繁的有意压缩」（frequent intentional compaction）设计整个流程，把上下文利用率保持在约 40–60%，并在研究与计划阶段安排高杠杆的人工评审——因为一行错误的研究或计划会放大成成百上千行错误代码。
 
 `作者自述`
+
+### VD22 · Persistence（LangGraph 文档：检查点与可恢复执行） {#vd22}
+**机构**：LangChain｜**日期**：持续更新（2026-11 核对）｜[原文](https://docs.langchain.com/oss/python/langgraph/persistence)
+
+LangGraph 的持久化层：checkpointer 把每个线程的图状态存为检查点，用于对话延续、人在环、回溯与容错；store 保存跨线程的长期信息。文档列出的用途包括「中断后恢复」「从失败中恢复」。原「durable execution」页面现已并入此页。对编码智能体的启示是：长时间、无人值守的任务要能从中间状态继续，而不是从头再来。
+
+`厂商文档（框架）`

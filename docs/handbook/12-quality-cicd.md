@@ -54,6 +54,7 @@
 ### Q03 · CI 是独立的最终裁判 {#q03}
 
 - GitHub 给 Copilot 云端智能体内置的护栏：不能把自己的 PR 标为待评审，不能批准或合并；触发任务的人也不能批准该 PR；默认在有写权限的用户批准前不运行 Actions 工作流（[QT15](/sources/quality/tools#qt15)）。企业教程建议用规则集统一合并要求，并把智能体说明文件和工作流纳入 CODEOWNERS（[QT16](/sources/quality/tools#qt16)）。
+- 这些护栏在异步场景里最重要：人不在现场，智能体又能开 PR。任务委派、环境与交接的完整做法见 [第 14 章](./14-async-agents)。
 - OpenHands 早期让 AI 当 PR 创建者，结果触发者可以自批自合，出事也找不到负责人；后来改为每个 PR 都由人拥有（[QH04](/sources/quality/hn#qh04)）。
 - Spotify 的原则是「周边基础设施不变」：选仓库、开 PR、评审、合并的流程与人工改动完全相同，智能体只替换「写改动」这一步（[QB04](/sources/quality/bigtech#qb04)）。
 - 阿里云的「质量门禁」文章把它总结为：快速门禁在修改后跑，集成与回归在任务完成前跑，PR 阶段由 CI 在独立环境里全量验证（[QC03](/sources/quality/chinese#qc03)）。

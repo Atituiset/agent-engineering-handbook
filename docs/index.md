@@ -41,6 +41,9 @@ features:
   - title: 现成的 skills 去哪找、怎么审
     details: 厂商官方与 GitHub 高星 skills 仓库清单，附星标、许可证与各工具加载路径；第三方 skill 当作依赖审查。（第 13 章）
     link: /handbook/13-skills-catalog
+  - title: 把任务交出去之后
+    details: 云端与 CI 里的智能体：什么任务适合委派、环境决定能力上限、智能体与触发人都不能批准它的 PR、回合与预算设上限。（第 14 章）
+    link: /handbook/14-async-agents
   - title: 证据与分歧并列
     details: 厂商自报、个人经验与对照研究分开标注；上下文文件有没有用、TDD、多智能体等争议如实呈现。
     link: /sources/

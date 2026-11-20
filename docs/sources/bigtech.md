@@ -118,3 +118,11 @@ AI 助手只与它对代码库的理解一样好。Meta 用 50 多个专门智�
 自定义智能体配置文件可声明用途、指令、护栏与有限的工具白名单，适合为评审、测试、文档等反复出现的专门角色建立「岗位说明书」。
 
 `厂商文档`
+
+### BT20 · GitHub Copilot 云端会话：客户端、会话与环境 {#bt20}
+**机构**：GitHub Docs｜**日期**：持续更新（2026-11 核对）｜[原文](https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent)
+
+把 Copilot 云端智能体拆成三个概念：客户端（网页、IDE、手机、CLI）、会话（提示与智能体的活动记录）、环境（云端沙箱、GitHub Actions runner 或远程自定义环境）。2026-10-28 起付费用户可用新的「Copilot in the cloud」体验，会话可以在不同客户端之间接续。委派的任务可使用自定义智能体、agent skills、仓库级 MCP 服务器，hooks 可在智能体工作中运行命令做校验或记录；跨会话的 Copilot Memory 与单次会话的上下文分开。护栏与风险缓解见 [QT15](./quality/tools#qt15)。
+
+`厂商文档`
+
