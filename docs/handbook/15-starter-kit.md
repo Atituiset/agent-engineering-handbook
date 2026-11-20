@@ -6,7 +6,7 @@
 
 - **前 14 章讲「该做什么」，这一章给「拿来就能跑的东西」。** 手册仓库里有七个独立分支：`starter/python`、`starter/typescript`、`starter/cpp`、`starter/java`、`starter/rust`、`starter/c`、`starter/go`。每个分支的根目录都是一个完整的小项目，可以直接 clone 后当模板用。
 - **核心只有一条命令：`scripts/verify.sh`。** 智能体、人、pre-commit、Claude Code 的 Stop hook 和 GitHub Actions 跑的都是它：格式、lint、类型检查（编译型语言为 `-Werror` 编译或等价的严格模式，再加静态分析）、测试。本地绿就等于 CI 绿。
-- **每个分支都在本机实测过。** 2026-11-20 在 Debian 13 上，七个分支的 verify.sh 都从 git bundle clone 出的干净副本跑通；我们还故意改坏代码，确认类型或转换检查、lint、测试、格式检查、pre-commit、Stop hook 和受保护文件拦截都会生效（§4 摘录了真实输出）。Python、TypeScript、C++ 三个分支的 GitHub Actions 也已实际跑通；Java、Rust、C、Go 四个分支的 CI 以推送后各分支 Actions 页面为准。
+- **每个分支都在本机实测过。** 2026-11-20 在 Debian 13 上，七个分支的 verify.sh 都从 git bundle clone 出的干净副本跑通；我们还故意改坏代码，确认类型或转换检查、lint、测试、格式检查、pre-commit、Stop hook 和受保护文件拦截都会生效（§4 摘录了真实输出）。Python、TypeScript、C++、Rust、C、Go 六个分支的 GitHub Actions 也已实际跑通。Java 分支在 GitHub 上的第一次运行失败了：wrapper 下载 Maven 时出错，而 verify.sh 把报错过滤掉了（经过见 §7）。修复后的运行结果以该分支 Actions 页面为准。
 - **智能体本身的行为没法用脚本复现。** 「把任务交给智能体」这一步标为「需在你的编辑器/CLI 中执行」；我们验证的是它周围的检查。
 - **规则文件只是「建议」，检查才是「必须」**（[第 04 章](./04-architecture-constraints)）。所以 AGENTS.md 写得很短，真正的约束放在 verify.sh、hook、pre-commit 和 CI 里。
 
@@ -92,14 +92,14 @@ CI          push / pull request       .github/workflows/ci.yml               不
 
 ## 4. 实测结果：通过与被拦住 {#results}
 
-运行环境：2026-11-20，Debian 13。每个分支都从 git bundle clone 到干净目录再运行；Java、Go 的验证还用了空的本地 Maven 仓库和 Go 模块缓存，确认从零下载依赖也能通过。
+运行环境：2026-11-20，Debian 13。每个分支都从 git bundle clone 到干净目录再运行；Java、Go 的验证还用了空的本地 Maven 仓库和 Go 模块缓存，确认从零下载依赖也能通过；Java 另外用与 GitHub runner 相同的 Temurin 21.0.13+9 重跑了一遍。
 
 | 分支 | 工具与版本（本机实测） | CI 里怎么固定 |
 | --- | --- | --- |
 | python | uv 0.13.8；ruff 0.17.6、mypy 2.4.1、pytest 9.2.0 | `uv.lock` |
 | typescript | Node.js 24.22.1；TypeScript 6.0.3、eslint 10.15.0、typescript-eslint 8.73.0、vitest 5.1.1、prettier 3.10.1 | `package-lock.json`；CI 用 Node 22 |
 | cpp | CMake 3.31.6、GCC 14.2.0、clang-format / clang-tidy 19.1.7、doctest 2.5.3 | pipx 安装 clang-format 19.1.7、clang-tidy 19.1.0.1 |
-| java | OpenJDK 21.0.13、Maven 3.9.16（wrapper）、Spotless 3.11.0、google-java-format 1.36.0、Error Prone 2.53.0、JUnit 5.14.4 | wrapper + pom.xml；CI 用 Temurin 21 |
+| java | OpenJDK 21.0.13（Debian）与 Temurin 21.0.13+9、Maven 3.9.16（wrapper）、Spotless 3.11.0、google-java-format 1.36.0、Error Prone 2.53.0、JUnit 5.14.4 | wrapper + pom.xml；CI 用 `actions/setup-java@v5` 装 Temurin 21，并缓存依赖和 wrapper 下载的 Maven |
 | rust | rustup 1.29.3；rustc / cargo 1.100.0、clippy 0.1.100、rustfmt 1.11.0 | `rust-toolchain.toml`；CI 先 `rustup toolchain install 1.100.0` |
 | c | CMake 3.31.6、GCC 14.2.0、clang-format / clang-tidy 19.1.7、Unity 2.7.0 | 同 cpp |
 | go | Go 1.27.3、staticcheck 0.8.2、golang.org/x/tools 0.53.0（goimports） | go.mod 的 `tool` 依赖；CI 用 `actions/setup-go` 固定 1.27.3 |
@@ -185,7 +185,8 @@ C++、Java、Rust、C、Go 这几行值得多看一眼：类型或转换错误�
 | 项目 | 状态 |
 | --- | --- |
 | verify.sh、pre-commit、hook 脚本（七种语言） | **已在本机实测**，通过和被拦住的情况都有 |
-| CI 工作流 | Python、TypeScript、C++：**GitHub Actions 已实际运行并通过**（2026-11-20）。Java、Rust、C、Go：本机用全新 clone 跑了等价命令（verify.sh）并通过，**GitHub 托管 runner 上的运行在本节写作时尚未验证**，以各分支 Actions 页面为准 |
+| CI 工作流 | Python、TypeScript、C++、Rust、C、Go：**GitHub Actions 已实际运行并通过**（2026-11-20）。Java：第一次运行失败（见下一行），修复后的运行**在本节写作时尚未验证**，以该分支 Actions 页面为准 |
+| Java 分支第一次 CI 失败 | 日志只有 `==> format (spotless:check, google-java-format)` 和 `Process completed with exit code 1`，这一步只用了约 0.2 秒。CI 里没有缓存，`./mvnw` 要先用 wget 下载 Maven；当时的 verify.sh 为了突出编译警告，只打印以 `[WARNING]`/`[ERROR]` 开头的行，wrapper 的 `wget: Failed to fetch ...` 不是这种格式，被过滤掉了。0.2 秒不够下载并启动 Maven，所以失败的只能是下载这一步；本机让下载地址返回 403，得到完全相同的「只有标题、退出码 1」。下载为什么失败，日志里没有留下证据（Maven Central 会对共享 IP 返回 403/429，这是可能的原因之一，未证实）。修复：verify.sh 失败时原样打印 wrapper 和 Maven 的全部输出；CI 换成 `setup-java@v5`（单独缓存 wrapper 下载的 Maven），并设 `MVNW_VERBOSE=true`，再失败时日志会显示 wget 的 HTTP 状态。教训：**给检查脚本的输出做过滤，会连同你没预料到的错误一起藏起来**；失败时宁可多打印 |
 | Rust 的 `cargo deny` | **未配置、未实测**：示例 crate 没有第三方依赖 |
 | Java 的 google-java-format 版本 | 固定为 1.36.0：1.37.0 经 Spotless 3.11.0 调用时在本机报错（单独运行 jar 正常），原因未深究 |
 | C 的显式强转 | 我们启用的 clang-tidy 检查没有报 `(int)` 强转，只能靠 AGENTS.md 的约定、测试和评审 |
@@ -209,5 +210,5 @@ C++、Java、Rust、C、Go 这几行值得多看一眼：类型或转换错误�
 - 七个 orphan 分支 `starter/python`、`starter/typescript`、`starter/cpp`、`starter/java`、`starter/rust`、`starter/c`、`starter/go`，各自是一个能直接 clone 的完整项目。
 - 唯一的完成标准是 `bash scripts/verify.sh` 输出 `verify: OK`。智能体、人、pre-commit、Stop hook 和 CI 都跑这一条命令。
 - 实测：七个分支基线全部通过；一个故意写错的改动，被类型或转换检查、lint 或静态分析、测试、格式检查、pre-commit 和 Stop hook 逐层拦下，受保护文件的修改被 hook 脚本拒绝。
-- 没验证的部分已经如实标出：Java、Rust、C、Go 四个分支在 GitHub runner 上的 CI 运行、Claude Code 里实际触发 hook、各编辑器对 `@AGENTS.md` 的支持，以及智能体本身的行为。
+- 没验证的部分已经如实标出：Java 分支修复后在 GitHub runner 上的 CI 运行、Claude Code 里实际触发 hook、各编辑器对 `@AGENTS.md` 的支持，以及智能体本身的行为。
 - 下一步：按 §6 套用到你自己的项目，把 `ci / verify` 设为必需检查，再按 [一页纸推荐](./00-one-page#do-now) 逐项补齐其余几件事。
