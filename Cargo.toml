@@ -1,0 +1,19 @@
+[package]
+name = "durations"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Starter-kit example: parse human-readable durations like '1h30m' into seconds."
+publish = false
+
+[dependencies]
+
+# Lints are checks, not suggestions: scripts/verify.sh runs clippy with -D warnings.
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+unwrap_used = "warn"
+expect_used = "warn"

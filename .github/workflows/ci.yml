@@ -1,0 +1,22 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      # Same toolchain as rust-toolchain.toml, so fmt/clippy results match local runs.
+      - name: Install pinned Rust toolchain
+        run: |
+          rustup toolchain install 1.100.0 --profile minimal --component clippy,rustfmt
+          rustup show active-toolchain
+      - name: Verify (cargo fmt, clippy -D warnings, cargo test)
+        run: bash scripts/verify.sh

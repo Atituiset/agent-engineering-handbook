@@ -1,0 +1,6 @@
+---
+description: Project rules (single source of truth is AGENTS.md)
+alwaysApply: true
+---
+Follow @AGENTS.md. Before saying a task is done, run `bash scripts/verify.sh`
+and make sure it prints `verify: OK`. Do not edit `.github/`, `scripts/`, `.pre-commit-config.yaml`, `Cargo.toml`, `Cargo.lock` or `rust-toolchain.toml`.

@@ -1,0 +1,30 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/guard-protected.sh" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && cargo fmt 1>&2"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/stop-verify.sh" }
+        ]
+      }
+    ]
+  }
+}
