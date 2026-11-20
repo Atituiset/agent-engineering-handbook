@@ -1,0 +1,19 @@
+# Every enabled check is an error: verify.sh and CI fail on any finding.
+Checks: >
+  -*,
+  bugprone-*,
+  google-readability-casting,
+  -bugprone-easily-swappable-parameters,
+  cppcoreguidelines-*,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-pro-bounds-constant-array-index,
+  misc-*,
+  -misc-include-cleaner,
+  modernize-*,
+  -modernize-use-trailing-return-type,
+  performance-*,
+  readability-*,
+  -readability-magic-numbers,
+  -readability-identifier-length
+WarningsAsErrors: "*"
+HeaderFilterRegex: "^.*/include/durations/.*"
