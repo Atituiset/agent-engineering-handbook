@@ -57,9 +57,13 @@ Claude Code 团队推荐三类「最难被糊弄」的测试（[AN18](/sources/a
 | **支持**：曾是「TDD 反对者」，现在把测试作为核心 | Harper Reed（[PR30](/sources/practitioners#pr30)） |
 | **保留**：看着测试变红只有在**有人检查时**才算证据；智能体内部 TDD 带不来人亲自做时的控制感，生成的测试有时偏薄、自我指涉 | Böckeler（[TW04](/sources/thoughtworks#tw04)） |
 
+流水线上的 TDD 做法（测试与实现分会话、判据先行）见 [第 12 章 Q01](./12-quality-cicd#q01)。
+
 **如何调和**：TDD 在智能体循环中的价值主要是**行为约束**（逼它先想清楚预期、防止过度实现），而不是**证据**。证据需要来自智能体之外：人审过的测试用例、变异测试分数、属性测试、端到端测试。推荐组合：**人写或人审关键测试（尤其是验收测试）→ 智能体按 red/green 实现 → 变异测试检验测试质量。**
 
 ## 5. 生成者与评判者分离
+
+> 评审流水线中的异构评审做法见 [第 12 章 Q07](./12-quality-cicd#q07)。
 
 Anthropic 的长程应用开发实验发现，**把干活的智能体与评判的智能体分开**是很强的杠杆；但评估者也是 LLM，天然对 LLM 产出偏宽容，需要专门校准（[AN24](/sources/anthropic#an24)）。Cursor 的大规模实验在引入「规划者 / 工作者 / 评判者」分层后解决了大部分协调问题（[VD03](/sources/vendors#vd03)）。Superpowers 每个任务后派发评审（[OS08](/sources/open-source#os08)）。
 
@@ -68,7 +72,7 @@ Anthropic 的长程应用开发实验发现，**把干活的智能体与评判�
 ## 6. 防作弊与升级
 
 - 检查连续失败三轮就升级给人，而不是让智能体无限尝试（[AN18](/sources/anthropic#an18)）。
-- 不许用 sleep / 重试掩盖 flaky test（[AN18](/sources/anthropic#an18)）。
+- 不许用 sleep / 重试掩盖 flaky test（[AN18](/sources/anthropic#an18)；详见 [第 12 章 Q10](./12-quality-cicd#q10)）。
 - 监视禁用、删除、跳过测试的迹象（[PR15](/sources/practitioners#pr15)、[CN06](/sources/chinese#cn06)）。
 - 用 Stop hook 在「宣布完成」前强制跑测试（[AN03](/sources/anthropic#an03)）。
 
@@ -97,7 +101,7 @@ P06「验证闭环」有 298 位独立作者支持，排在前列。P07「TDD」
 - **评测看异常值而非分数**：百度文心快码发现，同样的分数下答对的可能是另一组题，因此关注异常值，并从经人审核的真实提交里挖掘评测集（[CN40](/sources/chinese#cn40)）。
 - **CI 成为瓶颈**：Linear 因 AI 带来的变更量重做了 CI（[HN23](/sources/hackernews#hn23)）。Peter Steinberger 计划让 Codex 判断哪些测试真正需要跑，大幅削减 CI（[XV-007](/sources/x/verify#xv-007)）。这是对「测试越多越好」的一个实际限定。
 - **TDD 的限定**：Armin Ronacher 认为重写系统不一定需要现成的测试套件，可以让智能体专门自建（[XV-012](/sources/x/verify#xv-012)）。腾讯一线团队明确不追求严格 TDD，用规则和自测兜底（团队自报，[TX02](/sources/chinese#tx02)），与第 12 章 [Q01 测试先行](/handbook/12-quality-cicd#q01) 有张力；字节 AEGIS 的“先复现再修”则是测试先行的变体（论文，团队自报，[BD06](/sources/quality/research#bd06)）。
-- **把目标从“迁移代码”改成“迁移行为”**（数字均为团队自报、尚未独立验证）：支付宝 60 万行重构用两个相互校验的 Loop 验证（议题摘要，[AL27](/sources/quality/chinese#al27)）；字节先生成 bug 复现脚本再修（[BD06](/sources/quality/research#bd06)），NL2Test 自报 85.4% 生成用例进入 CI/CD（[BD10](/sources/quality/chinese#bd10)）。
+- **把目标从“迁移代码”改成“迁移行为”**（数字均为团队自报、尚未独立验证）：支付宝 60 万行重构用两个相互校验的 Loop 验证（议题摘要，未见全文，[AL27](/sources/quality/chinese#al27)）；字节先生成 bug 复现脚本再修（[BD06](/sources/quality/research#bd06)），NL2Test 自报 85.4% 生成用例进入 CI/CD（[BD10](/sources/quality/chinese#bd10)）。
 - **防作弊的国内案例**：阿里云诊断系统里 Agent 曾把 logger.error 改成 logger.warning 就宣称已修复，所以必须独立验证（团队自报，[AL17](/sources/quality/chinese#al17)）；腾讯游戏以“编译 0 error”为量化验收（团队自报，[TX07](/sources/chinese#tx07)）——这是必要但不充分的完成标准，见本章第 7 节。
 
 ## 与传统软件工程认知的对比

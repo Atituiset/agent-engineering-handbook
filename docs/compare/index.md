@@ -38,7 +38,7 @@
 | **康威定律** | 智能体没有组织结构；架构边界必须显式强制 | 延伸 | 平级自协调失败，需要层级（[VD03](/sources/vendors#vd03)） | [04](/handbook/04-architecture-constraints) | [P05 · 184／12](/compare/evidence#p05) |
 | **Brooks 定律** | 加智能体同样有协调成本 | 延续 | 读并行、写单线程（[VD06](/sources/vendors#vd06)） | [07](/handbook/07-harness-tools) | [P11 · 209／17](/compare/evidence#p11) |
 | **代码行数不是生产率** | 「AI 代码占比」是新变种 | 延续 | 古德哈特定律（[TW32](/sources/thoughtworks#tw32)） | [08](/handbook/08-team-process) | — |
-| **选择无聊技术** | 对智能体更友好 | 加强 | 可组合、API 稳定、训练数据中常见（[OA01](/sources/openai#oa01)） | [07](/handbook/07-harness-tools) | [P20 · 5／0](/compare/evidence#p20) |
+| **选择无聊技术** | 对智能体更友好 | 加强 | 可组合、API 稳定、训练数据中常见（[OA01](/sources/openai#oa01)）；**待验证**，独立佐证只有 5 位（[P20](/compare/evidence#p20)） | [07](/handbook/07-harness-tools) | [P20 · 5／0](/compare/evidence#p20) |
 | **Unix 哲学** | 智能体最友好的接口 | 加强 | CLI、文本、可组合（[X11](/sources/x-posts#x11)、[PR17](/sources/practitioners#pr17)） | [07](/handbook/07-harness-tools) | [P14 · 304／7](/compare/evidence#p14) |
 | **最小权限** | 智能体必须默认沙箱 | 加强 | 提示注入无根治方案（[SC01](/sources/security#sc01)、[TW24](/sources/thoughtworks#tw24)） | [09](/handbook/09-security) | [P15 · 179／10](/compare/evidence#p15) |
 | **人工审批危险操作** | 审批疲劳；改为沙箱 + 分类器 + 风险分级 | 修正 | 93% 请求被批准（[AN26](/sources/anthropic#an26)） | [09](/handbook/09-security) | [P15 · 179／10](/compare/evidence#p15) |

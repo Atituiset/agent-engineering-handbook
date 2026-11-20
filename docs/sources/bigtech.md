@@ -126,6 +126,11 @@ AI 助手只与它对代码库的理解一样好。Meta 用 50 多个专门智�
 
 `厂商文档`
 
+### BT22 · GitHub Copilot code referencing：与公开代码匹配时的提示 {#bt22}
+**机构**：GitHub Docs｜**日期**：持续更新（2026-11 核对）｜[原文](https://docs.github.com/en/copilot/concepts/completions/code-referencing)
+
+Copilot 生成的代码可能与 GitHub 公开仓库中的代码相同。按账户或组织的策略，匹配的建议可以被拦截，或附上匹配代码的位置与检测到的许可证；云端委派任务的会话日志里也会附上匹配详情。文档称匹配通常出现在不到 1% 的行内建议中（厂商自报）。
+
 ### BT20 · GitHub Copilot 云端会话：客户端、会话与环境 {#bt20}
 **机构**：GitHub Docs｜**日期**：持续更新（2026-11 核对）｜[原文](https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent)
 

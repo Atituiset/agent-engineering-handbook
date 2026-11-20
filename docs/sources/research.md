@@ -133,6 +133,15 @@ Agent 能不能验证，取决于仓库能不能跑起来：LLM Agent 在 Docker
 
 `调查研究（相关性）`
 
+## 法律与合规（2026-11 增补） {#legal}
+
+### RS14 · Copyright and Artificial Intelligence, Part 2: Copyrightability {#rs14}
+**机构**：美国版权局（U.S. Copyright Office）｜**日期**：2025-01-29｜[原文](https://www.copyright.gov/ai/)｜[报告 PDF](https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf)
+
+人工智能报告的第二部分，讨论生成式 AI 产出能否受版权保护。结论：是否构成作品要逐案判断；以现有的通用技术，仅靠提示不足以让用户对产出的表达要素有足够控制，因而不能仅凭提示成为作者；人对产出所做的选择、编排与修改仍可能受保护。这是美国一国的行政机构意见，不是法律意见，也不涉及其他法域。
+
+> "prompts alone do not provide sufficient human control to make users of an AI system the authors of the output"
+
 ## 另见
 
 - Meta TestGen-LLM 论文（LLM 生成测试 + 确定性过滤）：[BT10](./bigtech#bt10)

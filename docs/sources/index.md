@@ -16,22 +16,22 @@
 
 | 分类 | 编号 | 条目数 | 内容 |
 | --- | --- | --- | --- |
-| [Anthropic / Claude Code](./anthropic) | AN | 36 | 官方文档、工程博客、claude.dev、研究博客 |
-| [OpenAI / Codex](./openai) | OA | 9 | Harness engineering、Codex 智能体循环、AGENTS.md、内部实践 |
-| [Google · Meta · GitHub](./bigtech) | BT | 19 | Gemini CLI / Conductor、ADK、Meta 测试生成与部落知识、Copilot 与 Spec Kit |
-| [工具厂商](./vendors) | VD | 20 | Cursor、Cognition、Vercel、Amp、Factory、Kiro、Manus、LangChain、HumanLayer |
+| [Anthropic / Claude Code](./anthropic) | AN | 40 | 官方文档、工程博客、claude.dev、研究博客；含成本、遥测、提示缓存与 context editing |
+| [OpenAI / Codex](./openai) | OA | 12 | Harness engineering、Codex 智能体循环、AGENTS.md、内部实践、Codex 云端任务、提示缓存、SWE-bench Verified 弃用 |
+| [Google · Meta · GitHub](./bigtech) | BT | 22 | Gemini CLI / Conductor、ADK、Meta 测试生成与部落知识、Copilot 与 Spec Kit、Copilot 云端会话与公开代码匹配、Google 代码迁移 |
+| [工具厂商](./vendors) | VD | 22 | Cursor、Cognition、Vercel、Amp、Factory、Kiro、Manus、LangChain、HumanLayer；含 Cursor 云端智能体、LangGraph 持久化 |
 | [Thoughtworks 与 martinfowler.com](./thoughtworks) | TW | 36 | Böckeler 等人的系列文章、技术雷达条目 |
 | [独立工程师与意见领袖](./practitioners) | PR | 36 | Simon Willison、Kent Beck、Armin Ronacher、Mitchell Hashimoto 等 |
 | [X 精选（按主题，v2 主力来源）](./x/) | XW/XC/XP/XV/XR/XK/XT/XA/XS/XM/XF | 205 | 141 位作者；工作流、上下文、计划、测试、评审、约束、工具、并行、安全、团队、失败与反思 |
 | [X 帖子（v1）](./x-posts) | X | 11 | Karpathy、Greg Brockman、Boris Cherny、Thariq 等 |
 | [Hacker News 高热讨论](./hackernews) | HN | 29 | 高互动讨论串与评论区代表性观点 |
 | [中文互联网](./chinese) | CN / TX / AL / BD | 89 | 美团、腾讯、快手、百度、字节、蚂蚁、京东、阿里云、InfoQ、宝玉、阮一峰、少数派等；含 2026-11 增补的腾讯、阿里（含蚂蚁）、字节团队材料（TX / AL / BD） |
-| [开源项目与规范](./open-source) | OS / TX | 16 | AGENTS.md、Spec Kit、MCP、Superpowers、架构约束工具；含 CubeSandbox |
-| [研究与数据](./research) | RS / AL / BD | 11 | METR、DORA、GitClear、AGENTS.md 评估论文；含 Qwen3-Coder、Trae Agent、Repo2Run 等工业论文 |
-| [安全](./security) | SC / TX / BD | 8 + 索引 | 致命三要素、提示注入设计模式、包幻觉；含 A.S.E 安全评测与 Trae 遥测分析 |
+| [开源项目与规范](./open-source) | OS / TX | 18 | AGENTS.md、Spec Kit、MCP、Superpowers、架构约束工具；含 CubeSandbox、OpenTelemetry GenAI 语义约定、A2A |
+| [研究与数据](./research) | RS / AL / BD | 17 | METR（含 2026-02 后续）、DORA（含 AI 能力模型）、GitClear、AGENTS.md 评估论文、τ-bench、SWE-bench Verified 审计、技能形成对照实验、美国版权局报告；含 Qwen3-Coder、Trae Agent、Repo2Run 等工业论文 |
+| [安全](./security) | SC / TX / BD | 13 + 索引 | 致命三要素、提示注入设计模式、包幻觉、MCP 授权与工具投毒、二选规则、CaMeL、自适应攻击；含 A.S.E 安全评测与 Trae 遥测分析 |
 | [质量与 CI/CD 专题](./quality/)（2026-11 新增） | QB/QT/QP/QR/QO/QC/QX/QH / TX/AL/BD | 172 | 测试、CI 门禁、AI 评审、Evals、沙箱验证、合并队列与发布、护栏、度量与反模式；大厂、工具、工程师、研究、开源、中文、X、HN；含按主题分散进来的腾讯、阿里、字节条目 |
 
-精选合计约 **690 条**完整条目（不含交叉索引）：v1 的 207 条，加上 2026-11 扩充的 X 精选 205 条、中文 39 条、HN 29 条，质量与 CI/CD 专题（含后来按主题并入的测试、评审、评测等条目），以及分散到中文互联网、研究、安全与开源分类中的腾讯、阿里、字节团队材料。
+精选合计约 **720 条**完整条目（不含交叉索引）：v1 的 207 条，加上 2026-11 扩充的 X 精选 205 条、中文 39 条、HN 29 条，质量与 CI/CD 专题（含后来按主题并入的测试、评审、评测等条目），以及分散到中文互联网、研究、安全与开源分类中的腾讯、阿里、字节团队材料；2026-11 补齐缺口时又新增 25 条（异步与云端智能体、成本与遥测、评测方法、MCP 与注入防御、技能形成、版权等）。
 
 此外，[全量库](/library/)收录 **3,195 条**资料（X 帖子 1,525 条、HN 讨论 542 个、GitHub 仓库 630 个、精选条目与网页 498 条），只列元数据，用于统计各条实践的 [共识度/佐证](/compare/evidence)。腾讯、阿里、字节相关条目带有公司字段，可在 [在线筛选](/library/#explorer) 中按公司查看。
 

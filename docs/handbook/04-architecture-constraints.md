@@ -12,6 +12,7 @@
 - **约束必须在智能体能「看到」的地方失败**：编码时（hook）、提交前（pre-commit）、PR 时（CI），越早越便宜。
 - **变更不能修改评判它的规则**：规则从基础分支读取，受保护文件禁止智能体修改。
 - **把技术债清理自动化**：像垃圾回收一样持续小额偿还。
+- **先让仓库对智能体可跑**：一条命令装环境、一条命令跑测试，本地、CI 与云端用同一套环境（§9 清单）。
 
 ## 1. 为什么写在 AGENTS.md 里不够
 
@@ -99,17 +100,30 @@ Böckeler 的 harness 框架（[TW01](/sources/thoughtworks#tw01)）把控制手
 ## 8. 分歧：门禁该多严？
 
 - **OpenAI**：吞吐量远超人的注意力时，许多传统规范变得适得其反——合并门禁极少、PR 生命周期短、flaky test 常用重跑解决；「在低吞吐环境这样做是不负责任的，在这里常是正确的权衡」（[OA01](/sources/openai#oa01)）。
-- **Anthropic Claude Code 团队**：不许用 sleep / 重试掩盖 flaky test（[AN18](/sources/anthropic#an18)）。
+- **Anthropic Claude Code 团队**：不许用 sleep / 重试掩盖 flaky test（[AN18](/sources/anthropic#an18)；流水线上的做法见 [第 12 章 Q10](./12-quality-cicd#q10)）。
 - **Kent Beck**：AI 倾向大批量，信任需要小而经验证的步骤（[PR16](/sources/practitioners#pr16)）。
 
 **本手册的取舍**：**架构不变量必须硬阻断，测试稳定性问题不可掩盖，流程性门禁可以按吞吐量调整。** 也就是说，OpenAI 放宽的是「等待」（阻塞式合并、人工审批），没有放宽「架构约束」——他们的分层规则恰恰是全文最严格的部分。
+
+## 9. 让代码库对智能体可读、可跑
+
+前面几节讲的是「守住」约束。在那之前，智能体首先得能在这个仓库里把代码跑起来、把检查跑通。OpenAI 的经验是，早期进展慢不是模型不行，而是环境欠规范（[OA01](/sources/openai#oa01)）。相关建议散在全书各章，这里汇总成一张清单：
+
+- [ ] **一条命令装好环境，一条命令跑测试。** 写进 AGENTS.md 的命令段（[第 11 章 §2](./11-checklists#_2-agents-md-模板)）。用容器镜像或 devcontainer 固定依赖，本地、CI 和云端智能体用同一套（[第 14 章 §4](./14-async-agents#_4-环境就是能力上限)）。让仓库自动可运行本身就是一个难题，字节的 Repo2Run 专门研究这件事，说明「能不能验证取决于仓库能不能跑起来」（[BD20](/sources/research#bd20)）。
+- [ ] **测试快，可以按文件或模块单独跑**，组件之间有清晰的接口（[第 08 章 §1](./08-team-process#_1-组织级推进-openai-的清单) 第 4 条）。
+- [ ] **类型、lint、架构测试都能在本地一条命令跑完**，与 CI 用同一份配置（本章 §4）。
+- [ ] **应用能一键启动，日志和页面能被智能体看到**（[第 05 章 §2](./05-verification#_2-给智能体「眼睛」)）。
+- [ ] **知识放在仓库里**：AGENTS.md 只做目录，细节放在结构化的 `docs/`，作为事实源（[OA01](/sources/openai#oa01)）。
+- [ ] **monorepo 用就近的规则**：子目录各自的 AGENTS.md 或按路径生效的规则，只在相关时加载（[第 02 章 §4](./02-context-engineering#_4-渐进式披露)）。
+- [ ] **内部工具做成可脚本化的 CLI**，人和智能体都能用（[第 07 章 §5](./07-harness-tools#_5-工具设计-接口比示例重要)）。
+- [ ] **技术选型偏主流、稳定**，在训练数据里常见，能在仓库内完全推理（[OA01](/sources/openai#oa01)；这一条目前独立佐证很少，标为待验证，见 [第 07 章对比表](./07-harness-tools#与传统软件工程认知的对比)）。
 
 ## 2026-11 新证据：机械约束更受认可，「过度约束」开始被反思 {#new-evidence}
 
 - **加强：纠正写成 lint，而不是写进说明文件**。Cline 创始人认为模型读不完整个代码库，但可以在提交时用 linter 强制架构模式（[XK-001](/sources/x/constraints#xk-001)）。Lauren Tan 的演讲要点是：每纠正一次，就写成一条 lint 规则，而不是往 agents.md 里加话（[XK-005](/sources/x/constraints#xk-005)）。平安科技用 AI 把私域架构规范批量转成 Lint、ArchUnit 等 CI 检查（[CN16](/sources/chinese#cn16)）。快手代码评审沉淀了 1,100+ 条确定性规则，采纳率从 7.9% 升到 54%（团队自报，[CN37](/sources/chinese#cn37)）。Boris Cherny 也说，lint 规则与 e2e 测试的杠杆比以前更大了（[XV-002](/sources/x/verify#xv-002)）。
 - **修正：harness 的严格程度要跟着模型走**。Robert C. Martin（Uncle Bob）花几周搭了一个严格约束智能体的 harness，期间模型进步让它变得多余（[XK-003](/sources/x/constraints#xk-003)）。他公开反思自己可能在过度约束，但仍保留单元测试与变异测试（[XK-002](/sources/x/constraints#xk-002)）。**结论调整**：本章的机械约束主张不变，但应优先保留「检查结果」的约束（测试、类型、架构规则），谨慎对待「规定步骤」的约束（强制流程、关卡）。后者最容易被模型进步淘汰。
 - **并行放大架构缺陷**：Peter Steinberger 说，同步数据库访问在一个智能体时没问题，到 50 个并行会话就成了瓶颈（[XK-004](/sources/x/constraints#xk-004)）。
-- **把红线写成检查，而不是只写进说明文件**（数字均为团队自报、尚未独立验证）：腾讯一个由 AI 维护的运营平台把分层规则、文件红线和检查命令写进 AGENTS.md，提交前必须过 lint/类型检查（[TX02](/sources/chinese#tx02)）；QQ 音乐用 IDL 门禁防止 AI 猜依赖（[TX05](/sources/chinese#tx05)）。腾讯游戏 SRE 让所有变更必经 Git 与人工 Review，用 Harness 管住 LLM 的不确定性（议题摘要，[TX17](/sources/chinese#tx17)）。飞书 CodeM 通过了信通院“驾驭工程（Harness）能力”成熟度评估（团队自报，[BD18](/sources/chinese#bd18)），说明“约束写进可执行检查”已经被当成可评估的工程能力，而不只是个人习惯。
+- **把红线写成检查，而不是只写进说明文件**（数字均为团队自报、尚未独立验证）：腾讯一个由 AI 维护的运营平台把分层规则、文件红线和检查命令写进 AGENTS.md，提交前必须过 lint/类型检查（[TX02](/sources/chinese#tx02)）；QQ 音乐用 IDL 门禁防止 AI 猜依赖（[TX05](/sources/chinese#tx05)）。腾讯游戏 SRE 让所有变更必经 Git 与人工 Review，用 Harness 管住 LLM 的不确定性（议题摘要，未见全文，[TX17](/sources/chinese#tx17)）。飞书 CodeM 通过了信通院“驾驭工程（Harness）能力”成熟度评估（团队自报，[BD18](/sources/chinese#bd18)），说明“约束写进可执行检查”已经被当成可评估的工程能力，而不只是个人习惯。
 
 ## 与传统软件工程认知的对比
 

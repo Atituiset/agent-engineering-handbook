@@ -69,6 +69,8 @@ Greg Brockman 给 OpenAI 团队的要求：**确保每段合并的代码都有�
 
 ## 6. AI 代码评审：怎么用好
 
+> AI 评审的度量（采纳率、精确率）与 CI 门禁做法见 [第 12 章 Q06](./12-quality-cicd#q06)。
+
 - **用仓库内文件定制**：REVIEW.md / CLAUDE.md 调整评审重点、减少吹毛求疵、忽略生成文件（[AN06](/sources/anthropic#an06)）。
 - **规则从基础分支读取**，变更不能修改评判它的规则（[AN18](/sources/anthropic#an18)）。
 - **多智能体投票降低误报**（[AN19](/sources/anthropic#an19)）。
@@ -95,7 +97,7 @@ P08「人工评审不可省」有 254 位独立作者支持，也有最多的人
 - **人工评审的盲区**：Anthropic 的实验把危险命令藏进真实会话，让 1053 名开发者评审，人工只发现 13.6%（厂商自报，[XS-006](/sources/x/security#xs-006)）。快手指出人工 CR 容易漏掉看似简单的低级错误（[CN37](/sources/chinese#cn37)）。
 - **分层与隔离**：Anthropic 按风险分级评审，低风险变更在自动评审和安全检查通过后无需人工评审，评论区争议很大（[HN16](/sources/hackernews#hn16)）。腾讯 LoopForge 让实现、评审、测试使用独立的上下文和模型，避免「自己评审自己」（[CN21](/sources/chinese#cn21)）。美团用不同厂商的模型互审、Pre-PR 自查（[CN01](/sources/chinese#cn01)）。
 - **更激进的预测**：Bun 作者预计几个月内会变成「自动评审给出 LGTM、全新上下文的另一个模型判定、自动合并」（[XR-004](/sources/x/review#xr-004)）。Uncle Bob 在找人工评审之外的监督方式（[XR-008](/sources/x/review#xr-008)）。本手册的立场不变：**每段合并的代码都要有人负责**，但负责的方式可以从逐行阅读，转向审计划、审风险、审证据。
-- **异构 / 对抗评审的国内案例**（数字均为团队自报、尚未独立验证）：腾讯 CDN 用 3 个模型并行辩论式 CR（[TX03](/sources/chinese#tx03)）；CodeBuddy 负责人称“不能让同一个 AI 自己检查自己”（[TX11](/sources/chinese#tx11)）；腾讯音乐把 AI 评审与 SonarQube、单测联动降噪（议题摘要，[TX18](/sources/quality/chinese#tx18)）。
+- **异构 / 对抗评审的国内案例**（数字均为团队自报、尚未独立验证）：腾讯 CDN 用 3 个模型并行辩论式 CR（[TX03](/sources/chinese#tx03)）；CodeBuddy 负责人称“不能让同一个 AI 自己检查自己”（[TX11](/sources/chinese#tx11)）；腾讯音乐把 AI 评审与 SonarQube、单测联动降噪（议题摘要，未见全文，[TX18](/sources/quality/chinese#tx18)）。
 - **规模数字不要读成“AI 替代评审”**：腾讯自报 AI 参与 94% 的代码评审、28% 的缺陷由 AI 发现并被采纳（[TX08](/sources/quality/chinese#tx08)），但这与 [Q06 AI 评审是补充](/handbook/12-quality-cicd#q06) 并不矛盾——同一家公司的一线工程师强调 AI 审查意见“每一条都要过脑子”（[TX04](/sources/chinese#tx04)）。阿里 Open Code Review 自报精度优先（[AL08](/sources/quality/oss#al08)），社区在第三方基准上复测精度只有约 12%，作者回应已修复（[AL09](/sources/quality/hn#al09)）；样本只有 10 个 PR，但足以说明团队自报 benchmark 需要独立复测（Q13）。
 
 ## 与传统软件工程认知的对比

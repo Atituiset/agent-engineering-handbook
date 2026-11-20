@@ -41,6 +41,7 @@
 - Kent Beck 在说明文件里要求智能体走红—绿—重构，只在测试通过时重构，并把「智能体在作弊，比如禁用或删除测试」列为需要人工介入的信号（[QP01](/sources/quality/practitioners#qp01)）。他在访谈中称 TDD 是与智能体协作的「超能力」，同时坦言很难阻止智能体为了通过而删测试（[QP03](/sources/quality/practitioners#qp03)）。
 - 手淘 TEKO 团队把验收条件结构化后回喂给生码环节：「判据先行，这才是 AI 原生的 TDD」（[QC10](/sources/quality/chinese#qc10)）。美团给出三条策略：用单测替代肉眼审查、给存量代码先补安全网、复杂需求用 TDD（[QC01](/sources/quality/chinese#qc01)）。
 - Addy Osmani：评审开始前先定义「完成」，否则评审者总能找到「可以改进」的地方（[QX10](/sources/quality/x#qx10)）。
+- TDD 在智能体循环里的分歧（行为约束还是证据）见 [第 05 章 §4](./05-verification#_4-tdd-在智能体循环里-分歧)；本节只讲流水线上的做法。
 - **关键做法：写测试与写实现分开。** 写测试的会话和写实现的会话分开，实现会话只能看到它无权修改的测试（[QC16](/sources/quality/chinese#qc16)）。
 - **异议**：有人质疑多数「LLM + TDD」文章并不是真正的 TDD，只是「先写一堆测试再一直改到全绿」（[QH07](/sources/quality/hn#qh07)）；也有人认为在需求频繁变动时 TDD 会显著增加 token 成本（[HN 评论](https://news.ycombinator.com/item?id=48418239)）。
 
@@ -91,6 +92,8 @@
 
 ### Q06 · AI 评审是补充而非替代 {#q06}
 
+> 人机协作层面的用法（定制评审重点、作者责任、风险分级）见 [第 06 章 §6](./06-review-collaboration#_6-ai-代码评审-怎么用好)；本节讲度量与门禁。
+
 - **大厂的共同点是「先过滤、再发言」，并按采纳来度量。** Uber uReview 把评审拆成生成→过滤→校验→去重，用精确率-召回率看板分阶段上线（[QB06](/sources/quality/bigtech#qb06)）；Google 只展示高置信的修改建议，以「被应用」比例来评估（[QB10](/sources/quality/bigtech#qb10)）；字节 BitsAI-CR 用 Outdated Rate 衡量评论是否真正被采纳（[QC09](/sources/quality/chinese#qc09)）；Cursor 用「解决率」代替表情反馈（[QT21](/sources/quality/tools#qt21)）；腾讯报告了好评率与采纳率（[QC06](/sources/quality/chinese#qc06)）。以上数字均为团队或厂商自报。
 - **控噪声。** Codex 在 GitHub 上只标 P0/P1 问题（[QT10](/sources/quality/tools#qt10)）；OpenAI 建议把格式和 lint 留给 CI，评审规则只写需要判断的东西（[QT11](/sources/quality/tools#qt11)）；Atlassian 发现给 AI 评审者喂相似 PR 的评审对话有效，堆更多跨仓库代码反而会降低质量（[QB16](/sources/quality/bigtech#qb16)）。
 - **把评审意见沉淀为规则**：发现智能体的坏习惯就写进规范，由评审技能强制（[QX07](/sources/quality/x#qx07)）；Bugbot 从合并结果中学规则（[QT22](/sources/quality/tools#qt22)）。
@@ -98,6 +101,8 @@
 - **异议**：HN 高赞评论认为 AI 评审能抓到关键 bug，但信噪比差，不想对每个 PR 默认开启（[QH01](/sources/quality/hn#qh01)）；有人认为非确定性的 AI 评审与 CI 的目的相冲突，更适合放在本地 pre-push（[QH14](/sources/quality/hn#qh14)）；还有人根本质疑「靠严格质检兜底高失败率流程」的思路（[QH09](/sources/quality/hn#qh09)）。我们的取舍是：**AI 评审在 CI 里以建议性（非阻塞）方式运行**，阻塞性门禁只留给确定性检查。
 
 ### Q07 · 异构 / 对抗评审：作者≠评审者 {#q07}
+
+> 原理与评判标准计算化，见 [第 05 章 §5](./05-verification#_5-生成者与评判者分离)；反模式见 [第 10 章 · 反模式 10](./10-anti-patterns#_10-用同一个智能体既写又判)。
 
 - DHH 的做法：用 Codex 写时让 Claude 评，反之亦然（[QX02](/sources/quality/x#qx02)）。HN 上有人在关键代码上再找「另一家前沿实验室」的模型评审（[QH16](/sources/quality/hn#qh16)）。
 - Cursor Bugbot 多路并行评审，多个独立评审都标出同一问题才视为强信号（[QT21](/sources/quality/tools#qt21)）。
@@ -113,6 +118,8 @@
 - **同时评结果和过程，并多跑几次。** 结果用确定性检查判定，过程记录用来抓删测试、越权调用这类问题；用 pass^k（k 次全部成功）衡量可靠性，而不只是 pass@k（至少一次成功）（[AN31](/sources/anthropic#an31)、[RS10](/sources/research#rs10)）。公开基准分数不能代替你自己仓库的回归集（[OA11](/sources/openai#oa11)）。
 
 ### Q09 · 沙箱化验证与最小权限 {#q09}
+
+> 通用的安全基线（文件系统、网络、命令、凭据、依赖、配置）以 [第 09 章 §5](./09-security#_5-一个最小安全基线) 为准；本节只讲 CI 与验证环境特有的部分。
 
 - Stripe 的智能体运行在与生产和互联网隔离的 devbox（[QB01](/sources/quality/bigtech#qb01)）；Bugbot Autofix 在独立 VM 里测试和修复（[QT23](/sources/quality/tools#qt23)）；Braintrust 给需要沙箱的智能体打分时，每次尝试都用干净容器（[QX38](/sources/quality/x#qx38)）。
 - **CI 里的 AI 步骤本身是攻击面。** Anthropic 的安全评审 Action 明确写着未针对提示注入加固，只应评审可信 PR（[QT06](/sources/quality/tools#qt06)）；fork PR 拿不到 secrets，所以官方评审只在同仓分支 PR 上运行（[QT05](/sources/quality/tools#qt05)）；codex-action 可配置为只读、不联网，并建议使用一次性 runner（[QT12](/sources/quality/tools#qt12)）。
@@ -141,6 +148,11 @@
 - Simon Willison：提交 PR 就是用你的信誉担保代码能用，AI 辅助不改变你是作者这一事实（[QH05](/sources/quality/hn#qh05)、[QP04](/sources/quality/practitioners#qp04)）。
 - 开源项目的政策光谱：LLVM 要求贡献者读过并审查所有 LLM 生成内容并标注（[QO01](/sources/quality/oss#qo01)）；Ghostty 要求披露，并且必须能不借助 AI 解释改动（[QO03](/sources/quality/oss#qo03)）；QEMU 拒绝被认为包含 AI 生成内容的贡献（[QO02](/sources/quality/oss#qo02)）；curl 被 AI 生成的低质量漏洞报告消耗（[QO04](/sources/quality/oss#qo04)）。
 - 平台侧的可追溯：Copilot 云端智能体的提交带签名（[QT15](/sources/quality/tools#qt15)）。
+- **版权与许可：给法务的问题清单**（本书不提供法律意见）。美国版权局 2025-01 的报告认为，以现有技术仅靠提示不足以让用户成为产出的作者，人做的选择、编排与修改仍可能受保护（[RS14](/sources/research#rs14)）；生成代码也可能与公开代码相同，Copilot 可以按策略拦截这类建议，或标出匹配位置与许可证，文档称这种匹配通常不到行内建议的 1%（厂商自报，[BT22](/sources/bigtech#bt22)）。推广前值得和法务确认：
+  - 组织允许用哪些工具、哪些代码与数据可以发给它们（DORA 所说的「清晰的 AI 立场」，[第 08 章 §3](./08-team-process#_3-度量-别被「ai-代码占比」骗了)）；
+  - 是否开启与公开代码匹配的拦截或引用，命中后怎么处理（换写法、署名或删除）；
+  - 对外发布或贡献到开源项目时，是否需要标注 AI 参与，以及项目本身的政策（见上文 LLVM、QEMU 等）；
+  - 对产出享有什么权利、合同里怎么约定，在你所在的法域是否有不同的规定。
 
 ## 3. 反模式速查 {#anti-patterns}
 
