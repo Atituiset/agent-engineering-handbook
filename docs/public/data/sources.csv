@@ -2193,7 +2193,7 @@ n,source,category,title,author,date,url,article_url,theme,principles,curated_anc
 2192,精选,开源项目与规范,OS06 · anthropics/skills,开源项目与规范,持续更新,https://github.com/anthropics/skills,,tools,P13,/sources/open-source#os06,,,
 2193,精选,开源项目与规范,OS07 · awesome-claude-code,开源项目与规范,持续更新,https://github.com/hesreallyhim/awesome-claude-code,,tools,P08 P10 P12 P13 P15,/sources/open-source#os07,,,
 2194,精选,开源项目与规范,OS08 · Superpowers,开源项目与规范,持续更新,https://github.com/obra/superpowers,,verify,P01 P06 P07 P08 P10 P13,/sources/open-source#os08,,,
-2195,精选,开源项目与规范,OS09 · OpenHands,开源项目与规范,持续更新,https://github.com/All-Hands-AI/OpenHands,,constraints,P05,/sources/open-source#os09,,,
+2195,精选,开源项目与规范,OS09 · OpenHands,开源项目与规范,持续更新,https://github.com/OpenHands/OpenHands,,constraints,P05,/sources/open-source#os09,,,
 2196,精选,开源项目与规范,OS10 · Gas Town,开源项目与规范,持续更新,https://github.com/steveyegge/gastown,,parallel,P11 P12,/sources/open-source#os10,,,
 2197,精选,开源项目与规范,OS11 · Advanced Context Engineering for Coding Agents（ACE-FCA）,Dex Horthy / HumanLayer,2025,https://github.com/humanlayer/advanced-context-engineering-for-coding-agents,,constraints,P01 P02 P05 P08,/sources/open-source#os11,,,
 2198,精选,开源项目与规范,OS12 · Model Context Protocol (MCP),开源项目与规范,持续更新,https://modelcontextprotocol.io/,,tools,P02 P04 P05 P14,/sources/open-source#os12,,,

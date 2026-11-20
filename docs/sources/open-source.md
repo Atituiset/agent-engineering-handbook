@@ -51,7 +51,7 @@ Agent Skills 的官方示例仓库：skill 是由指令、脚本和资源组成�
 「一套可工作的智能体技能框架与软件开发方法论」。基本工作流：写代码前先 brainstorming 澄清需求 → 写计划（强调 YAGNI、DRY）→ 按任务派发全新子智能体执行，每个任务后评审 → 实现期间强制 RED-GREEN-REFACTOR（写失败测试、看它失败、写最少代码、看它通过、提交），并**删除先于测试写出的代码** → 任务间请求代码评审。作者的设计思路见 [PR33](./practitioners#pr33)。
 
 ### OS09 · OpenHands {#os09}
-**机构**：OpenHands（原 All-Hands-AI）｜**日期**：持续更新｜[原文](https://github.com/All-Hands-AI/OpenHands)
+**机构**：OpenHands（原 All-Hands-AI，仓库已从 All-Hands-AI/OpenHands 迁到 OpenHands/OpenHands）｜**日期**：持续更新｜[原文](https://github.com/OpenHands/OpenHands)
 
 开源的 AI 驱动开发平台，当前形态是自托管的「开发者控制中心」，可在本地、远程或云端后端运行 OpenHands、Claude Code、Codex、Gemini 等兼容智能体，并自动化日常任务（如把 issue 分解为任务）。适合需要自托管、可审计的团队研究其架构。
 

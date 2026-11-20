@@ -15,7 +15,7 @@
 
 Anthropic 把上下文定义为有限的「注意力预算」，并指出 context rot：上下文越长，模型对其中信息的召回越差（[AN10](/sources/anthropic#an10)）。Drew Breunig 给出了四种失败模式：中毒、分心、混淆、冲突（[PR36](/sources/practitioners#pr36)）。HumanLayer 的经验是前沿模型大约能较稳定地遵循 150–200 条指令，建议 CLAUDE.md 不超过 300 行、越短越好（[VD19](/sources/vendors#vd19)）。
 
-Anthropic 自己也踩过坑：在内部转录里看到「适当写文档」与「不要加注释」这类互相冲突的指令同时出现在一次请求中；为新模型删掉 80% 以上系统提示后，评测没有可测量的损失（[X07](/sources/x-posts#x07)，厂商自报）。一次质量事故复盘甚至追溯到一条「减少啰嗦」的系统提示指令（[AN32](/sources/anthropic#an32)）。Thoughtworks 雷达把这种现象列为 Caution：**智能体指令膨胀**（[TW20](/sources/thoughtworks#tw20)）。
+Anthropic 自己也踩过坑：在内部转录里看到「适当写文档」与「不要加注释」这类互相冲突的指令同时出现在一次请求中；为新模型删掉 80% 以上系统提示后，评测没有可测量的损失（[X07](/sources/x-posts#x07)，厂商自报）。一次质量事故复盘甚至追溯到一条「减少啰嗦」的系统提示指令（[AN32](/sources/anthropic#an32)）。Thoughtworks 雷达把这种现象列为 Caution：**智能体指令膨胀**（[TW20](/sources/thoughtworks#tw20)）。同一份雷达在 2026-04 把**上下文工程**本身列为 Adopt，理由是它已从优化技巧变成 AI 系统的基础架构问题（[TW17](/sources/thoughtworks#tw17)）。两个判断并不矛盾：要认真做上下文工程，而认真做的第一步往往是删减。
 
 ## 2. 证据：上下文文件到底有没有用？（分歧）
 
@@ -35,7 +35,7 @@ Anthropic 自己也踩过坑：在内部转录里看到「适当写文档」与�
 
 ## 3. 写法：一份好的 AGENTS.md 包含什么
 
-综合 [OA01](/sources/openai#oa01)、[OA04](/sources/openai#oa04)、[BT16](/sources/bigtech#bt16)、[AN08](/sources/anthropic#an08)、[VD19](/sources/vendors#vd19)、[X04](/sources/x-posts#x04)：
+AGENTS.md 本身没有必填字段或格式要求，Thoughtworks 雷达 2025-11 把它列为 Trial（[TW19](/sources/thoughtworks#tw19)），还不是 Adopt；格式开放，写法却已有不少共识。综合 [OA01](/sources/openai#oa01)、[OA04](/sources/openai#oa04)、[BT16](/sources/bigtech#bt16)、[AN08](/sources/anthropic#an08)、[VD19](/sources/vendors#vd19)、[X04](/sources/x-posts#x04)：
 
 1. **命令**：构建、测试、lint、启动的确切命令（放最前面）。
 2. **边界**：总是做 / 先问 / 绝不做。

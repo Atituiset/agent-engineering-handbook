@@ -99,7 +99,7 @@ Anthropic 观察到 harness 编码了「模型做不到什么」的假设，这�
 
 ## 2026-11 新证据：工具越多越好？大量异议 {#new-evidence}
 
-P13「Skills 等可复用指令按需加载」的独立支持数在全库最高（355），但人工确认的异议也最多（5 条）。这说明它很热门，不等于它已被证明有效。
+P13「Skills 等可复用指令按需加载」的独立支持数在全库最高（355）。异议合计 20（关键词自动检出的疑似异议 15，人工读过后确认的异议 5）；人工确认的 5 条与 P08 并列全库最多。下方对比表「355／20」中的 20 就是这两类之和。这说明它很热门，不等于它已被证明有效。
 
 - **确定性机制优先**：掘金作者团队用 Skill 做提交前检查时「时灵时不灵」，换成 PreToolUse Hook 后才稳定。他们的规矩是能用 Hook 表达就别退回提示词约束（[CN41](/sources/chinese#cn41)）。官方中文文档也把机制按「非确定性 vs 确定性」两列对照（[CN29](/sources/chinese#cn29)）。这**加强**了 P12（164 位独立支持）。
 - **skills/MCP 的异议**：Burke Holland 认为 99% 的 MCP、功能和 skill 都是噪声（[XT-019](/sources/x/tools#xt-019)）。Thorsten Ball 说 Amp 聚会的共识是，由人按序手动调用的 skill「金字塔」是反模式（[XT-042](/sources/x/tools#xt-042)）。Vercel 的评测里 skill 常常未被调用（[HN15](/sources/hackernews#hn15)）。Boris Cherny 也发布了清理未用 skills/MCP 的命令（[XC-018](/sources/x/context#xc-018)）。

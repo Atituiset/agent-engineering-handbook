@@ -9,11 +9,18 @@
 ### RS01 · Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity {#rs01}
 **机构**：METR｜**日期**：2025-07-10｜[原文](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)
 
-随机对照试验：16 位资深开源开发者在自己长期贡献的大型仓库（平均 2.2 万+ 星、100 万+ 行代码）上完成 246 个真实 issue，随机分配允许或禁止使用 AI。结果：**使用 AI 时完成时间反而长 19%**；开发者事前预期 AI 会让自己快 24%，事后仍认为快了 20%。METR 强调这只是 2025 年初能力在特定场景下的快照。
+随机对照试验：16 位资深开源开发者在自己长期贡献的大型仓库（平均 2.2 万+ 星、100 万+ 行代码）上完成 246 个真实 issue，随机分配允许或禁止使用 AI。结果：**使用 AI 时完成时间反而长 19%**；开发者事前预期 AI 会让自己快 24%，事后仍认为快了 20%。METR 强调这只是 2025 年初能力在特定场景下的快照。2026-02 的后续实验见 [RS09](#rs09)。
 
 > "developers expected AI to speed them up by 24%, and even after experiencing the slowdown, they still believed AI had sped them up by 20%."
 
 `对照实验；场景局限：熟悉代码库的资深开发者、早期 2025 工具`
+
+### RS09 · We are Changing our Developer Productivity Experiment Design（METR 后续实验） {#rs09}
+**机构**：METR｜**日期**：2026-02-24｜[原文](https://metr.org/blog/2026-02-24-uplift-update/)
+
+RS01 的后续。2025 年 8 月起的新实验共 57 位开发者（10 位来自原研究，47 位新招募）、143 个仓库、800 多个任务。原始结果：原研究的回访开发者完成时间变化 −18%（置信区间 −38% 到 +9%），新招募开发者 −4%（置信区间 −15% 到 +9%），即点估计转为加速，但区间都跨过 0。METR 明确认为这组数据**信号不可靠**：越来越多开发者因为不愿在不用 AI 的条件下工作而拒绝参加；30%–50% 的受访者承认不提交那些「不想在没有 AI 时做」的任务；报酬从每小时 150 美元降到 50 美元也带来选择偏差；同时并行使用多个智能体的人很难准确记录用时。METR 判断真实加速可能更高，上述估计更像下限，并已着手改用其他实验设计。
+
+`对照实验（后续）；作者自评为弱证据：选择效应严重`
 
 ### RS02 · The Impact of AI on Developer Productivity: Evidence from GitHub Copilot {#rs02}
 **作者**：Sida Peng, Eirini Kalliamvakou, Peter Cihon, Mert Demirer｜**日期**：2023-02-13｜[原文](https://arxiv.org/abs/2302.06590)

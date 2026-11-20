@@ -2,6 +2,13 @@
 
 [[toc]]
 
+## 要点
+
+- 本章只收**可直接复制**的清单与模板，理由与证据都在对应章节，每条后面的编号可回查来源。
+- 新仓库从第 1 节「第一周清单」开始；写规则前先用第 5 节判断它该放在哪一层。
+- 流水线与合并门禁看第 11 节（摘自第 12 章），引入第三方 skill 看第 12 节（摘自第 13 章）。
+- 每换一代模型，用第 10 节复盘 harness，删掉不再需要的东西。
+
 > 可直接复制使用的清单与模板。每条后面的编号可回查来源。
 
 ## 1. 新仓库接入智能体：第一周清单
@@ -146,6 +153,29 @@
 - [ ] 看指标：回滚率、缺陷逃逸、评审等待、规则违规趋势（[TW32](/sources/thoughtworks#tw32)）
 - [ ] 把反复出现的评审意见升级为机械检查（[OA01](/sources/openai#oa01)）
 
+## 11. CI 与合并门禁（摘自第 12 章）
+
+- [ ] 主分支规则集：必需检查 + 至少一位人工批准 + 禁止绕过；智能体账号不在可批准者之列，发起任务的人也不能批准该 PR（[QT15](/sources/quality/tools#qt15)、[QT16](/sources/quality/tools#qt16)）
+- [ ] 测试改动守卫 + CODEOWNERS：删测试、断言变少、快照被批量重写时要求指定的人批准（[第 12 章示例 B](./12-quality-cicd#example-b)）
+- [ ] CI 回合数设上限，超过就交回人（[QB01](/sources/quality/bigtech#qb01)）
+- [ ] AI 评审以建议性方式运行，只报高严重度问题，记录解决率（[QT10](/sources/quality/tools#qt10)、[QT21](/sources/quality/tools#qt21)）
+- [ ] prompts、skills、agent 配置的改动触发回归评测（[第 12 章示例 C](./12-quality-cicd#example-c)）
+- [ ] CI 里的 AI 步骤不在 `pull_request_target` 中拿密钥，fork PR 不给密钥（[QT05](/sources/quality/tools#qt05)、[QT06](/sources/quality/tools#qt06)）
+- [ ] 开启合并队列（[QT17](/sources/quality/tools#qt17)）
+
+完整清单（第一周 / 第一个月 / 每季度）见 [第 12 章 §5](./12-quality-cicd#checklist)。
+
+## 12. 引入第三方 skill（摘自第 13 章）
+
+- [ ] 先问：这个 skill 解决的是哪一个反复出现的失败？说不出来就不装（[第 13 章 §5](./13-skills-catalog#choose)）
+- [ ] 读完所有文件，不只看 `SKILL.md`；把 `allowed-tools` 当作权限申请来审
+- [ ] 扫描器过一遍并进 CI；扫描只能降低风险，不能证明安全
+- [ ] 从官方仓库安装，固定 commit；更新时重新审 diff
+- [ ] 在沙箱中运行，不把密钥放进环境变量；skill 目录加 CODEOWNERS（[第 09 章 §3](./09-security#_3-供应链-新的攻击面)）
+- [ ] 换模型时重新评估，确认它仍会被调用、仍有帮助（[XC-021](/sources/x/context#xc-021)）
+
+逐项说明与公开的恶意 skill 数据见 [第 13 章 §6](./13-skills-catalog#security)。
+
 ## 与传统软件工程认知的对比
 
 这些清单里大部分条目并不新：一键构建、快速测试、小 PR、最小权限、代码评审、ADR、度量交付结果——都是经典的工程纪律。新增的只有三类：
@@ -155,7 +185,3 @@
 3. **harness 的定期删减**（progression testing）。
 
 **选择理由**：如果你的团队已经有扎实的工程基础，接入智能体的大部分工作是「把已有纪律机械化并对智能体可读」；如果没有，智能体会以更快的速度放大这些缺失（[RS03](/sources/research#rs03)）。先补基础，再谈提效。
-
-> **延伸阅读**：交付流水线层面的测试、CI 门禁、AI 评审、Evals 与防作弊做法，见 [第 12 章 · 质量保障](./12-quality-cicd)（含 GitHub Actions 示例与 Q01–Q13 共识度）。
-
-> **延伸阅读**：引入第三方 skill 前的审查清单与官方/社区仓库清单，见 [第 13 章 · Skills 生态](./13-skills-catalog#security)。

@@ -36,10 +36,13 @@ Greg Brockman 公开了 OpenAI 推进智能体式开发的做法（[X04](/source
 | 数据 | 说明 | 来源 |
 | --- | --- | --- |
 | 快手 AI 代码占比 26% → 60%，技术债复利增长，多起线上故障 | 速度不再是瓶颈，质量才是 | [CN06](/sources/chinese#cn06)（团队自报） |
-| METR：资深开发者用 AI 慢 19%，自认为快 20% | 感知不可靠 | [RS01](/sources/research#rs01) |
+| METR 2025 年初：资深开发者用 AI 慢 19%，自认为快 20% | 感知不可靠 | [RS01](/sources/research#rs01) |
+| METR 2026-02 后续：57 位开发者，点估计转为加速（−18%、−4%），但置信区间跨过 0；30%–50% 的人不提交「不想在没有 AI 时做」的任务 | 作者自评信号不可靠，真实加速可能更高；任务级 RCT 越来越难做 | [RS09](/sources/research#rs09) |
 | GitClear：复制粘贴代码 8.3% → 12.3%，重构类变更下降 | 质量信号恶化 | [RS05](/sources/research#rs05) |
 | Google：补全接受率约 37%，约 50% 代码字符由 AI 辅助完成 | 补全时代的度量方式 | [BT08](/sources/bigtech#bt08)（厂商自报） |
 | DORA：AI 是放大器，回报来自组织系统 | 投资方向 | [RS03](/sources/research#rs03) |
+
+两次 METR 实验合读：「AI 让人变慢」不应再作为当前判断，但「体感不可靠」仍然成立；能做的只有用交付结果度量，并且在团队内部做小规模对照。
 
 Thoughtworks 把「以编码吞吐量衡量生产率」列为 Caution，建议关注 DORA 等交付指标并与业务结果挂钩（[TW32](/sources/thoughtworks#tw32)）；把「对 AI 生成代码的自满」列为 Hold（[TW34](/sources/thoughtworks#tw34)）。
 

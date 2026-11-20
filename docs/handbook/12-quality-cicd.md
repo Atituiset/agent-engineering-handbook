@@ -34,7 +34,7 @@
 
 ## 2. 十三条质量原则 {#principles}
 
-下面每条原则都给出做法、代表来源和需要注意的边界。共识度统计见 [第 8 节](#consensus)。
+下面每条原则都给出做法、代表来源和需要注意的边界。共识度统计见 [第 6 节](#consensus)。
 
 ### Q01 · 测试先行 / 可执行规格 {#q01}
 
@@ -132,7 +132,7 @@
 
 - 推荐的指标包括：**解决率 / 采纳率**（评审意见是否在合并时被处理，[QT21](/sources/quality/tools#qt21)、[QC09](/sources/quality/chinese#qc09)、[QB10](/sources/quality/bigtech#qb10)）、**变更失败率与交付稳定性**（DORA，[QR06](/sources/quality/research#qr06)）、**重复率与短期 churn**（[QR09](/sources/quality/research#qr09)），以及**测试检出率**（变异分数、预言机的召回与误报，[QC02](/sources/quality/chinese#qc02)）。
 - 只看采纳率不够：得物用准确度、覆盖度、使用率等多维指标评估用例生成（[QC13](/sources/quality/chinese#qc13)）。
-- **方法提醒**：「AI PR 的 bug 多 1.7 倍」这类厂商数字，最多只能说明「被发现的」问题更多（[QH08](/sources/quality/hn#qh08)、[QR08](/sources/quality/research#qr08)）。METR 的随机对照试验显示，资深开发者在熟悉的大型仓库里用 AI 反而更慢（[QR03](/sources/quality/research#qr03)）。
+- **方法提醒**：「AI PR 的 bug 多 1.7 倍」这类厂商数字，最多只能说明「被发现的」问题更多（[QH08](/sources/quality/hn#qh08)、[QR08](/sources/quality/research#qr08)）。METR 2025 年初的随机对照试验显示，资深开发者在熟悉的大型仓库里用 AI 反而更慢（[QR03](/sources/quality/research#qr03)）；2026-02 的后续实验点估计转为加速，但 METR 自评信号不可靠（[RS09](/sources/research#rs09)）。两者都说明，个人体感和单次实验都不足以替代交付指标。
 
 ### Q13 · 来源透明与贡献者责任 {#q13}
 
@@ -285,25 +285,7 @@ jobs:
 - 「Require approval for all outside collaborators」：外部贡献者的工作流需要审批后才运行（[QT06](/sources/quality/tools#qt06)、[QT15](/sources/quality/tools#qt15)）。
 - 智能体使用的机器人账号不在可批准者之列；发起任务的人不能批准该 PR（[QT15](/sources/quality/tools#qt15)、[QH04](/sources/quality/hn#qh04)）。
 
-## 5. 与传统软件工程认知的对比 {#compare}
-
-| 经典认知 | 智能体时代：仍成立 / 需修正 | 理由 | 来源 |
-| --- | --- | --- | --- |
-| **测试金字塔**：大量单测、少量 E2E | **需修正**：单测变得廉价，也更容易是同义反复；E2E、属性、变异、差分测试的相对价值上升 | 单测的生产成本几乎为零，稀缺的变成「能否发现缺陷」；更高层的测试更难被实现细节糊弄 | [QX11](/sources/quality/x#qx11)、[QX15](/sources/quality/x#qx15)、[QB07](/sources/quality/bigtech#qb07)、[QT08](/sources/quality/tools#qt08) |
-| **TDD** 是个人纪律 | **加强**：从个人纪律变为给智能体的接口，测试就是规格和完成定义 | 智能体需要可执行的判据；先写测试也让作弊更容易被识别 | [QP01](/sources/quality/practitioners#qp01)、[QC10](/sources/quality/chinese#qc10)、[QC16](/sources/quality/chinese#qc16) |
-| **覆盖率**是质量指标 | **不再足够** | 智能体能轻易刷高覆盖率；Meta 明确说覆盖率上升不一定能发现缺陷 | [QB07](/sources/quality/bigtech#qb07)、[QO05](/sources/quality/oss#qo05) |
-| **CI** 用来集成人的改动 | **加强并改变角色**：CI 成为唯一不被智能体控制的裁判；PR 数量上升使合并队列和测试选择成为必需 | 智能体能改代码、改测试、改说明，却不能改受保护分支上的必需检查 | [QT15](/sources/quality/tools#qt15)、[QT17](/sources/quality/tools#qt17)、[QB05](/sources/quality/bigtech#qb05) |
-| **CI 要快** | **仍成立，但要防「假提速」** | 智能体优化 CI 时可能跳过或削弱测试 | [QH15](/sources/quality/hn#qh15)、[QH12](/sources/quality/hn#qh12) |
-| **代码评审**的目的是找 bug | **需修正**：逐行找 bug 的部分交给确定性检查和 AI 初筛；人的评审转向意图、风险与问责，并前移到设计 | 生成速度超过人的阅读速度；AI 评审只适合高置信问题 | [QP07](/sources/quality/practitioners#qp07)、[QH03](/sources/quality/hn#qh03)、[QB06](/sources/quality/bigtech#qb06) |
-| **作者≠评审者**（四眼原则） | **加强并扩展到模型**：生成者与评判者分离，最好是不同模型或不同上下文 | 同一模型自写自测存在「认知同源」风险 | [QX02](/sources/quality/x#qx02)、[QC11](/sources/quality/chinese#qc11) |
-| **持续交付**：小批量、快速回滚 | **仍成立且更重要**：DORA 发现 AI 的速度补不了不稳定 | 吞吐上升后，没有小批量和回滚，故障会成批出现 | [QR06](/sources/quality/research#qr06)、[QR07](/sources/quality/research#qr07) |
-| **功能开关**降低发布风险 | **仍成立，但有成本** | 开关蔓延本身就是技术债 | [QX12](/sources/quality/x#qx12) |
-| **质量度量**：缺陷密度、变更失败率 | **仍成立，需新增**：AI 评审的解决率/采纳率、测试的变异分数、eval 通过率 | 新的生产者需要新的结果指标；产量指标（行数、PR 数）更容易被刷 | [QT21](/sources/quality/tools#qt21)、[QC09](/sources/quality/chinese#qc09)、[QR09](/sources/quality/research#qr09) |
-| 测试是确定性的 | **新增**：产品中含 LLM 时需要 evals（多次试验、裁判校准） | 同一输入可能得到不同输出，传统测试方法不足 | [QT13](/sources/quality/tools#qt13)、[QT01](/sources/quality/tools#qt01) |
-
-**总的选择理由**：经典工程纪律没有过时，只是「谁来遵守」变了。过去这些纪律靠工程师的自律和同伴压力维持，现在大部分代码出自一个会为了「完成」而走捷径的生产者，所以纪律必须**机械化**（写成 CI 和规则集）、**对生产者不可改**（受保护文件、CODEOWNERS、合并权限），并且**用结果度量**。这与第 04 章「约束靠环境，不靠告诉」是同一个结论在交付流水线上的体现。
-
-## 6. 落地清单 {#checklist}
+## 5. 落地清单 {#checklist}
 
 **第一周**
 
@@ -327,15 +309,7 @@ jobs:
 - [ ] 回放：最近的线上缺陷，哪一层门禁本应拦住？补上对应检查
 - [ ] 删掉没人看的 AI 评审规则和过期的功能开关（[QX12](/sources/quality/x#qx12)）
 
-## 7. 证据强度与缺口 {#evidence}
-
-- **大厂数据多为团队自报**：Uber、Google、Meta、Cursor、腾讯、字节、快手等的采纳率和解决率都来自各自的博客或论文，口径不同，不能横向比较。
-- **厂商报告有利益相关**：CodeRabbit、GitClear、Veracode 都销售相关产品（[QR08](/sources/quality/research#qr08)、[QR09](/sources/quality/research#qr09)、[QR10](/sources/quality/research#qr10)），本手册已标注「厂商自报、尚未独立验证」。
-- **独立研究很少**，主要是 METR 和 DORA（[QR01](/sources/quality/research#qr01)、[QR03](/sources/quality/research#qr03)、[QR04](/sources/quality/research#qr04)、[QR06](/sources/quality/research#qr06)）以及若干 arXiv 论文；缺少「加了某个门禁后缺陷逃逸率变化」这样的对照数据。
-- **部分原文未能访问**：OpenAI 的 harness engineering 文章和 OpenAI 网站上关于 Datadog 的客户案例在本次检索中返回 403；部分中文资料是会议预告或转载。
-- **流水线里的工业案例**（数字均为团队自报、尚未独立验证）：字节 LogSage 一年处理 107 万次 CI/CD 执行（[BD04](/sources/quality/research#bd04)），BitsAI-Fix 自动修复静态分析告警（[BD03](/sources/quality/research#bd03)），TestGPT-Server 在 1.4 万个微服务 API 上找到 50 个崩溃 bug、仅 2 个功能 bug（[BD07](/sources/quality/research#bd07)）。阿里 AACR-Bench 带负样本集衡量评审噪声（[AL11](/sources/quality/research#al11)）；Open Code Review 的自报与社区复测分歧（[AL08](/sources/quality/oss#al08)、[AL09](/sources/quality/hn#al09)）说明团队自报 benchmark 需要独立复测（Q13）。腾讯一线团队不追求严格 TDD（[TX02](/sources/chinese#tx02)），与 [Q01](#q01) 有张力。
-
-## 8. 共识度 {#consensus}
+## 6. 共识度 {#consensus}
 
 统计口径：在本专题的精选条目和 X 帖子中，按关键词把每条资料归入 Q01–Q13，并统计**不同作者/机构数**。精选条目的原则标签为人工标注；X 帖子为关键词自动归类。「自动检出的保留/反对」指同时命中原则关键词和否定词（如 overrated、doesn't work、worse、没用、反而）的 X 帖子作者数。「人工确认的异议」是我们读过后确认持反对或保留意见的精选条目。
 
@@ -362,4 +336,36 @@ jobs:
 - **Q10（flaky）和 Q13（来源透明）支持者较少**，原因是讨论面较窄，不代表有争议。开源项目对 AI 贡献的态度从「披露即可」到「全面拒绝」都有（[QO01](/sources/quality/oss#qo01)–[QO03](/sources/quality/oss#qo03)）。
 :::
 
+## 2026-11 新证据 {#new-evidence}
 
+本章写于 2026-11。成稿后又补充了以下资料，它们加强或修正了上面的判断。
+
+- **流水线里的工业案例**（数字均为团队自报、尚未独立验证）：字节 LogSage 一年处理 107 万次 CI/CD 执行（[BD04](/sources/quality/research#bd04)），BitsAI-Fix 自动修复静态分析告警（[BD03](/sources/quality/research#bd03)），TestGPT-Server 在 1.4 万个微服务 API 上找到 50 个崩溃 bug、仅 2 个功能 bug（[BD07](/sources/quality/research#bd07)）。阿里 AACR-Bench 带负样本集衡量评审噪声（[AL11](/sources/quality/research#al11)）；Open Code Review 的自报与社区复测分歧（[AL08](/sources/quality/oss#al08)、[AL09](/sources/quality/hn#al09)）说明团队自报 benchmark 需要独立复测（Q13）。腾讯一线团队不追求严格 TDD（[TX02](/sources/chinese#tx02)），与 [Q01](#q01) 有张力。
+- **生产力证据更新**：Q12 引用的 METR 2025 年初实验（[QR03](/sources/quality/research#qr03)）有了 2026-02 的后续：点估计转为加速，但置信区间跨过 0，METR 自评因选择效应而不可靠（[RS09](/sources/research#rs09)）。这**不改变** Q12 的结论（度量结果而非体感），只是不应再把「变慢」当作当前事实引用。
+
+## 与传统软件工程认知的对比 {#compare}
+
+| 经典认知 | 智能体时代：仍成立 / 需修正 | 理由 | 来源 | 佐证（支持／异议） |
+| --- | --- | --- | --- | --- |
+| **测试金字塔**：大量单测、少量 E2E | **需修正**：单测变得廉价，也更容易是同义反复；E2E、属性、变异、差分测试的相对价值上升 | 单测的生产成本几乎为零，稀缺的变成「能否发现缺陷」；更高层的测试更难被实现细节糊弄 | [QX11](/sources/quality/x#qx11)、[QX15](/sources/quality/x#qx15)、[QB07](/sources/quality/bigtech#qb07)、[QT08](/sources/quality/tools#qt08) | [Q05 · 76／3](#q05) |
+| **TDD** 是个人纪律 | **加强**：从个人纪律变为给智能体的接口，测试就是规格和完成定义 | 智能体需要可执行的判据；先写测试也让作弊更容易被识别 | [QP01](/sources/quality/practitioners#qp01)、[QC10](/sources/quality/chinese#qc10)、[QC16](/sources/quality/chinese#qc16) | [Q01 · 36／3](#q01) |
+| **覆盖率**是质量指标 | **不再足够** | 智能体能轻易刷高覆盖率；Meta 明确说覆盖率上升不一定能发现缺陷 | [QB07](/sources/quality/bigtech#qb07)、[QO05](/sources/quality/oss#qo05) | [Q05 · 76／3](#q05) |
+| **CI** 用来集成人的改动 | **加强并改变角色**：CI 成为唯一不被智能体控制的裁判；PR 数量上升使合并队列和测试选择成为必需 | 智能体能改代码、改测试、改说明，却不能改受保护分支上的必需检查 | [QT15](/sources/quality/tools#qt15)、[QT17](/sources/quality/tools#qt17)、[QB05](/sources/quality/bigtech#qb05) | [Q03 · 89／5](#q03) |
+| **CI 要快** | **仍成立，但要防「假提速」** | 智能体优化 CI 时可能跳过或削弱测试 | [QH15](/sources/quality/hn#qh15)、[QH12](/sources/quality/hn#qh12) | [Q04 · 37／1](#q04) |
+| **代码评审**的目的是找 bug | **需修正**：逐行找 bug 的部分交给确定性检查和 AI 初筛；人的评审转向意图、风险与问责，并前移到设计 | 生成速度超过人的阅读速度；AI 评审只适合高置信问题 | [QP07](/sources/quality/practitioners#qp07)、[QH03](/sources/quality/hn#qh03)、[QB06](/sources/quality/bigtech#qb06) | [Q06 · 85／5](#q06) |
+| **作者≠评审者**（四眼原则） | **加强并扩展到模型**：生成者与评判者分离，最好是不同模型或不同上下文 | 同一模型自写自测存在「认知同源」风险 | [QX02](/sources/quality/x#qx02)、[QC11](/sources/quality/chinese#qc11) | [Q07 · 18／4](#q07) |
+| **持续交付**：小批量、快速回滚 | **仍成立且更重要**：DORA 发现 AI 的速度补不了不稳定 | 吞吐上升后，没有小批量和回滚，故障会成批出现 | [QR06](/sources/quality/research#qr06)、[QR07](/sources/quality/research#qr07) | [Q11 · 25／3](#q11) |
+| **功能开关**降低发布风险 | **仍成立，但有成本** | 开关蔓延本身就是技术债 | [QX12](/sources/quality/x#qx12) | [Q11 · 25／3](#q11) |
+| **质量度量**：缺陷密度、变更失败率 | **仍成立，需新增**：AI 评审的解决率/采纳率、测试的变异分数、eval 通过率 | 新的生产者需要新的结果指标；产量指标（行数、PR 数）更容易被刷 | [QT21](/sources/quality/tools#qt21)、[QC09](/sources/quality/chinese#qc09)、[QR09](/sources/quality/research#qr09) | [Q12 · 38／2](#q12) |
+| 测试是确定性的 | **新增**：产品中含 LLM 时需要 evals（多次试验、裁判校准） | 同一输入可能得到不同输出，传统测试方法不足 | [QT13](/sources/quality/tools#qt13)、[QT01](/sources/quality/tools#qt01) | [Q08 · 67／4](#q08) |
+
+> 「佐证」列：质量原则编号 · 支持的不同作者/机构数／异议数（自动检出 + 人工确认），口径见 [第 6 节](#consensus)。
+
+**总的选择理由**：经典工程纪律没有过时，只是「谁来遵守」变了。过去这些纪律靠工程师的自律和同伴压力维持，现在大部分代码出自一个会为了「完成」而走捷径的生产者，所以纪律必须**机械化**（写成 CI 和规则集）、**对生产者不可改**（受保护文件、CODEOWNERS、合并权限），并且**用结果度量**。这与第 04 章「约束靠环境，不靠告诉」是同一个结论在交付流水线上的体现。
+
+## 证据强度与缺口 {#evidence}
+
+- **大厂数据多为团队自报**：Uber、Google、Meta、Cursor、腾讯、字节、快手等的采纳率和解决率都来自各自的博客或论文，口径不同，不能横向比较。
+- **厂商报告有利益相关**：CodeRabbit、GitClear、Veracode 都销售相关产品（[QR08](/sources/quality/research#qr08)、[QR09](/sources/quality/research#qr09)、[QR10](/sources/quality/research#qr10)），本手册已标注「厂商自报、尚未独立验证」。
+- **独立研究很少**，主要是 METR 和 DORA（[QR01](/sources/quality/research#qr01)、[QR03](/sources/quality/research#qr03)、[QR04](/sources/quality/research#qr04)、[QR06](/sources/quality/research#qr06)）以及若干 arXiv 论文；缺少「加了某个门禁后缺陷逃逸率变化」这样的对照数据。
+- **部分原文未能访问**：OpenAI 的 harness engineering 文章和 OpenAI 网站上关于 Datadog 的客户案例在本次检索中返回 403；部分中文资料是会议预告或转载。
