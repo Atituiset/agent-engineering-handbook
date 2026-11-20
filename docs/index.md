@@ -10,6 +10,9 @@ hero:
       text: 阅读实践手册
       link: /handbook/
     - theme: alt
+      text: 一页纸推荐
+      link: /handbook/00-one-page
+    - theme: alt
       text: 原始报告
       link: /sources/
     - theme: alt

@@ -9,6 +9,7 @@ const handbookSidebar = [
     text: '实践手册',
     items: [
       { text: '总览：一页读懂', link: '/handbook/' },
+      { text: '一页纸推荐：先读·先做·先别做', link: '/handbook/00-one-page' },
       { text: '01 心智模型：能力边界', link: '/handbook/01-mental-model' },
       { text: '02 上下文工程', link: '/handbook/02-context-engineering' },
       { text: '03 规格驱动与计划先行', link: '/handbook/03-spec-and-plan' },
