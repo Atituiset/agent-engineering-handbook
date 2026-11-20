@@ -13,10 +13,16 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      # v5 caches the Maven wrapper distribution (~/.m2/wrapper/dists) under
+      # its own key, so later runs do not download Maven from Maven Central.
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "21"
           cache: maven
       - name: Verify (spotless, javac -Werror + Error Prone, JUnit 5)
+        # MVNW_VERBOSE makes mvnw show wget's HTTP status if downloading Maven
+        # fails; verify.sh prints it only when a step fails.
+        env:
+          MVNW_VERBOSE: "true"
         run: bash scripts/verify.sh

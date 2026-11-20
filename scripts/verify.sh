@@ -7,14 +7,20 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 step() { printf '\n==> %s\n' "$*"; }
-# Run a Maven goal; on failure show only its WARNING/ERROR lines (with -q,
-# Maven would hide the compiler warnings that -Werror turned into errors).
+# Run a Maven goal through the wrapper. Quiet on success; on failure print
+# everything the wrapper and Maven wrote, unfiltered. A filter would also hide
+# errors that do not look like Maven's "[ERROR]" lines, e.g. the wrapper's
+# "wget: Failed to fetch ..." when downloading Maven itself fails.
 mvn_step() {
-  local out
-  if ! out=$(./mvnw -B -ntp "$@" 2>&1); then
-    printf '%s\n' "$out" | grep -E '^\[(WARNING|ERROR)\]' | grep -vE 'Re-run Maven|For more information|Help 1|full stack trace|^\[ERROR\] *$'
-    return 1
+  local log rc=0
+  log=$(mktemp)
+  ./mvnw -B -ntp "$@" >"$log" 2>&1 || rc=$?
+  if ((rc != 0)); then
+    cat "$log"
+    printf '\nverify: ./mvnw %s failed (exit %d); full output above\n' "$*" "$rc"
   fi
+  rm -f "$log"
+  return "$rc"
 }
 
 step "format (spotless:check, google-java-format)"

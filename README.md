@@ -82,7 +82,7 @@ tests passed: 15
 verify: OK
 ```
 
-> 每个 Maven 步骤成功时不输出内容；失败时只打印 Maven 的 WARNING/ERROR 行。`tests passed` 是从 surefire 报告里加总的用例数（6 条合法输入 + 9 条非法输入）。
+> 每个 Maven 步骤成功时不输出内容；失败时原样打印该步骤里 Maven wrapper 和 Maven 的全部输出，最后一行注明是哪条 `./mvnw` 命令失败。下文第 6 步的失败输出是从中摘录的。`tests passed` 是从 surefire 报告里加总的用例数（6 条合法输入 + 9 条非法输入）。
 
 ### 第 3 步：装上 pre-commit
 
@@ -237,9 +237,9 @@ verify: OK
 
 ### 第 8 步：推到 GitHub，让 CI 做最终裁判
 
-`.github/workflows/ci.yml` 在 push 和 pull request 时运行：用 `actions/setup-java` 装 Temurin JDK 21，然后只执行 `bash scripts/verify.sh`，和本地是同一条命令。Maven 版本由 wrapper 固定（3.9.16），Spotless、google-java-format、Error Prone、JUnit 的版本都写死在 pom.xml。在仓库 **Settings → Branches** 里把 `ci / verify` 设为必需检查，智能体就无法绕过它合并（手册 [第 12 章示例 A](https://atituiset.github.io/agent-engineering-handbook/handbook/12-quality-cicd#example-a)）。
+`.github/workflows/ci.yml` 在 push 和 pull request 时运行：用 `actions/setup-java@v5` 装 Temurin JDK 21，然后只执行 `bash scripts/verify.sh`，和本地是同一条命令。`cache: maven` 会缓存依赖和 wrapper 下载的 Maven 发行包；CI 里设了 `MVNW_VERBOSE=true`，万一下载 Maven 失败，日志里能看到 wget 给出的 HTTP 状态。Maven 版本由 wrapper 固定（3.9.16），Spotless、google-java-format、Error Prone、JUnit 的版本都写死在 pom.xml。在仓库 **Settings → Branches** 里把 `ci / verify` 设为必需检查，智能体就无法绕过它合并（手册 [第 12 章示例 A](https://atituiset.github.io/agent-engineering-handbook/handbook/12-quality-cicd#example-a)）。
 
-我们在本地（Debian 的 OpenJDK 21.0.13）用全新 clone 跑了与 CI 相同的命令，结果通过；GitHub 托管 runner（Temurin 21）上的实际运行结果请以该分支的 Actions 页面为准。
+我们在本地用全新 clone 和空的 `~/.m2` 跑了与 CI 相同的命令，Debian 的 OpenJDK 21.0.13 和 Temurin 21.0.13+9（与 GitHub runner 上 setup-java 装的版本相同）都通过。这个分支在 GitHub 上的第一次 CI 运行失败了：wrapper 下载 Maven 这一步失败，而当时的 verify.sh 过滤掉了 wrapper 的报错，日志里什么都看不到（经过见手册第 15 章）。现在的 verify.sh 失败时会打印完整输出。GitHub 托管 runner 上的实际运行结果请以该分支的 Actions 页面为准。
 
 ## Skills 与 MCP
 
