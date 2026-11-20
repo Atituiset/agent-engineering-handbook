@@ -35,7 +35,7 @@ Simon Willison 提出（[SC01](/sources/security#sc01)）：当智能体同时�
 
 ## 3. 供应链：新的攻击面
 
-- **规则文件与 MCP**：被攻陷的 MCP 服务器、规则文件甚至依赖代码，都可能向智能体注入被操纵的指令（[TW12](/sources/thoughtworks#tw12)）。→ `AGENTS.md`、`.claude/`、`.cursor/rules`、skills、MCP 配置纳入代码评审与 CODEOWNERS；第三方 skills / hooks 引入前审查（[OS07](/sources/open-source#os07)）。
+- **规则文件与 MCP**：被攻陷的 MCP 服务器、规则文件甚至依赖代码，都可能向智能体注入被操纵的指令（[TW12](/sources/thoughtworks#tw12)）。→ `AGENTS.md`、`.claude/`、`.cursor/rules`、skills、MCP 配置纳入代码评审与 CODEOWNERS；第三方 skills / hooks 引入前审查（[OS07](/sources/open-source#os07)）。恶意 skill 的公开数据与逐项审查清单见 [第 13 章 §6](./13-skills-catalog#security)。
 - **包幻觉**：商业模型平均至少 5.2%、开源模型 21.7% 的推荐包不存在（[SC03](/sources/security#sc03)）；其中相当一部分幻觉稳定复现，可被抢注（slopsquatting，[SC04](/sources/security#sc04)）。→ 依赖白名单或私有镜像、新增依赖需人工确认、锁文件、依赖扫描。
 - **OWASP LLM Top 10** 可作为威胁建模清单的起点（[SC05](/sources/security#sc05)）。
 

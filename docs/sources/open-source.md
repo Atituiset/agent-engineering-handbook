@@ -33,6 +33,8 @@
 
 ## 技能、工作流与编排
 
+> 更完整的 skills 仓库清单（厂商官方、社区高星、awesome 列表、安全扫描工具，含 2026-11-20 核对的星标与许可证）见 [实践手册第 13 章](/handbook/13-skills-catalog)。
+
 ### OS06 · anthropics/skills {#os06}
 **机构**：Anthropic｜**日期**：持续更新｜[原文](https://github.com/anthropics/skills)
 

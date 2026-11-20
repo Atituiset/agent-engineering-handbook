@@ -38,6 +38,9 @@ features:
   - title: CI 是不会被说服的评审者
     details: 测试先行、测试改动守卫、必需检查与合并队列；AI 评审只做建议性初筛，Evals 进 CI，度量解决率与变更失败率。（第 12 章）
     link: /handbook/12-quality-cicd
+  - title: 现成的 skills 去哪找、怎么审
+    details: 厂商官方与 GitHub 高星 skills 仓库清单，附星标、许可证与各工具加载路径；第三方 skill 当作依赖审查。（第 13 章）
+    link: /handbook/13-skills-catalog
   - title: 证据与分歧并列
     details: 厂商自报、个人经验与对照研究分开标注；上下文文件有没有用、TDD、多智能体等争议如实呈现。
     link: /sources/

@@ -20,7 +20,8 @@ const handbookSidebar = [
       { text: '09 安全', link: '/handbook/09-security' },
       { text: '10 反模式与踩坑清单', link: '/handbook/10-anti-patterns' },
       { text: '11 速查表与 Checklist', link: '/handbook/11-checklists' },
-      { text: '12 质量保障：测试、CI/CD 与评审', link: '/handbook/12-quality-cicd' }
+      { text: '12 质量保障：测试、CI/CD 与评审', link: '/handbook/12-quality-cicd' },
+      { text: '13 Skills 生态：官方与高星仓库清单', link: '/handbook/13-skills-catalog' }
     ]
   }
 ]

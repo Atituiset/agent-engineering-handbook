@@ -54,6 +54,8 @@ Simon Willison 认为 skills 可能比 MCP 更具影响力，因为它的简洁�
 
 **注意**：skill 可能不被调用（[VD11](/sources/vendors#vd11) 中 56% 的用例没调用）。必须执行的流程不要只靠 skill，要用 hook 或明确的命令触发。
 
+> **现成的 skills 去哪找**：各大厂官方仓库、GitHub 高星技能集、各工具的加载路径对照，以及引入第三方 skill 的安全审查清单，见 [第 13 章 · Skills 生态](./13-skills-catalog)。
+
 ## 5. 工具设计：接口比示例重要
 
 - 工具是确定性系统与非确定性智能体之间的契约；少而精，命名空间清晰，返回有意义的信息，用真实任务评测（[AN11](/sources/anthropic#an11)）。

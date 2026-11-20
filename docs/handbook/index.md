@@ -38,6 +38,7 @@ OpenAI 称之为 harness engineering（[OA01](/sources/openai#oa01)），Thought
 | [10](./10-anti-patterns) | 反模式 | 哪些做法已被证明有害？ |
 | [11](./11-checklists) | 速查表 | 可直接复制的清单与模板 |
 | [12](./12-quality-cicd) | 质量保障：测试、CI/CD 与评审 | 怎样让 AI 交付的代码在流水线上被证明可靠？ |
+| [13](./13-skills-catalog) | Skills 生态：官方与高星仓库清单 | 现成的 skills 去哪找、怎么挑、怎么审？ |
 
 每章都有一节 **「与传统软件工程认知的对比」**：哪些经典认知依然成立、哪些需要修正、为什么这样选。全书的对照总表见 [对比与取舍](/compare/)。
 
@@ -45,6 +46,7 @@ OpenAI 称之为 harness engineering（[OA01](/sources/openai#oa01)），Thought
 
 - **时间紧**：读 01 → 04 → 05 → 11。
 - **团队负责人**：加读 06、08、09。
+- **想找现成的 skills**：读 07 → 13。
 - **想核实**：每条建议后面都有来源编号，点进去看原文摘要，再点原文链接。
 
 ## 关于证据强度
