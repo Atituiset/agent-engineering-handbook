@@ -1,0 +1,31 @@
+# Local hooks call the same tools as scripts/verify.sh (staticcheck and
+# goimports are pinned in go.mod as `tool` dependencies), so pre-commit,
+# verify.sh and CI cannot drift apart.
+# Install once (needs Python): uv tool install pre-commit   # or: pipx install pre-commit
+# then:                        pre-commit install
+repos:
+  - repo: local
+    hooks:
+      - id: gofmt
+        name: gofmt -l
+        entry: bash -c 'out=$(gofmt -l "$@"); [ -z "$out" ] || { echo "$out"; exit 1; }' --
+        language: system
+        types: [go]
+      - id: go-vet
+        name: go vet
+        entry: go vet ./...
+        language: system
+        types: [go]
+        pass_filenames: false
+      - id: staticcheck
+        name: staticcheck
+        entry: go tool staticcheck ./...
+        language: system
+        types: [go]
+        pass_filenames: false
+      - id: go-test
+        name: go test -race
+        entry: go test -race -count=1 ./...
+        language: system
+        types: [go]
+        pass_filenames: false
