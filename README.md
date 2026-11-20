@@ -9,7 +9,7 @@
 - `docs/library/` 全量库：3,195 条资料的分页表格与在线筛选（质量专题的分页为 `q-*.md`；可按公司筛选腾讯、阿里、字节相关条目）；数据文件在 `docs/public/data/sources.json` 与 `sources.csv`。
 - `docs/compare/evidence.md` 共识度/佐证：20 条原则的独立支持数与异议；质量专题 13 条原则（Q01–Q13）的统计在 `docs/handbook/12-quality-cicd.md`。
 - `docs/compare/` 对比与取舍：传统工程 vs Agent 时代总表、决策指南、共识度/佐证。
-- 分支 `starter/python`、`starter/typescript`、`starter/cpp`：第 15 章「落地起步套件」的三个示例项目。它们是 orphan 分支，与 `main` 没有共同历史，可以直接 `git clone --branch starter/<语言> --single-branch` 当模板用；文档站只从 `main` 构建。
+- 分支 `starter/python`、`starter/typescript`、`starter/cpp`、`starter/java`、`starter/rust`、`starter/c`、`starter/go`：第 15 章「落地起步套件」的七个示例项目。它们是 orphan 分支，与 `main` 没有共同历史，可以直接 `git clone --branch starter/<语言> --single-branch` 当模板用；文档站只从 `main` 构建。
 
 ## 本地运行
 

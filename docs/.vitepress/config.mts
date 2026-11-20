@@ -24,7 +24,7 @@ const handbookSidebar = [
       { text: '12 质量保障：测试、CI/CD 与评审', link: '/handbook/12-quality-cicd' },
       { text: '13 Skills 生态：官方与高星仓库清单', link: '/handbook/13-skills-catalog' },
       { text: '14 异步与后台智能体', link: '/handbook/14-async-agents' },
-      { text: '15 落地起步套件：Python / TS / C++ 模板', link: '/handbook/15-starter-kit' }
+      { text: '15 落地起步套件：七种语言模板', link: '/handbook/15-starter-kit' }
     ]
   }
 ]

@@ -51,7 +51,7 @@ features:
     details: 云端与 CI 里的智能体：什么任务适合委派、环境决定能力上限、智能体与触发人都不能批准它的 PR、回合与预算设上限。（第 14 章）
     link: /handbook/14-async-agents
   - title: 拿来就能跑的起步套件
-    details: Python、TypeScript、C++ 三个可直接 clone 的模板分支：AGENTS.md、hooks、pre-commit、verify.sh 与 CI 一应俱全，通过与被拦住的输出都是实测的。（第 15 章）
+    details: Python、TypeScript、C++、Java、Rust、C、Go 七个可直接 clone 的模板分支：AGENTS.md、hooks、pre-commit、verify.sh 与 CI 一应俱全，通过与被拦住的输出都是实测的。（第 15 章）
     link: /handbook/15-starter-kit
   - title: 证据与分歧并列
     details: 厂商自报、个人经验与对照研究分开标注；上下文文件有没有用、TDD、多智能体等争议如实呈现。
