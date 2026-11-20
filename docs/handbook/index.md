@@ -27,14 +27,14 @@ OpenAI 称之为 harness engineering（[OA01](/sources/openai#oa01)），Thought
 | 章 | 主题 | 核心问题 |
 | --- | --- | --- |
 | [01](./01-mental-model) | 心智模型 | 把智能体当成什么？人在哪个环上？ |
-| [02](./02-context-engineering) | 上下文工程 | 给什么、给多少、什么时候给？ |
-| [03](./03-spec-and-plan) | 规格驱动与计划先行 | 写多少规格才不算浪费？ |
+| [02](./02-context-engineering) | 上下文工程 | 给什么、给多少、什么时候给？跨会话记什么？ |
+| [03](./03-spec-and-plan) | 规格驱动与计划先行 | 写多少规格才不算浪费？存量代码和大规模迁移怎么做？ |
 | [04](./04-architecture-constraints) | 架构约束落地 | 如何让分层、依赖方向「守得住」？ |
 | [05](./05-verification) | 验证与测试 | 怎样证明它真的做对了？ |
 | [06](./06-review-collaboration) | 代码评审与人机协作 | 人还要读每一行吗？ |
-| [07](./07-harness-tools) | 工具与 harness | hooks、skills、子智能体、MCP 怎么搭？ |
-| [08](./08-team-process) | 团队与流程 | 组织如何推进？瓶颈去哪了？ |
-| [09](./09-security) | 安全 | 给了它 shell 和网络之后怎么办？ |
+| [07](./07-harness-tools) | 工具与 harness | hooks、skills、子智能体、MCP 怎么搭？成本怎么控？ |
+| [08](./08-team-process) | 团队与流程 | 组织如何推进？瓶颈去哪了？新人怎么培养、过程怎么观测？ |
+| [09](./09-security) | 安全 | 给了它 shell 和网络之后怎么办？MCP 服务器怎么审？ |
 | [10](./10-anti-patterns) | 反模式 | 哪些做法已被证明有害？ |
 | [11](./11-checklists) | 速查表 | 可直接复制的清单与模板 |
 | [12](./12-quality-cicd) | 质量保障：测试、CI/CD 与评审 | 怎样让 AI 交付的代码在流水线上被证明可靠？ |

@@ -74,3 +74,16 @@
 
 `厂商文档`
 
+### OA11 · Why we no longer evaluate SWE-bench Verified {#oa11}
+**机构**：OpenAI｜**日期**：2026-02-23｜[原文](https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/)（该页对脚本访问返回 403，内容经搜索结果与 [Epoch AI 的转述](https://epoch.ai/benchmarks/swe-bench-verified/review) 核对）
+
+OpenAI 宣布不再报告 SWE-bench Verified。据 Epoch AI 转述：OpenAI 审计了 27.6% 的题目，其中 59.4% 的测试用例有缺陷，会拒绝功能正确的提交；被测的前沿模型都在训练中见过至少部分题目与参考答案。OpenAI 的结论是该基准上的提升已不再反映真实的软件开发能力，转而推荐 SWE-bench Pro。
+
+`厂商自报（审计结果）；原文对脚本访问受限`
+
+### OA12 · Prompt caching（OpenAI 文档） {#oa12}
+**机构**：OpenAI｜**日期**：持续更新（2026-11 核对）｜[原文](https://platform.openai.com/docs/guides/prompt-caching)
+
+缓存的是提示开头不变的部分（前缀）；后续请求前缀相同就复用。GPT-5.6 及以后的模型最小可缓存长度为 1,024 token；多数模型的缓存读取价格为普通输入的 0.1 倍，写入按 1.25 倍计。文档自己算了一笔账：写入一次、完全复用一次，成本是普通输入的 1.35 倍，而不缓存处理两次是 2 倍。
+
+`厂商文档`

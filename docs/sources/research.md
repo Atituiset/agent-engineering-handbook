@@ -81,7 +81,10 @@ RS01 的后续。2025 年 8 月起的新实验共 57 位开发者（10 位来自
 **证据类型**：团队自述（模型发布博客）｜**对应原则**：[Q09](/handbook/12-quality-cicd#q09) [Q02](/handbook/12-quality-cicd#q02)
 
 ### 字节 · BD05 · Trae Agent：测试时扩展的软件工程 Agent（SWE-bench Verified 第一） {#bd05}
+
 **作者/机构**：Trae Research Team（字节跳动，arXiv）｜**日期**：2025-07｜[原文](https://arxiv.org/abs/2507.23370)｜[相关链接](https://github.com/bytedance/trae-agent)
+
+> **2026-11 注**：SWE-bench Verified 已被 OpenAI 停止使用、被 Epoch AI 评为「有缺陷」（[OA11](./openai#oa11)、[RS11](#rs11)）。下面的「第一」是当时的榜单排名，不宜再作为能力证据引用。
 
 把 issue 修复当作“最优解搜索”：生成多个候选补丁，再由剪枝与选择 Agent 收敛，解决集成空间大与仓库级理解两大难题；开源为 bytedance/trae-agent。注意 75.20% 是排行榜成绩，不代表内部业务交付质量。
 
@@ -97,6 +100,38 @@ Agent 能不能验证，取决于仓库能不能跑起来：LLM Agent 在 Docker
 > “Repo2Run: Automated Building Executable Environment for Code Repository at Scale”
 
 **证据类型**：开源仓库（论文配套）｜**对应原则**：[Q09](/handbook/12-quality-cicd#q09) [P15](/compare/evidence#p15)
+
+## 评测方法与基准的局限（2026-11 增补） {#eval-methods}
+
+### RS10 · τ-bench：工具-智能体-用户交互的基准与 pass^k 指标 {#rs10}
+**作者**：Shunyu Yao、Noah Shinn 等｜**日期**：2024-06｜[原文](https://arxiv.org/abs/2406.12045)
+
+模拟用户与带领域 API 和政策规则的智能体对话，用对话结束时的数据库状态与目标状态比对来评分。论文提出 **pass^k**：同一任务跑 k 次**全部**成功的概率，用来衡量可靠性，区别于「k 次里至少成功一次」的 pass@k。当时最强的函数调用智能体在零售场景成功率不到 50%，pass^8 低于 25%。
+
+`学术论文；场景是客服类工具调用，不是编码`
+
+### RS11 · SWE-bench Verified – Benchmark review（Epoch AI） {#rs11}
+**机构**：Epoch AI｜**日期**：2026-09-03｜[原文](https://epoch.ai/benchmarks/swe-bench-verified/review)
+
+第三方基准评审，结论为 **Flawed**。依据包括：Epoch 2025-06 的早期评审已指出污染风险高、结果高度依赖所用脚手架；OpenAI 2026-02 的审计（[OA11](./openai#oa11)）发现 59.4% 被审题目的测试有缺陷，推算至少 16.4% 的题目是坏的；另有研究者找到可以拿满分的 reward hack。
+
+`第三方评审`
+
+## 技能形成与组织能力（2026-11 增补） {#skills-org}
+
+### RS12 · How AI assistance impacts the formation of coding skills（随机对照实验） {#rs12}
+**机构**：Anthropic｜**日期**：2026-01｜[原文](https://www.anthropic.com/research/AI-assistance-coding-skills)｜[论文](https://arxiv.org/abs/2601.20245)
+
+52 位（多数为初级的）软件工程师学习一个不熟悉的 Python 异步库 Trio 并完成两个功能，随后测验。用 AI 的组平均 50 分，手写组 67 分，差距在统计上显著；差距最大的是调试题。用 AI 的组平均快约两分钟，但不显著。用法决定结果：完全交给 AI 写或靠 AI 调试的人得分最低（低于 40%）；用 AI 提问概念、要解释、生成后追问理解的人得分在 65% 以上。作者提醒样本小、只测了学习后的即时理解。
+
+`随机对照实验（厂商研究团队）；样本小，场景是学习新库`
+
+### RS13 · DORA AI Capabilities Model {#rs13}
+**机构**：DORA（Google Cloud）｜**日期**：2025-11（报告页最后更新 2025-11-25）｜[原文](https://dora.dev/ai/capabilities-model/report/)
+
+[RS03](#rs03) 的配套报告。基于 2025 年调查数据，识别出七项能放大 AI 收益的组织能力：清晰且传达到位的 AI 立场、健康的数据生态、AI 可访问的内部数据、扎实的版本控制实践、小批量工作、以用户为中心、高质量的内部平台。报告为每项能力给出落地做法与度量方式。例如它把版本控制称为 AI 时代的「安全网」，要求团队熟练使用回滚。
+
+`调查研究（相关性）`
 
 ## 另见
 

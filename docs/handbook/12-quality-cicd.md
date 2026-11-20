@@ -86,7 +86,7 @@
 - 属性测试给了智能体更难糊弄的预言机：Anthropic 的智能体在 100 多个 Python 包中发现真实缺陷，人工复核后 56% 的报告为有效 bug（论文自报，[QT07](/sources/quality/tools#qt07)、[QT08](/sources/quality/tools#qt08)）。
 - 同义反复测试（测试只是把实现再写一遍）是 AI 测试的典型问题：Matt Pocock 把「Tautological tests considered harmful.」写进规范（[QX04](/sources/quality/x#qx04)）；David Cramer 抱怨 GPT 总写大量琐碎单测（[QX15](/sources/quality/x#qx15)）。
 - 端到端测试作为基准真相（[QX11](/sources/quality/x#qx11)）；但智能体写 E2E 时容易选脆弱的选择器（[QX36](/sources/quality/x#qx36)）。
-- **测试集本身也是会出错的预言机。** SWE-bench 上「已解决」的补丁可能通过测试却不符合开发者预期（[QR05](/sources/quality/research#qr05)）；METR 发现「测试通过」的智能体 PR 平均还需约 42 分钟才能达到可合并状态（[QR04](/sources/quality/research#qr04)）；差分测试只报「不一致」，不保证正确（[QX34](/sources/quality/x#qx34)）。
+- **测试集本身也是会出错的预言机。** SWE-bench 上「已解决」的补丁可能通过测试却不符合开发者预期（[QR05](/sources/quality/research#qr05)）；OpenAI 后来审计 SWE-bench Verified，发现被审题目中 59.4% 的测试有缺陷，并停止报告这个基准（[OA11](/sources/openai#oa11)、[RS11](/sources/research#rs11)）；METR 发现「测试通过」的智能体 PR 平均还需约 42 分钟才能达到可合并状态（[QR04](/sources/quality/research#qr04)）；差分测试只报「不一致」，不保证正确（[QX34](/sources/quality/x#qx34)）。
 - Datadog 的取舍：与其逐行审查智能体的 diff，不如把时间投入到收紧不变量、扩大仿真覆盖的 harness 上（[QB17](/sources/quality/bigtech#qb17)）。
 
 ### Q06 · AI 评审是补充而非替代 {#q06}
@@ -110,6 +110,7 @@
 - 黄金集要覆盖核心功能、历史 bug 和客户永远不能坏的查询，并由干系人签字（[QX39](/sources/quality/x#qx39)）；把 eval 集放进 CI，让变差的 PR 无法合并（[QX26](/sources/quality/x#qx26)）。
 - **裁判也要被测试。** LLM 裁判本质上是分类器，要对照人工标签（[QX14](/sources/quality/x#qx14)、[QP12](/sources/quality/practitioners#qp12)）；只看「一致率」会误导，永远判「通过」的裁判在错误占 5% 时也有 95% 一致率（[QP12](/sources/quality/practitioners#qp12)）；LLM 生成的评估器会继承被评估 LLM 的问题（[QP15](/sources/quality/practitioners#qp15)）。
 - 评测的两部分完全不同：发现失败模式，以及度量其频率（[QX16](/sources/quality/x#qx16)）。
+- **同时评结果和过程，并多跑几次。** 结果用确定性检查判定，过程记录用来抓删测试、越权调用这类问题；用 pass^k（k 次全部成功）衡量可靠性，而不只是 pass@k（至少一次成功）（[AN31](/sources/anthropic#an31)、[RS10](/sources/research#rs10)）。公开基准分数不能代替你自己仓库的回归集（[OA11](/sources/openai#oa11)）。
 
 ### Q09 · 沙箱化验证与最小权限 {#q09}
 
@@ -343,6 +344,7 @@ jobs:
 
 - **流水线里的工业案例**（数字均为团队自报、尚未独立验证）：字节 LogSage 一年处理 107 万次 CI/CD 执行（[BD04](/sources/quality/research#bd04)），BitsAI-Fix 自动修复静态分析告警（[BD03](/sources/quality/research#bd03)），TestGPT-Server 在 1.4 万个微服务 API 上找到 50 个崩溃 bug、仅 2 个功能 bug（[BD07](/sources/quality/research#bd07)）。阿里 AACR-Bench 带负样本集衡量评审噪声（[AL11](/sources/quality/research#al11)）；Open Code Review 的自报与社区复测分歧（[AL08](/sources/quality/oss#al08)、[AL09](/sources/quality/hn#al09)）说明团队自报 benchmark 需要独立复测（Q13）。腾讯一线团队不追求严格 TDD（[TX02](/sources/chinese#tx02)），与 [Q01](#q01) 有张力。
 - **生产力证据更新**：Q12 引用的 METR 2025 年初实验（[QR03](/sources/quality/research#qr03)）有了 2026-02 的后续：点估计转为加速，但置信区间跨过 0，METR 自评因选择效应而不可靠（[RS09](/sources/research#rs09)）。这**不改变** Q12 的结论（度量结果而非体感），只是不应再把「变慢」当作当前事实引用。
+- **公开基准被正式质疑**：OpenAI 在 2026-02 停止报告 SWE-bench Verified，原因是测试缺陷与训练数据污染（[OA11](/sources/openai#oa11)）；Epoch AI 的第三方评审给出「有缺陷」的结论（[RS11](/sources/research#rs11)）。这**加强**了 [Q05](#q05) 与 [Q08](#q08)：测试集是会出错的预言机，评测要建在自己的任务上。
 
 ## 与传统软件工程认知的对比 {#compare}
 

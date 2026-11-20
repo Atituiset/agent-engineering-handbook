@@ -100,3 +100,19 @@ Agent 负载从一次性执行走向长周期、有状态、大规模并行，�
 > “基于MicroVM + 快照路线，以沙箱为基本计算单元，实现算力与状态两个维度的弹性”
 
 **证据类型**：议题摘要（演讲者自述）｜**对应原则**：[P15](/compare/evidence#p15) [Q09](/handbook/12-quality-cicd#q09)
+
+## 观测与互操作标准（2026-11 增补） {#standards}
+
+### OS16 · OpenTelemetry GenAI 语义约定 {#os16}
+**机构**：OpenTelemetry｜**日期**：持续更新（状态：Development）｜[原文](https://github.com/open-telemetry/semantic-conventions-genai)
+
+为模型调用、智能体与工具调用定义统一的遥测字段：包括模型推理、创建与调用智能体、执行工具的 span，token 用量等指标，以及 MCP、A2A 的约定。2026 年从 OpenTelemetry 主语义约定仓库迁出，原文档页已标注「Moved」。状态仍是 Development，字段可能变化。
+
+`开放标准（开发中）`
+
+### OS17 · Agent2Agent（A2A）协议 {#os17}
+**机构**：A2A 项目（Agentic AI Foundation）｜**日期**：持续更新｜[原文](https://a2a-protocol.org/latest/)
+
+让不同厂商、彼此不透明的智能体应用相互发现、通信与委派任务的开放协议。官方的定位是：MCP 连接智能体与工具和数据，A2A 连接智能体与智能体。对多数编码工作流而言，它目前是平台层的事，本手册只作术语说明。
+
+`开放协议`

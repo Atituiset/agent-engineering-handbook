@@ -18,7 +18,7 @@
 ### AN02 · How Claude remembers your project（CLAUDE.md 与记忆） {#an02}
 **机构**：Anthropic（Claude Code 文档）｜**日期**：持续更新｜[原文](https://code.claude.com/docs/en/memory)
 
-说明 CLAUDE.md 的层级（组织级、用户级、项目级、子目录级）如何被加载、如何用 `@` 导入其它文件、以及自动记忆的工作方式。实践要点：项目级 CLAUDE.md 纳入版本控制与团队共享，个人偏好放在用户级文件，子目录的说明按需加载。
+说明 CLAUDE.md 的层级（组织级、用户级、项目级、子目录级）如何被加载、如何用 `@` 导入其它文件、以及自动记忆的工作方式。实践要点：项目级 CLAUDE.md 纳入版本控制与团队共享，个人偏好放在用户级文件，子目录的说明按需加载。2026-11 核对：两类记忆都只是上下文、不是强制配置，必须拦截的动作要用 PreToolUse hook；自动记忆每个会话加载前 200 行或 25KB；压缩后项目根目录的 CLAUDE.md 会重新读入，只在对话里给出的指令可能丢失。
 
 `厂商文档`
 
@@ -233,3 +233,33 @@ Anthropic 内部有数百个在用 skills，可归为九类（如库/SDK 使用�
 **机构**：Anthropic｜**日期**：2024-11-25｜[原文](https://www.anthropic.com/news/model-context-protocol)
 
 MCP 的发布公告：用开放协议连接 AI 应用与数据源/工具，取代为每个组合写一次性集成。现已成为跨厂商的事实标准（见 [OS 页](./open-source#os12)）。
+
+## 2026-11 增补：成本、遥测与上下文管理 {#cost-telemetry}
+
+### AN37 · Monitoring（Claude Code 的 OpenTelemetry 遥测） {#an37}
+**机构**：Anthropic（Claude Code 文档）｜**日期**：持续更新（2026-11 核对）｜[原文](https://code.claude.com/docs/en/monitoring-usage)
+
+Claude Code 可以通过 OpenTelemetry 导出遥测：指标走标准 metrics 协议，事件走 logs/events 协议，还可以选择导出分布式追踪。用环境变量配置导出器与端点。指标包括会话数、代码行数、PR 数、提交数、成本与 token 用量；事件包括用户提示、API 请求、工具决策与工具结果。默认不记录提示原文，需要显式开启。
+
+`厂商文档`
+
+### AN38 · Manage costs effectively（Claude Code 成本管理） {#an38}
+**机构**：Anthropic（Claude Code 文档）｜**日期**：持续更新（2026-11 核对）｜[原文](https://code.claude.com/docs/en/costs)
+
+Claude Code 按 token 计费，自动使用提示缓存与自动压缩。降成本的建议：任务之间用 `/clear` 开新会话；给 `/compact` 写保留重点；多数编码任务用较便宜的模型，复杂架构决策才用最强的模型，简单子智能体可单独指定小模型；不用的 MCP 服务器关掉，能用 CLI 就用 CLI；用 hook 预处理大日志；把不常用的说明从 CLAUDE.md 移到 skill；简单任务调低 effort 或思考预算；啰嗦的操作交给子智能体，但子智能体的请求同样计费。文档给出企业部署的平均成本约为每位开发者每个活跃日 13 美元（厂商自报），并建议先用小范围试点建立基线。`/usage` 会显示提示缓存命中率与未命中的可能原因（如工具定义变化）。
+
+`厂商文档；成本数字为厂商自报`
+
+### AN39 · Prompt caching（Claude API 文档） {#an39}
+**机构**：Anthropic（Claude 平台文档）｜**日期**：持续更新（2026-11 核对）｜[原文](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
+
+提示缓存按**前缀**复用：后续请求只要前缀相同，就从缓存继续，降低延迟与成本。默认缓存寿命 5 分钟，每次命中会刷新；也可选 1 小时。计价倍数：5 分钟写入为基础输入价的 1.25 倍，1 小时写入为 2 倍，缓存读取为 0.1 倍（个别模型例外）。
+
+`厂商文档`
+
+### AN40 · Context editing（Claude API 文档） {#an40}
+**机构**：Anthropic（Claude 平台文档）｜**日期**：持续更新（2026-11 核对）｜[原文](https://platform.claude.com/docs/en/build-with-claude/context-editing)
+
+随着对话增长自动管理上下文的两种策略：**工具结果清理**适合工具调用多、旧结果已不再需要的智能体工作流；**思考块清理**可以选择保留多少轮的思考以兼顾连续性。可以设置触发阈值与保留数量。它是「压缩」之外的另一种手段：不是摘要，而是有选择地删掉过期内容。
+
+`厂商文档`

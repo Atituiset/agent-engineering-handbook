@@ -77,6 +77,8 @@ Greg Brockman 给 OpenAI 团队的要求：**确保每段合并的代码都有�
 
 ## 7. 认知债与团队理解
 
+> 新人用 AI 学习时的技能形成，有一项对照实验可参考，见 [第 08 章 §7](./08-team-process#_7-人才与经验)。
+
 Thoughtworks 把**代码库认知债**列为 Caution：系统实现与团队对「它如何、为何这样工作」的共同理解之间的差距在 AI 加速下扩大，而理解变弱又反过来削弱引导 AI、预判边界、避免架构漂移的能力（[TW30](/sources/thoughtworks#tw30)）。Kent Beck 警告：人人都会被推向「单人 AI 开发」，这是巨大的错误（[PR16](/sources/practitioners#pr16)）。Böckeler 等人指出，结对编程的价值包括知识传播与集体代码所有权，AI 助手不能替代这些社会功能（[TW13](/sources/thoughtworks#tw13)）；她也坚持「我依然在乎代码」——只要人仍对线上系统负责（[TW10](/sources/thoughtworks#tw10)）。
 
 对策：

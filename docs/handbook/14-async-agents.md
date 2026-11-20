@@ -36,7 +36,7 @@
 
 ## 3. 什么任务适合交出去
 
-GitHub 的建议是：把分配给智能体的 issue 当作提示来写，写清问题、验收标准与涉及的文件。范围清晰的任务适合交给智能体；复杂、跨仓库、需要深厚领域知识，或涉及生产关键、安全敏感逻辑的任务，更适合人自己做（[BT14](/sources/bigtech#bt14)）。OpenAI 内部的经验是任务粒度大约为「人类一小时、几百行」，提示要像写 GitHub issue 一样具体（[OA05](/sources/openai#oa05)，厂商自报）。GitHub 博客的 WRAP 法则也要求拆成原子任务（[BT17](/sources/bigtech#bt17)）。
+GitHub 的建议是：把分配给智能体的 issue 当作提示来写，写清问题、验收标准与涉及的文件。范围清晰的任务适合交给智能体；复杂、跨仓库、需要深厚领域知识，或涉及生产关键、安全敏感逻辑的任务，更适合人自己做（[BT14](/sources/bigtech#bt14)）。任务粒度各家说法不一：OpenAI 内部的经验是大约「人类一小时、几百行」，提示要像写 GitHub issue 一样具体（[OA05](/sources/openai#oa05)，厂商自报）；Cognition 的经验是相当于初级工程师 4–8 小时的工作量（[VD08](/sources/vendors#vd08)，厂商自报）。共同点是需求清晰前置、结果可以验证。GitHub 博客的 WRAP 法则也要求拆成原子任务（[BT17](/sources/bigtech#bt17)）。
 
 委派前逐条确认：
 

@@ -50,6 +50,13 @@ Google 的开源智能体开发框架文档，涵盖智能体、工具、会话/
 
 `厂商自报`
 
+### BT21 · How is Google using AI for internal code migrations? {#bt21}
+**机构**：Google｜**日期**：2025-01｜[原文](https://arxiv.org/abs/2501.06972)
+
+Google 用 LLM 做内部代码迁移的经验报告。作者明确说这不是对照研究，没有与其他方法比较，而是分享在企业环境中多个迁移案例的经验。结论是 LLM 可以显著缩短迁移所需时间，并降低启动和完成迁移项目的门槛。
+
+`经验报告（团队自报）`
+
 ## Meta
 
 ### BT09 · Revolutionizing software testing: LLM-powered bug catchers（ACH） {#bt09}

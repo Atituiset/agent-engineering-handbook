@@ -91,7 +91,7 @@
 | 常规功能（几个文件） | Plan Mode → 人审计划 → 新上下文执行 → 自证 |
 | 跨模块功能 / 存量大代码库 | 研究 → 计划 → 实现，每阶段产物人审（[VD20](/sources/vendors#vd20)） |
 | 长程 / 绿地大项目 | 规格 + 里程碑 + 进度文件 + 功能清单（[OA06](/sources/openai#oa06)、[AN17](/sources/anthropic#an17)） |
-| 批量迁移 | 人写迁移手册与样例 → 智能体并行执行 → 差分测试（[VD08](/sources/vendors#vd08)、[AN18](/sources/anthropic#an18)） |
+| 批量迁移 | 人写迁移手册与样例 → 拆成单文件任务并行执行 → 每步机器门禁 → 差分测试（[VD08](/sources/vendors#vd08)、[AN18](/sources/anthropic#an18)、[QB13](/sources/quality/bigtech#qb13)；详见[第 03 章 §6](./03-spec-and-plan#_6-存量代码库与大规模迁移)） |
 
 ## 5. 规则该放哪儿
 
@@ -137,13 +137,16 @@
 - 计划确认后在新上下文中执行（[X08](/sources/x-posts#x08)）
 - 噪声大的工作交给子智能体（[TW28](/sources/thoughtworks#tw28)）
 - 上下文接近一半就考虑把进展写成文件、重开（[VD20](/sources/vendors#vd20)）
+- 会话中途不改系统提示、工具集和模型，保住提示缓存；不需要延续就开新会话，而不是压缩（[AN38](/sources/anthropic#an38)、[第 07 章 §9](./07-harness-tools#_9-成本与模型选择)）
+- 要长期生效的指令写进 AGENTS.md / CLAUDE.md，不要只在聊天里说（[AN02](/sources/anthropic#an02)）
 
 ## 9. 安全基线
 
-- [ ] 至少切断致命三要素中的一条边（[SC01](/sources/security#sc01)）
+- [ ] 至少切断致命三要素中的一条边（[SC01](/sources/security#sc01)）；按「二选规则」，不可信输入、私有数据、改状态／外联三项最多占两项，三项全有就要人工审批（[SC10](/sources/security#sc10)）
 - [ ] 沙箱 + 网络白名单（[AN27](/sources/anthropic#an27)、[TW24](/sources/thoughtworks#tw24)）
 - [ ] 专用、最小权限、短期凭据；机密不进上下文
-- [ ] 规则文件 / hooks / MCP 配置纳入代码评审（[TW12](/sources/thoughtworks#tw12)）
+- [ ] 规则文件 / hooks / MCP 配置 / 记忆文件纳入代码评审（[TW12](/sources/thoughtworks#tw12)）
+- [ ] MCP 服务器：可信来源、锁定版本与工具定义哈希、OAuth 不透传令牌、最小权限范围（[SC08](/sources/security#sc08)、[SC09](/sources/security#sc09)；完整清单见[第 09 章 §3](./09-security#_3-供应链-新的攻击面)）
 - [ ] 新增依赖人工确认（[SC03](/sources/security#sc03)）
 - [ ] 危险命令 deny 规则
 
@@ -154,6 +157,8 @@
 - [ ] 删除过时文档与计划文件（[TW31](/sources/thoughtworks#tw31)）
 - [ ] 看指标：回滚率、缺陷逃逸、评审等待、规则违规趋势（[TW32](/sources/thoughtworks#tw32)）
 - [ ] 把反复出现的评审意见升级为机械检查（[OA01](/sources/openai#oa01)）
+- [ ] 翻看智能体的自动记忆，删掉过时或错误的条目（[AN02](/sources/anthropic#an02)）
+- [ ] 看成本：每个合并 PR 的成本、缓存命中率、按模型的花费（[AN38](/sources/anthropic#an38)、[第 08 章 §8](./08-team-process#_8-遥测-看见智能体在做什么)）
 
 ## 11. CI 与合并门禁（摘自第 12 章）
 

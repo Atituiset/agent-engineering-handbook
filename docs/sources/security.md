@@ -45,6 +45,41 @@ LLM 应用的十大风险清单（2025 版），提示注入（LLM01:2025）居�
 
 
 
+### SC08 · MCP 授权规范与安全最佳实践（2026-07-28 版） {#sc08}
+**机构**：Model Context Protocol 规范｜**日期**：2026-07-28｜[授权](https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization)｜[安全最佳实践](https://modelcontextprotocol.io/specification/2026-07-28/basic/security_best_practices)
+
+基于 HTTP 的 MCP 服务器按 OAuth 2.1 做授权，并使用资源指示符把令牌绑定到具体服务器。安全最佳实践列出的风险包括：混淆代理（confused deputy）、令牌透传、SSRF、本地 MCP 服务器被攻陷，以及权限范围过宽。其中**令牌透传**（服务器接受不是发给自己的令牌，并原样转给下游 API）在授权规范中被明确禁止。一键配置本地 MCP 服务器的客户端，必须先完整展示将要执行的命令并取得用户同意；本地服务器应在沙箱中以最小的默认权限运行。
+
+`协议规范`
+
+### SC09 · MCP Security Notification: Tool Poisoning Attacks {#sc09}
+**机构**：Invariant Labs｜**日期**：2025-04｜[原文](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks)
+
+工具投毒：恶意 MCP 服务器把指令藏在工具描述里，模型看得到，用户界面里通常只显示简化版本。服务器还可以在用户批准之后再修改工具描述（rug pull）。建议的缓解：客户端固定 MCP 服务器与工具的版本，用哈希校验工具描述是否被改动；谨慎连接第三方服务器。本手册只收录防御结论。
+
+`安全厂商研究（厂商自报）`
+
+### SC10 · Agents Rule of Two: A Practical Approach to AI Agent Security {#sc10}
+**机构**：Meta AI｜**日期**：2025-10-31｜[原文](https://ai.meta.com/blog/practical-ai-agent-security/)
+
+在提示注入能被可靠检测之前，一个会话里最多同时具备以下三项中的两项：[A] 处理不可信输入；[B] 访问敏感系统或私有数据；[C] 改变状态或对外通信。三项都需要时，不应让它自主运行，要加人工确认或其他可靠的验证。与致命三要素（[SC01](#sc01)）同源，但把「对外通信」扩展到了「改变状态」。
+
+`大厂安全团队框架`
+
+### SC11 · Defeating Prompt Injections by Design（CaMeL） {#sc11}
+**作者**：Edoardo Debenedetti 等 10 位作者｜**日期**：2025-03（后续更新）｜[原文](https://arxiv.org/abs/2503.18813)
+
+CaMeL 在模型外加一层系统保护：先从可信的用户请求中提取控制流与数据流，使检索到的不可信数据无法改变程序流程；再用「能力」标记数据，调用工具时按安全策略阻止私有数据经未授权的路径流出。在 AgentDojo 上以可证明的安全性完成 77% 的任务（不设防系统为 84%）。
+
+`学术论文`
+
+### SC12 · New prompt injection papers: Agents Rule of Two and The Attacker Moves Second {#sc12}
+**作者**：Simon Willison｜**日期**：2025-11-02｜[原文](https://simonwillison.net/2025/nov/2/new-prompt-injection-papers/)
+
+评介两篇论文。一是 Meta 的 Rule of Two（[SC10](#sc10)）：他认可把「改变状态」纳入考虑，但指出「不可信输入 + 改变状态」这一组合即使没有敏感数据也可能造成危害。二是「The Attacker Moves Second」：用自适应攻击（梯度、强化学习、随机搜索与人工探索）测试 12 种已发表的防御，多数防御的攻击成功率超过 90%，而它们的原论文大多报告接近零。结论：过滤与检测类防御不可依赖，要在系统设计上假设注入会成功。
+
+`独立研究者评论 + 学术论文转述`
+
 ### 腾讯 · TX22 · A.S.E（AICGSecEval）：仓库级 AI 生成代码安全评测基准 {#tx22}
 **作者/机构**：腾讯悟空代码安全团队（GitHub 开源）｜**日期**：2026｜[原文](https://github.com/Tencent/AICGSecEval)
 
