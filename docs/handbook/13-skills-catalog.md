@@ -10,7 +10,58 @@
 - **星标只说明关注度。** 本章所有星标数都是 2026-11-20 从 GitHub API 实时读取的，不代表质量。许多仓库创建于 2026 年，星标增长很快。
 - **第三方 skill 就是第三方代码。** 脚本以你的权限运行，`SKILL.md` 本身也是会被执行的指令。引入前要审查、扫描、锁版本，并放进沙箱（§6、[第 09 章](./09-security)）。
 
-> 本章是清单章，用来回答「去哪找、怎么挑」。skill 机制本身怎么用、什么时候不该用，见 [第 07 章 §4](./07-harness-tools#_4-skills-按需加载的专业知识) 与 [第 02 章 §4](./02-context-engineering#_4-渐进式披露)。
+> 本章先给出全书视角的定位与推荐起步组合（§0），再给完整清单（§4）。skill 机制本身怎么用、什么时候不该用，见 [第 07 章 §4](./07-harness-tools#_4-skills-按需加载的专业知识) 与 [第 02 章 §4](./02-context-engineering#_4-渐进式披露)。
+
+## 0. 从全书视角看 Skills {#book-view}
+
+**一句话定位**：skill 属于 [第 04 章](./04-architecture-constraints#_3-guides-与-sensors-一个完整的分类框架) 所说的「推理型 Guide（前馈）」，是其中按需加载的那一层。它让智能体**知道怎么做**，但不保证它**一定照做**。必须做到的事要靠 hook、lint 和 CI 来保证（第 04、12 章），做没做对要靠验证来证明（第 05 章）。
+
+### 0.1 skill 在各章中的位置 {#book-map}
+
+| 章 | 该章怎么说 | 对 skill 的含义 |
+| --- | --- | --- |
+| [01 心智模型](./01-mental-model) | 「靠谱」主要来自环境；skills 是需要掌握的新抽象层之一 | skill 是环境的一部分，不是让模型变聪明的捷径 |
+| [02 上下文工程](./02-context-engineering#_4-渐进式披露) | 渐进式披露；高频且必需 → 常驻索引，低频或专项 → skill | 先决定一条知识该常驻还是按需，再决定要不要做成 skill |
+| [03 计划先行](./03-spec-and-plan) | 先计划后编码，按任务规模选流程 | 流程类 skill（如 Superpowers）能把计划先行落地，但小任务不必套用 |
+| [04 架构约束](./04-architecture-constraints#_3-guides-与-sensors-一个完整的分类框架) | 能用计算型就不用推理型；skills 属于非确定性指令 | skill 只适合放需要判断的知识，机械规则交给 linter 和结构测试 |
+| [05 验证](./05-verification#_8-评测-为团队的-harness-建回归) | 用 `verify` skill 固化验证流程；改 skills 要跑 harness 回归集 | 最值得写的第一个 skill 往往是 verify；改 skill 也要评测 |
+| [07 工具与 Harness](./07-harness-tools#_4-skills-按需加载的专业知识) | skills 负责按需知识与流程；从朴素开始；先确认它会被调用 | 数量宁少勿多，每个 skill 对应一个具体失败 |
+| [08 团队](./08-team-process#_1-组织级推进-openai-的清单) | 把做过的事写成 skills 提交到共享仓库；先人人对齐，再人机对齐 | 团队 skill 是共识的固化，不是从外部引入的现成答案 |
+| [09 安全](./09-security#_3-供应链-新的攻击面) | skills 是供应链的一部分，要像代码一样评审 | 第三方 skill 要先审查、锁版本，再放进沙箱运行（本章 §6） |
+| [10 反模式](./10-anti-patterns#_17-由人手动编排的-skill「金字塔」) | 由人手动编排的 skill「金字塔」是反模式 | 不要用 skill 搭人工流水线 |
+| [12 质量](./12-quality-cicd#q08) | Evals 即 CI；`skills/**` 的变更要触发评测 | skill 是会回归的代码，变更要能拦下 |
+
+### 0.2 推荐起步组合（按采用路径排列） {#starter-set}
+
+从本章 71 个仓库中挑出 11 组（共 14 个仓库）。**必装**：每个团队都应该有；**按需**：符合场景时再装；**参考**：读懂后改写成自己的，不要原样安装。
+
+| 阶段 | 仓库 | 标记 | 为什么选它（对应章节） |
+| --- | --- | --- | --- |
+| ① 个人起步 | [anthropics/skills](https://github.com/anthropics/skills) | 参考 | 格式发起方的官方范例，看「一个 skill 只做一类事」该怎么写；文档类 skill 可以直接用（07） |
+| ① 个人起步 | 你所用技术栈的厂商官方 skill，例如 [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills)、[cloudflare/skills](https://github.com/cloudflare/skills)、[supabase/agent-skills](https://github.com/supabase/agent-skills)（B/C/D 组） | 按需 | 补上模型对新版 API 的知识滞后，正是 02 章所说「模型读不到、猜不到」的知识；只装正在用的产品 |
+| ① 个人起步 | [mattpocock/skills](https://github.com/mattpocock/skills) | 参考 | 小而可组合，作者明确不接管流程，符合 07 章「从朴素开始」 |
+| ① 个人起步 | [obra/superpowers](https://github.com/obra/superpowers) | 参考 | 把计划先行、子智能体评审、red/green TDD 串成流程（03、05）；整套用于小任务就是 10 章反模式 13 |
+| ② 团队采用 | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | 参考 | 按定义 → 计划 → 构建 → 验证 → 评审 → 发布组织，与本书 03 → 05 → 06 → 12 的顺序对应；适合用来搭团队自己的骨架 |
+| ② 团队采用 | [vercel-labs/skills](https://github.com/vercel-labs/skills)（`npx skills`） | 按需 | 团队同时用多种工具时，一次装到多个目录（§3）；装好后仍要提交进仓库，不要自动更新 |
+| ② 团队采用 | [VoltAgent/awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills) | 参考 | 找厂商官方 skill 的索引，用来查找，不用来批量安装 |
+| ③ 自己写 | [agentskills/agentskills](https://github.com/agentskills/agentskills) | 必装 | 写 skill 前对照规范，用 `skills-ref validate` 把格式校验放进 CI（12） |
+| ③ 自己写 | [alibaba/skill-up](https://github.com/alibaba/skill-up) 或 [microsoft/waza](https://github.com/microsoft/waza) | 按需 | 给 skill 建回归评测：会不会被触发、用了是否更好（05 §8、12 Q08） |
+| ④ 审查与安全 | [NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector) | 必装 | 第三方 skill 引入前先扫描并进 CI；扫描只能降低风险，人工审查仍不可少（09、§6） |
+| ④ 审查与安全 | [Tencent/AI-Infra-Guard](https://github.com/Tencent/AI-Infra-Guard) | 按需 | 需要把 skill、MCP 与智能体放在一个平台里统一做安全检查时用（09） |
+
+**最小组合**：个人用户先装一个技术栈对应的厂商官方 skill，再自己写一个 `verify` skill（05 章）。团队在此基础上加规范校验（agentskills）、扫描（SkillSpector）和评测（skill-up 或 waza），并把 skill 目录纳入 CODEOWNERS。
+
+### 0.3 不要这样做 {#dont}
+
+| 不要 | 为什么（对应章节） | 改为 |
+| --- | --- | --- |
+| 把「必须遵守」的规则只写进 skill | skill 不保证被调用，遵守也由模型决定（04、[10 · 反模式 1](./10-anti-patterns#_1-把规则写进提示-就以为它会被遵守)） | 改成 hook、lint 或 CI 门禁 |
+| 整包安装 awesome 列表或上千个 skill 的大合集 | 描述越多，误调用与上下文成本越高，等于指令膨胀（[10 · 反模式 2](./10-anti-patterns#_2-指令膨胀)） | 按失败驱动，一次加一个 |
+| 搭一层层 skill，靠人按顺序逐个调用 | [10 · 反模式 17](./10-anti-patterns#_17-由人手动编排的-skill「金字塔」)；换模型后旧 skill 可能让效果变差 | 少量自包含的 skill，必要时用命令显式触发 |
+| 每个任务都套用完整的流程类 skill | [10 · 反模式 13](./10-anti-patterns#_13-对所有任务套用完整-sdd-流程)；03 章：按任务规模选流程 | 小改动直接做，大任务才走计划与评审 |
+| 按星标挑选，或让第三方 skill 自动更新 | 星标只反映关注度；注册表已遭投毒（09、§6） | 只从组织官方仓库安装，固定 commit，看 diff 后再更新 |
+| 改了 skill 或换了模型却不复测 | harness 会过期（07 §8）；没有评测只能「等投诉」（05 §8） | 维护 10–20 个任务的 harness 回归集，并接入 CI |
+| 用 skill 代替团队共识 | 08 章：先人人对齐，再人机对齐 | 先在团队内讨论定下规范，再写成 skill |
 
 ## 1. 先分清四个概念 {#concepts}
 
@@ -259,3 +310,11 @@ skill 同时带有两类风险。一是代码风险：`scripts/` 里的脚本以
 **选择理由**：skill 生态的形态，很像早期的包管理生态：格式先统一，注册表随后爆发，接着就出现投毒与仿冒。传统供应链安全的做法（固定来源、锁版本、扫描、评审、最小权限）可以直接沿用。新增的部分是「自然语言也是攻击面」，所以审查时除了看代码，还要读指令。
 
 **证据强度**：格式规范与各工具的加载路径来自官方文档，属于**事实**；星标与许可证是 2026-11-20 的 API 快照；仓库内容的数量与效果描述是**厂商自报 / 作者自述**；安全数据来自安全厂商报告与学术预印本，属于**待验证**；「宁少勿多、先确认会被调用」是**共识**，异议见第 07 章。
+
+## 本章小结 {#summary}
+
+- **定位**：skill 是按需加载的推理型 Guide，补的是「知道怎么做」。「一定做」靠第 04、12 章的确定性门禁，「做对了」靠第 05 章的验证。
+- **怎么起步**：先用厂商官方 skill 和自己写的 `verify` skill；社区方法论（Superpowers、Matt Pocock、Addy Osmani）读懂后改写成团队自己的版本（§0.2）。
+- **怎么维护**：数量宁少勿多，每个 skill 对应一个具体失败；放进仓库、纳入评审；变更和换模型时都要跑评测（第 05、07、12 章）。
+- **怎么防**：第三方 skill 按依赖对待，审查、扫描、锁版本，并在沙箱中运行（§6、第 09 章）。
+- **怎么用这份清单**：§4 用来查找，§0.2 用来起步。表中的星标是 2026-11-20 的快照，不代表质量。
