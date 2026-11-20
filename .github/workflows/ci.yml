@@ -1,0 +1,24 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      # Pin clang-format / clang-tidy so formatting and findings match local runs.
+      - name: Install pinned LLVM tools
+        run: |
+          pipx install clang-format==19.1.7
+          pipx install clang-tidy==19.1.0.1
+          clang-format --version
+          clang-tidy --version
+      - name: Verify (format, build -Werror -Wconversion, clang-tidy, ctest)
+        run: bash scripts/verify.sh

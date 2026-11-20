@@ -1,0 +1,20 @@
+# Every enabled check is an error: verify.sh and CI fail on any finding.
+# Includes conversion/cast checks (bugprone-narrowing-conversions,
+# bugprone-misplaced-widening-cast, bugprone-signed-char-misuse) and
+# readability-magic-numbers (name your constants).
+Checks: >
+  -*,
+  bugprone-*,
+  -bugprone-easily-swappable-parameters,
+  cert-*,
+  clang-analyzer-*,
+  misc-*,
+  -misc-include-cleaner,
+  performance-*,
+  readability-*,
+  -readability-identifier-length
+WarningsAsErrors: "*"
+HeaderFilterRegex: "^.*/include/durations/.*"
+CheckOptions:
+  - key: readability-magic-numbers.IgnoredIntegerValues
+    value: "0;1;-1"
