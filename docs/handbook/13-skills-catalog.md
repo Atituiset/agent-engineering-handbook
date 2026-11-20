@@ -50,7 +50,7 @@
 | ④ 审查与安全 | [NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector) | 必装 | 第三方 skill 引入前先扫描并进 CI；扫描只能降低风险，人工审查仍不可少（09、§6） |
 | ④ 审查与安全 | [Tencent/AI-Infra-Guard](https://github.com/Tencent/AI-Infra-Guard) | 按需 | 需要把 skill、MCP 与智能体放在一个平台里统一做安全检查时用（09） |
 
-**最小组合**：个人用户先装一个技术栈对应的厂商官方 skill，再自己写一个 `verify` skill（05 章）。团队在此基础上加规范校验（agentskills）、扫描（SkillSpector）和评测（skill-up 或 waza），并把 skill 目录纳入 CODEOWNERS。
+**最小组合**：个人用户先装一个技术栈对应的厂商官方 skill，再自己写一个 `verify` skill（05 章）。团队在此基础上加规范校验（agentskills）、扫描（SkillSpector）和评测（skill-up 或 waza），并把 skill 目录纳入 CODEOWNERS。现成的 `verify` skill 与 skills-ref、SkillSpector、`npx skills` 的实测命令，见 [第 15 章 §5](./15-starter-kit#skills-mcp)。
 
 ### 0.3 不要这样做 {#dont}
 
