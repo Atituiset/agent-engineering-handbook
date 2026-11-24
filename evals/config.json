@@ -1,0 +1,13 @@
+{
+  "language": "go",
+  "test_files": [
+    "durations_test.go"
+  ],
+  "hidden_dir": "testdata",
+  "hidden": {
+    "dest": "hidden_{task}_test.go",
+    "cmd": "go test -count=1 -run Hidden ."
+  },
+  "link": [],
+  "env": {}
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "file": "durations.go",
+    "find": "\t\tif pos == len(text) {\n",
+    "replace": "\t\tif pos-start > 1 && text[start] == '0' {\n\t\t\treturn 0, fmt.Errorf(\"%w: leading zero at %d in %q\", ErrInvalid, start, text)\n\t\t}\n\t\tif pos == len(text) {\n"
+  },
+  {
+    "file": "durations_test.go",
+    "find": "\" 1h\", \"1h \", \"99999999999999999999s\"}",
+    "replace": "\" 1h\", \"1h \", \"01h\", \"99999999999999999999s\"}"
+  }
+]

@@ -6,7 +6,7 @@
 #   echo '{"tool_input":{"file_path":"scripts/verify.sh"}}' | scripts/guard-protected.sh
 set -euo pipefail
 
-PROTECTED_REGEX='(^|/)(\.github/|scripts/|\.pre-commit-config\.yaml$|\.claude/settings\.json$|go\.(mod|sum)$|staticcheck\.conf$)'
+PROTECTED_REGEX='(^|/)(\.github/|scripts/|evals/|\.pre-commit-config\.yaml$|\.claude/settings\.json$|go\.(mod|sum)$|staticcheck\.conf$)'
 
 input=$(cat)
 path=$(printf '%s' "$input" | sed -n 's/.*"file_path"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -n 1)

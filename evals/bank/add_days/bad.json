@@ -1,0 +1,7 @@
+[
+  {
+    "file": "durations.go",
+    "find": "\t{symbol: 's', seconds: 1},\n}\n",
+    "replace": "\t{symbol: 's', seconds: 1},\n\t{symbol: 'd', seconds: 86400},\n}\n"
+  }
+]

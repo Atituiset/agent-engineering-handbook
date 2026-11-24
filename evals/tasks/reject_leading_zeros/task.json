@@ -1,0 +1,4 @@
+{
+  "kind": "capability",
+  "hidden": "reject_leading_zeros.go"
+}

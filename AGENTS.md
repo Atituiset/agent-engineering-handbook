@@ -16,6 +16,8 @@ Code in `durations.go`, tests in `durations_test.go`. Go ≥ 1.26 (CI uses 1.27.
 - Never: edit `.github/`, `scripts/`, `.pre-commit-config.yaml`, `.claude/settings.json`,
   `go.mod` or `go.sum` (a hook blocks it); add `//lint:ignore` or `//nolint` to silence a check;
   weaken or delete tests; ignore a returned error with `_`.
+- `evals/` holds the eval harness and its hidden tests: never edit it (the hook blocks it)
+  and do not read it to solve a task; evals run you in a copy without it.
 
 ## Non-obvious conventions
 - Every error wraps `ErrInvalid` (`fmt.Errorf("%w: ...", ErrInvalid, ...)`); tests use `errors.Is`.

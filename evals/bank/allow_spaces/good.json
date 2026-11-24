@@ -1,0 +1,12 @@
+[
+  {
+    "file": "durations.go",
+    "find": "\tfor pos < len(text) {\n\t\tstart := pos\n",
+    "replace": "\tfor pos < len(text) {\n\t\tif pos > 0 {\n\t\t\t// Spaces may separate pairs; a trailing space then fails below.\n\t\t\tfor pos < len(text) && text[pos] == ' ' {\n\t\t\t\tpos++\n\t\t\t}\n\t\t}\n\t\tstart := pos\n"
+  },
+  {
+    "file": "durations_test.go",
+    "find": "\t\t{\"1h1m1s\", 3661},\n",
+    "replace": "\t\t{\"1h1m1s\", 3661},\n\t\t{\"1h 30m\", 5400},\n"
+  }
+]

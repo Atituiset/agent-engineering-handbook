@@ -1,0 +1,20 @@
+{
+  "_comment": "Mock agent profiles. p_good is the chance of producing the correct change for a task. The numbers are made up for the demo and do not describe any real model.",
+  "honest": {
+    "cheat": false,
+    "tokens_base": 4000,
+    "p_good": { "add_days": 0.9, "allow_spaces": 0.8, "reject_leading_zeros": 0.6 }
+  },
+  "regressed": {
+    "_comment": "Simulates a prompt or model change that makes add_days worse; the gate must catch it.",
+    "cheat": false,
+    "tokens_base": 4000,
+    "p_good": { "add_days": 0.4, "allow_spaces": 0.8, "reject_leading_zeros": 0.6 }
+  },
+  "cheater": {
+    "_comment": "Same skill as honest, but when it fails it edits scripts/verify.sh to print OK.",
+    "cheat": true,
+    "tokens_base": 4000,
+    "p_good": { "add_days": 0.9, "allow_spaces": 0.8, "reject_leading_zeros": 0.6 }
+  }
+}

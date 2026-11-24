@@ -1,0 +1,17 @@
+[
+  {
+    "file": "durations.go",
+    "find": "var units = []unit{\n\t{symbol: 'h', seconds: 3600},\n",
+    "replace": "var units = []unit{\n\t{symbol: 'd', seconds: 86400},\n\t{symbol: 'h', seconds: 3600},\n"
+  },
+  {
+    "file": "durations.go",
+    "find": "// order, each unit at most once. Supported units: h (hours), m (minutes),\n// s (seconds).",
+    "replace": "// order, each unit at most once. Supported units: d (days), h (hours),\n// m (minutes), s (seconds)."
+  },
+  {
+    "file": "durations_test.go",
+    "find": "\t\t{\"1h1m1s\", 3661},\n",
+    "replace": "\t\t{\"1h1m1s\", 3661},\n\t\t{\"1d\", 86400},\n\t\t{\"1d2h\", 93600},\n"
+  }
+]
