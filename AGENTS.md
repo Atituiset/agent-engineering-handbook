@@ -19,6 +19,8 @@ Tools: CMake ≥ 3.20, GCC or Clang with C++20, clang-format 19.1.7, clang-tidy 
 - Never: edit `.github/`, `scripts/`, `third_party/`, `CMakeLists.txt`, `.clang-format`,
   `.clang-tidy`, `.pre-commit-config.yaml` or `.claude/settings.json` (a hook blocks it);
   add `NOLINT`, `#pragma` warning suppressions or turn off `-Werror`; weaken or delete tests.
+- `evals/` holds the eval harness and its hidden tests: never edit it (the hook blocks it)
+  and do not read it to solve a task; evals run you in a copy without it.
 
 ## Non-obvious conventions
 - Errors are `durations::DurationError` (an `std::invalid_argument`); never return -1 or 0 for errors.

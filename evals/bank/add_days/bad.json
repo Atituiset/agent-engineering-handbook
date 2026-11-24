@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/parse.cpp",
+    "find": "constexpr std::array<Unit, 3> kUnits{{",
+    "replace": "constexpr std::array<Unit, 4> kUnits{{"
+  },
+  {
+    "file": "src/parse.cpp",
+    "find": "    {.symbol = 's', .seconds = 1},\n}};",
+    "replace": "    {.symbol = 's', .seconds = 1},\n    {.symbol = 'd', .seconds = 86400},\n}};"
+  }
+]

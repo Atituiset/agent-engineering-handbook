@@ -1,0 +1,37 @@
+# Agent evals (handbook ch16): runs the tasks in evals/tasks with the offline mock agent,
+# grades each trial in isolation (hidden tests + scripts/verify.sh), computes pass@k / pass^k,
+# and fails if results drop below evals/baseline.json. See evals/README.md.
+name: evals
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evals:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned LLVM tools
+        run: |
+          pipx install clang-format==19.1.7
+          pipx install clang-tidy==19.1.0.1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Harness self-tests
+        run: python3 -m unittest evals/test_harness.py -v
+      - name: Eval suite (mock agent, 5 trials per task, isolated grading)
+        run: python3 evals/run_evals.py run --trials 5 --k 1 3 5 --out evals/results.json
+      - name: Regression gate against evals/baseline.json
+        run: python3 evals/run_evals.py gate --baseline evals/baseline.json --current evals/results.json --k 3
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-results
+          path: evals/results.json

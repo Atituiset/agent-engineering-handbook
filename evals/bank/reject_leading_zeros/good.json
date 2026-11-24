@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/parse.cpp",
+    "find": "        if (pos == digits_start) {\n",
+    "replace": "        if (pos - digits_start > 1 && text[digits_start] == '0') {\n            fail(\"leading zero\", text);\n        }\n        if (pos == digits_start) {\n"
+  },
+  {
+    "file": "tests/test_parse.cpp",
+    "find": "TEST_CASE(\"rejects invalid durations\") {\n",
+    "replace": "TEST_CASE(\"rejects leading zeros\") {\n    CHECK_THROWS_AS((void)parse_duration(\"01h\"), DurationError);\n    CHECK_THROWS_AS((void)parse_duration(\"1h05m\"), DurationError);\n}\n\nTEST_CASE(\"rejects invalid durations\") {\n"
+  }
+]

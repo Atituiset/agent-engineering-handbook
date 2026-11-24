@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/parse.cpp",
+    "find": "constexpr std::array<Unit, 3> kUnits{{\n    {.symbol = 'h', .seconds = 3600},",
+    "replace": "constexpr std::array<Unit, 4> kUnits{{\n    {.symbol = 'd', .seconds = 86400},\n    {.symbol = 'h', .seconds = 3600},"
+  },
+  {
+    "file": "tests/test_parse.cpp",
+    "find": "    CHECK(parse_duration(\"1h1m1s\") == 3661);\n",
+    "replace": "    CHECK(parse_duration(\"1h1m1s\") == 3661);\n    CHECK(parse_duration(\"1d\") == 86400);\n    CHECK(parse_duration(\"1d2h\") == 93600);\n"
+  }
+]

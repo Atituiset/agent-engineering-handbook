@@ -1,2 +1,4 @@
 build/
 .cache/
+evals/results.json
+evals/__pycache__/

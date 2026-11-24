@@ -1,0 +1,11 @@
+{
+  "language": "cpp",
+  "test_files": [
+    "tests/test_parse.cpp"
+  ],
+  "hidden": {
+    "cmd": "c++ -std=c++20 -Iinclude -isystem third_party/doctest src/parse.cpp {hidden} -o {tmp}/hidden_{task} && {tmp}/hidden_{task}"
+  },
+  "link": [],
+  "env": {}
+}

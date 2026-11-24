@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/parse.cpp",
+    "find": "bool is_digit(char c) { return c >= '0' && c <= '9'; }\n",
+    "replace": "bool is_digit(char c) { return c >= '0' && c <= '9'; }\n\n// Spaces may separate pairs; leading and trailing spaces stay errors.\nstd::size_t skip_separator(std::string_view text, std::size_t pos) {\n    if (pos == 0 || pos >= text.size() || text[pos] != ' ') {\n        return pos;\n    }\n    const std::size_t next = text.find_first_not_of(' ', pos);\n    if (next == std::string_view::npos) {\n        fail(\"trailing space\", text);\n    }\n    return next;\n}\n"
+  },
+  {
+    "file": "src/parse.cpp",
+    "find": "    while (pos < text.size()) {\n        const std::size_t digits_start = pos;\n",
+    "replace": "    while (pos < text.size()) {\n        pos = skip_separator(text, pos);\n        const std::size_t digits_start = pos;\n"
+  },
+  {
+    "file": "tests/test_parse.cpp",
+    "find": "    CHECK(parse_duration(\"1h1m1s\") == 3661);\n",
+    "replace": "    CHECK(parse_duration(\"1h1m1s\") == 3661);\n    CHECK(parse_duration(\"1h 30m\") == 5400);\n"
+  }
+]

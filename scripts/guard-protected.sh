@@ -6,7 +6,7 @@
 #   echo '{"tool_input":{"file_path":"scripts/verify.sh"}}' | scripts/guard-protected.sh
 set -euo pipefail
 
-PROTECTED_REGEX='(^|/)(\.github/|scripts/|third_party/|\.pre-commit-config\.yaml$|\.claude/settings\.json$|\.clang-(format|tidy)$|CMakeLists\.txt$)'
+PROTECTED_REGEX='(^|/)(\.github/|scripts/|evals/|third_party/|\.pre-commit-config\.yaml$|\.claude/settings\.json$|\.clang-(format|tidy)$|CMakeLists\.txt$)'
 
 input=$(cat)
 path=$(printf '%s' "$input" | sed -n 's/.*"file_path"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -n 1)
