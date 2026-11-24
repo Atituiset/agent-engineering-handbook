@@ -1,0 +1,15 @@
+{
+  "id": "roman_to_int",
+  "kind": "capability",
+  "source": "能力题：要拒绝 IIII、VV 这类非法写法",
+  "prompt": "实现 roman_to_int(s)：把罗马数字转换成整数，非法写法（如 'IIII'、'VV'、'IC'）抛 ValueError。",
+  "entry_file": "solution.py",
+  "protected_paths": [
+    "tests/"
+  ],
+  "forbidden_tools": [
+    "network",
+    "read_hidden"
+  ],
+  "timeout_s": 30
+}

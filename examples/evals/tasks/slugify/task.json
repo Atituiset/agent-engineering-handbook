@@ -1,0 +1,15 @@
+{
+  "id": "slugify",
+  "kind": "regression",
+  "source": "线上反馈：标题里有连续标点时生成了 a--b 这样的 slug",
+  "prompt": "实现 slugify(text)：转小写，非字母数字字符折叠成单个连字符，去掉首尾连字符。",
+  "entry_file": "solution.py",
+  "protected_paths": [
+    "tests/"
+  ],
+  "forbidden_tools": [
+    "network",
+    "read_hidden"
+  ],
+  "timeout_s": 30
+}

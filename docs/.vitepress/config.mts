@@ -24,7 +24,8 @@ const handbookSidebar = [
       { text: '12 质量保障：测试、CI/CD 与评审', link: '/handbook/12-quality-cicd' },
       { text: '13 Skills 生态：官方与高星仓库清单', link: '/handbook/13-skills-catalog' },
       { text: '14 异步与后台智能体', link: '/handbook/14-async-agents' },
-      { text: '15 落地起步套件：七种语言模板', link: '/handbook/15-starter-kit' }
+      { text: '15 落地起步套件：七种语言模板', link: '/handbook/15-starter-kit' },
+      { text: '16 智能体评测', link: '/handbook/16-agent-evals' }
     ]
   }
 ]
@@ -45,7 +46,8 @@ const sourcesSidebar = [
       { text: '中文互联网', link: '/sources/chinese' },
       { text: 'GitHub 开源项目与规范', link: '/sources/open-source' },
       { text: '研究、调查与社区讨论', link: '/sources/research' },
-      { text: '安全专题', link: '/sources/security' }
+      { text: '安全专题', link: '/sources/security' },
+      { text: '智能体评测专题', link: '/sources/evals' }
     ]
   },
   {

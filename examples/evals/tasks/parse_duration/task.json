@@ -1,0 +1,15 @@
+{
+  "id": "parse_duration",
+  "kind": "regression",
+  "source": "回归：智能体改写后 '90s' 被解析成 90 分钟",
+  "prompt": "实现 parse_duration(s)：把 '1h30m'、'45s'、'2h' 这样的字符串转换成秒数；非法输入抛 ValueError。",
+  "entry_file": "solution.py",
+  "protected_paths": [
+    "tests/"
+  ],
+  "forbidden_tools": [
+    "network",
+    "read_hidden"
+  ],
+  "timeout_s": 30
+}

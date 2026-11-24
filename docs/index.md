@@ -4,7 +4,7 @@ layout: home
 hero:
   name: 驾驭 Agent 实践手册
   text: 让编码智能体守住工程与架构约束
-  tagline: 以 X 一线声音为主，整理约 720 条精选资料与 3,195 条全量库，每条都附原文链接；统计每条实践的独立佐证数，并与传统软件工程认知逐项对照。
+  tagline: 以 X 一线声音为主，整理约 740 条精选资料与 3,215 条全量库，每条都附原文链接；统计每条实践的独立佐证数，并与传统软件工程认知逐项对照。
   actions:
     - theme: brand
       text: 阅读实践手册
@@ -53,6 +53,9 @@ features:
   - title: 拿来就能跑的起步套件
     details: Python、TypeScript、C++、Java、Rust、C、Go 七个可直接 clone 的模板分支：AGENTS.md、hooks、pre-commit、verify.sh 与 CI 一应俱全，通过与被拦住的输出都是实测的。（第 15 章）
     link: /handbook/15-starter-kit
+  - title: 评测先管住评分器
+    details: 回归集看 pass^k，能力集看 pass@k；隐藏测试不进智能体的环境，LLM 裁判按分类器校准、钉版本；配一套不需要 API key 就能跑的最小评测与 CI。（第 16 章）
+    link: /handbook/16-agent-evals
   - title: 证据与分歧并列
     details: 厂商自报、个人经验与对照研究分开标注；上下文文件有没有用、TDD、多智能体等争议如实呈现。
     link: /sources/

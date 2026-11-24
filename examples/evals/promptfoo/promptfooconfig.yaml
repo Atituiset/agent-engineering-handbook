@@ -1,0 +1,19 @@
+# promptfoo 版回归集：同一套任务和隐藏测试，换成 promptfoo 的矩阵视图和 --repeat 多次试验。
+# 运行（在 examples/evals 目录下；provider 与断言的路径相对本配置文件所在目录，不需要任何模型 API key）：
+#   PROMPTFOO_DISABLE_TELEMETRY=1 npx promptfoo@0.126.0 eval -c promptfoo/promptfooconfig.yaml --repeat 3 --no-cache --no-share
+# 换成真实智能体：设置环境变量 EVAL_AGENT，接口见 agents/mock_agent.py 顶部说明。
+description: agent regression suite (mock agent, isolated grader)
+prompts:
+  - "{{task_id}}"
+providers:
+  - id: "exec: python3 agent_provider.py"
+    label: mock-agent-honest
+defaultTest:
+  assert:
+    - type: python
+      value: file://grade.py
+tests:
+  - vars: {task_id: slugify}
+  - vars: {task_id: parse_duration}
+  - vars: {task_id: merge_intervals}
+  - vars: {task_id: dedupe_keep_order}

@@ -1,0 +1,74 @@
+# 第 16 章「智能体评测」的可运行示例：examples/evals/ 下的评测 harness、裁判校准、配对漏洞评测，
+# 以及 promptfoo 和 Inspect 两个框架版本。全部使用模拟智能体，不需要任何模型 API key。
+# 换成真实智能体时：把 EVAL_AGENT 指向你的智能体命令，并按第 12 章示例 C 的做法限制 fork PR 拿到密钥。
+name: agent-evals
+
+on:
+  push:
+    branches: [main]
+    paths: ['examples/evals/**', '.github/workflows/agent-evals.yml']
+  pull_request:
+    paths: ['examples/evals/**', '.github/workflows/agent-evals.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: examples/evals
+
+jobs:
+  harness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Self-tests (metrics, cheat detection, gates)
+        run: python -m unittest discover -s tests -v
+      - name: Regression suite, 5 trials per task, isolated grader
+        run: python harness/run_evals.py --agent "python agents/mock_agent.py --profile honest" --trials 5 --k 1 3 5 --out results.json
+      - name: Gate against baseline
+        run: python harness/compare.py --baseline baseline.json --current results.json --max-drop 0.02 --k 3
+      - name: Judge calibration gate
+        run: python judge/calibrate.py --labels judge/data/labels.csv --judge judge_v1 --compare judge_v2 --pairwise judge/data/pairwise.csv --min-kappa 0.6 --min-fail-recall 0.7
+      - name: Paired vulnerability-detection eval
+        run: python vuln/paired_eval.py --pairs vuln/data/pairs.jsonl --predictions vuln/data/model_predictions.jsonl --cutoff 2026-06-01
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-results
+          path: examples/evals/results.json
+
+  promptfoo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: promptfoo regression suite (3 repeats)
+        env:
+          PROMPTFOO_DISABLE_TELEMETRY: '1'
+          PROMPTFOO_DISABLE_UPDATE: '1'
+        run: npx --yes promptfoo@0.126.0 eval -c promptfoo/promptfooconfig.yaml --repeat 3 --no-cache --no-share --no-progress-bar
+
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Inspect
+        run: pip install inspect-ai==0.3.292
+      - name: Inspect eval with epochs and pass_at / pass_k reducers
+        run: python inspect/run_inspect.py

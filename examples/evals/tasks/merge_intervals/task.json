@@ -1,0 +1,15 @@
+{
+  "id": "merge_intervals",
+  "kind": "regression",
+  "source": "真实失败：相邻区间 [1,2],[2,3] 没有合并",
+  "prompt": "实现 merge_intervals(items)：合并重叠或首尾相接的闭区间，返回按起点排序的列表。",
+  "entry_file": "solution.py",
+  "protected_paths": [
+    "tests/"
+  ],
+  "forbidden_tools": [
+    "network",
+    "read_hidden"
+  ],
+  "timeout_s": 30
+}

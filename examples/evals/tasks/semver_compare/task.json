@@ -1,0 +1,15 @@
+{
+  "id": "semver_compare",
+  "kind": "capability",
+  "source": "能力题：预发布版本的排序规则，当前模型经常做错",
+  "prompt": "实现 semver_compare(a, b)：按 SemVer 2.0.0 比较两个版本号，返回 -1/0/1，需要处理预发布标识（1.0.0-alpha < 1.0.0）。",
+  "entry_file": "solution.py",
+  "protected_paths": [
+    "tests/"
+  ],
+  "forbidden_tools": [
+    "network",
+    "read_hidden"
+  ],
+  "timeout_s": 30
+}

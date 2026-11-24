@@ -1,0 +1,3 @@
+results*.json
+inspect/logs/
+__pycache__/

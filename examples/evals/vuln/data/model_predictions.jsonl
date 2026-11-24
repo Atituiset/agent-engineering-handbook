@@ -1,0 +1,8 @@
+{"id": "toy-01", "vulnerable_verdict": "vulnerable", "fixed_verdict": "benign"}
+{"id": "toy-02", "vulnerable_verdict": "vulnerable", "fixed_verdict": "vulnerable"}
+{"id": "toy-03", "vulnerable_verdict": "vulnerable", "fixed_verdict": "benign"}
+{"id": "toy-04", "vulnerable_verdict": "vulnerable", "fixed_verdict": "benign"}
+{"id": "toy-05", "vulnerable_verdict": "vulnerable", "fixed_verdict": "vulnerable"}
+{"id": "toy-06", "vulnerable_verdict": "vulnerable", "fixed_verdict": "vulnerable"}
+{"id": "toy-07", "vulnerable_verdict": "vulnerable", "fixed_verdict": "vulnerable"}
+{"id": "toy-08", "vulnerable_verdict": "benign", "fixed_verdict": "benign"}

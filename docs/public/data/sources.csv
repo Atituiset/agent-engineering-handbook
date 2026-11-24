@@ -3194,3 +3194,23 @@ n,source,category,title,author,date,url,article_url,theme,principles,curated_anc
 3193,GitHub,GitHub · 字节,volcengine/agentkit-sdk-python：An open-source Python SDK and CLI Starter Toolkit for deploying AI agents to Volcengine AgentKit Runtime.,volcengine,2026-11-09,https://github.com/volcengine/agentkit-sdk-python,,tools,,,★168,,字节
 3194,GitHub,GitHub · 字节,"volcengine/ark-cli：The fastest way to put Volcengine Ark in your terminal and your AI agent — go from prompt to generated   media, multimod",volcengine,2026-11-11,https://github.com/volcengine/ark-cli,,verify,Q05,,★151,quality-cicd,字节
 3195,GitHub,GitHub · 字节,"bytedance/axion1_0：Frontier-level agent capabilities with nothing more than high-quality data and a simple training recipe: 2 SFT + RL, no ",bytedance,2026-11-11,https://github.com/bytedance/axion1_0,,workflow,,,★99,,字节
+3196,精选,评测专题,EV01 · Who Grades the Agent? Privilege Separation for Coding-Agent Benchmarks（SplitBench）,Nathan Nour Houlamy,2026-11-20,https://arxiv.org/abs/2611.27860,,quality,Q04 Q08,/sources/evals#ev01,,quality-cicd,
+3197,精选,评测专题,EV02 · Do Androids Dream of Breaking the Game? Systematically Auditing AI Agent Benchmarks with BenchJack,Hao Wang,2026-05-12,https://arxiv.org/abs/2605.12673,,quality,Q04 Q08,/sources/evals#ev02,,quality-cicd,
+3198,精选,评测专题,EV03 · Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena,Lianmin Zheng,2023-06-09,https://arxiv.org/abs/2306.05685,,quality,Q08,/sources/evals#ev03,,quality-cicd,
+3199,精选,评测专题,EV04 · LLM Evaluators Recognize and Favor Their Own Generations,Arjun Panickssery,2024-04-15,https://arxiv.org/abs/2404.13076,,quality,Q08,/sources/evals#ev04,,quality-cicd,
+3200,精选,评测专题,"EV05 · LLM-as-a-Judge Version Shift: The Instrument Changed, Not the Standard",Guijia Zhang,2026-09-07,https://arxiv.org/abs/2610.32986,,quality,Q08,/sources/evals#ev05,,quality-cicd,
+3201,精选,评测专题,EV06 · Quantifying infrastructure noise in agentic coding evals,Anthropic,2026-02-05,https://www.anthropic.com/research/infrastructure-noise,,quality,Q08,/sources/evals#ev06,,quality-cicd,
+3202,精选,评测专题,EV07 · SWE-Bench Pro: Can AI Agents Solve Long-Horizon Software Engineering Tasks?,Xiang Deng,2025-09-21,https://arxiv.org/abs/2509.16941,,quality,Q08,/sources/evals#ev07,,quality-cicd,
+3203,精选,评测专题,EV08 · τ²-Bench: Evaluating Conversational Agents in a Dual-Control Environment,Victor Barres,2025-06-09,https://arxiv.org/abs/2506.07982,,quality,Q08,/sources/evals#ev08,,quality-cicd,
+3204,精选,评测专题,EV09 · OSWorld 与 OSWorld-Verified,Tianbao Xie,2024-04-11,https://arxiv.org/abs/2404.07972,,quality,Q08,/sources/evals#ev09,,quality-cicd,
+3205,精选,评测专题,EV10 · Terminal-Bench 排行榜,Terminal-Bench,,https://www.tbench.ai/,,quality,Q08,/sources/evals#ev10,,quality-cicd,
+3206,精选,评测专题,EV11 · CodeReviewBench: An Automated Benchmark for Evaluating the Software Factory,Ashley Zhang 等,2026-11-20,https://arxiv.org/abs/2611.26942,,quality,Q06 Q08,/sources/evals#ev11,,quality-cicd,
+3207,精选,评测专题,"EV12 · Right Verdict, Right Reason? An Execution-Grounded Study of Whether LLM Vulnerability Detectors Understand Vulnerabilities",Leizhen Zhang,2026-11-21,https://arxiv.org/abs/2611.28584,,quality,Q08,/sources/evals#ev12,,quality-cicd,
+3208,精选,评测专题,EV13 · Inspect（英国 AI 安全研究所）,UK AI Security Institute 与 Meridian Labs,,https://inspect.aisi.org.uk/,,quality,Q08,/sources/evals#ev13,,quality-cicd,
+3209,精选,评测专题,EV14 · promptfoo,promptfoo,,https://www.promptfoo.dev/docs/intro/,,quality,Q08,/sources/evals#ev14,,quality-cicd,
+3210,精选,评测专题,EV15 · OpenAI：Working with evals（Evals API）与 openai/evals,OpenAI,,https://platform.openai.com/docs/guides/evals,,quality,Q08,/sources/evals#ev15,,quality-cicd,
+3211,精选,评测专题,EV16 · LangSmith Evaluation,LangChain,,https://docs.langchain.com/langsmith/evaluation,,quality,Q08,/sources/evals#ev16,,quality-cicd,
+3212,精选,评测专题,EV17 · Braintrust,Braintrust,,https://www.braintrust.dev/docs,,quality,Q08,/sources/evals#ev17,,quality-cicd,
+3213,精选,评测专题,EV18 · DeepEval,Confident AI,,https://deepeval.com/docs/getting-started,,quality,Q08,/sources/evals#ev18,,quality-cicd,
+3214,精选,评测专题,EV19 · Langfuse Evaluation,Langfuse,,https://langfuse.com/docs/evaluation/overview,,quality,Q08,/sources/evals#ev19,,quality-cicd,
+3215,精选,评测专题,EV20 · EvalScope（魔搭社区）,ModelScope 社区,,https://github.com/modelscope/evalscope,,quality,Q08,/sources/evals#ev20,,quality-cicd,

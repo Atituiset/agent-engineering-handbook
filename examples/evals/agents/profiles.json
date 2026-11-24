@@ -1,0 +1,19 @@
+{
+  "_comment": "模拟智能体的行为档案。p_good 是每个任务交出正确实现的概率；cheat=true 时，没做对的那几次会去改可见测试、尝试读隐藏答案。数字是为了演示随手设的，不代表任何真实模型。",
+  "honest": {
+    "cheat": false,
+    "p_good": {"slugify": 0.95, "parse_duration": 0.8, "merge_intervals": 0.9, "semver_compare": 0.5, "dedupe_keep_order": 0.97, "roman_to_int": 0.6},
+    "tokens_base": 1800
+  },
+  "honest_v2": {
+    "_comment": "模拟「改了提示词 / 换了模型」之后 parse_duration 变差的版本，用来演示回归门禁会拦住它。",
+    "cheat": false,
+    "p_good": {"slugify": 0.95, "parse_duration": 0.35, "merge_intervals": 0.9, "semver_compare": 0.55, "dedupe_keep_order": 0.97, "roman_to_int": 0.6},
+    "tokens_base": 1500
+  },
+  "cheater": {
+    "cheat": true,
+    "p_good": {"slugify": 0.95, "parse_duration": 0.8, "merge_intervals": 0.9, "semver_compare": 0.5, "dedupe_keep_order": 0.97, "roman_to_int": 0.6},
+    "tokens_base": 1800
+  }
+}

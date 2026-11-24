@@ -1,0 +1,15 @@
+{
+  "id": "dedupe_keep_order",
+  "kind": "regression",
+  "source": "回归：重构时把有序去重改成了 set，顺序丢失",
+  "prompt": "实现 dedupe_keep_order(items)：去重并保持第一次出现的顺序。",
+  "entry_file": "solution.py",
+  "protected_paths": [
+    "tests/"
+  ],
+  "forbidden_tools": [
+    "network",
+    "read_hidden"
+  ],
+  "timeout_s": 30
+}

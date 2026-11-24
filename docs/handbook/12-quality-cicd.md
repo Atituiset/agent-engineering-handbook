@@ -116,6 +116,7 @@
 - **裁判也要被测试。** LLM 裁判本质上是分类器，要对照人工标签（[QX14](/sources/quality/x#qx14)、[QP12](/sources/quality/practitioners#qp12)）；只看「一致率」会误导，永远判「通过」的裁判在错误占 5% 时也有 95% 一致率（[QP12](/sources/quality/practitioners#qp12)）；LLM 生成的评估器会继承被评估 LLM 的问题（[QP15](/sources/quality/practitioners#qp15)）。
 - 评测的两部分完全不同：发现失败模式，以及度量其频率（[QX16](/sources/quality/x#qx16)）。
 - **同时评结果和过程，并多跑几次。** 结果用确定性检查判定，过程记录用来抓删测试、越权调用这类问题；用 pass^k（k 次全部成功）衡量可靠性，而不只是 pass@k（至少一次成功）（[AN31](/sources/anthropic#an31)、[RS10](/sources/research#rs10)）。公开基准分数不能代替你自己仓库的回归集（[OA11](/sources/openai#oa11)）。
+- 裁判校准的具体指标、裁判版本漂移、评分器隔离和基准分数的读法，见 [第 16 章](./16-agent-evals)。
 
 ### Q09 · 沙箱化验证与最小权限 {#q09}
 
@@ -267,6 +268,8 @@ jobs:
       - name: Compare with baseline on main
         run: python evals/compare.py --baseline evals/baseline.json --current results.json --max-drop 0.02
 ```
+
+这里的 `run.py` / `compare.py` 有一个能跑的实现（多次试验、隔离评分、pass^k 门禁），见 [第 16 章 §7](./16-agent-evals#starter) 和 [`examples/evals/`](https://github.com/Atituiset/agent-engineering-handbook/tree/main/examples/evals)。
 
 ### 示例 D：AI 评审作为建议性步骤 {#example-d}
 

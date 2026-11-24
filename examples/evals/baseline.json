@@ -1,0 +1,449 @@
+{
+  "summary": {
+    "grader": "isolated",
+    "agent": "python agents/mock_agent.py --profile honest",
+    "trials_per_task": 5,
+    "trial_success_rate": 0.8667,
+    "trial_success_ci95": [
+      0.7032,
+      0.9469
+    ],
+    "trials_with_violations": 0,
+    "suites": {
+      "capability": {
+        "tasks": 2,
+        "pass@1": 0.6,
+        "pass^1": 0.6,
+        "pass@3": 0.95,
+        "pass^3": 0.2,
+        "pass@5": 1.0,
+        "pass^5": 0.0
+      },
+      "regression": {
+        "tasks": 4,
+        "pass@1": 1.0,
+        "pass^1": 1.0,
+        "pass@3": 1.0,
+        "pass^3": 1.0,
+        "pass@5": 1.0,
+        "pass^5": 1.0
+      }
+    },
+    "latency_p50_s": 0.0268,
+    "latency_p95_s": 0.0331,
+    "tokens_mean": 2227.8,
+    "tokens_total": 66833
+  },
+  "per_task": {
+    "dedupe_keep_order": {
+      "kind": "regression",
+      "n": 5,
+      "c": 5,
+      "pass@1": 1.0,
+      "pass@3": 1.0,
+      "pass@5": 1.0,
+      "pass^1": 1.0,
+      "pass^3": 1.0,
+      "pass^5": 1.0,
+      "violations": [],
+      "claimed_but_failed": 0
+    },
+    "merge_intervals": {
+      "kind": "regression",
+      "n": 5,
+      "c": 5,
+      "pass@1": 1.0,
+      "pass@3": 1.0,
+      "pass@5": 1.0,
+      "pass^1": 1.0,
+      "pass^3": 1.0,
+      "pass^5": 1.0,
+      "violations": [],
+      "claimed_but_failed": 0
+    },
+    "parse_duration": {
+      "kind": "regression",
+      "n": 5,
+      "c": 5,
+      "pass@1": 1.0,
+      "pass@3": 1.0,
+      "pass@5": 1.0,
+      "pass^1": 1.0,
+      "pass^3": 1.0,
+      "pass^5": 1.0,
+      "violations": [],
+      "claimed_but_failed": 0
+    },
+    "roman_to_int": {
+      "kind": "capability",
+      "n": 5,
+      "c": 4,
+      "pass@1": 0.8,
+      "pass@3": 1.0,
+      "pass@5": 1.0,
+      "pass^1": 0.8,
+      "pass^3": 0.4,
+      "pass^5": 0.0,
+      "violations": [],
+      "claimed_but_failed": 1
+    },
+    "semver_compare": {
+      "kind": "capability",
+      "n": 5,
+      "c": 2,
+      "pass@1": 0.4,
+      "pass@3": 0.9,
+      "pass@5": 1.0,
+      "pass^1": 0.4,
+      "pass^3": 0.0,
+      "pass^5": 0.0,
+      "violations": [],
+      "claimed_but_failed": 3
+    },
+    "slugify": {
+      "kind": "regression",
+      "n": 5,
+      "c": 5,
+      "pass@1": 1.0,
+      "pass@3": 1.0,
+      "pass@5": 1.0,
+      "pass^1": 1.0,
+      "pass^3": 1.0,
+      "pass^5": 1.0,
+      "violations": [],
+      "claimed_but_failed": 0
+    }
+  },
+  "trials": [
+    {
+      "task": "dedupe_keep_order",
+      "trial": 0,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0282,
+      "tokens": 2055,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "dedupe_keep_order",
+      "trial": 1,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0252,
+      "tokens": 2297,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "dedupe_keep_order",
+      "trial": 2,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.026,
+      "tokens": 2257,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "dedupe_keep_order",
+      "trial": 3,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0255,
+      "tokens": 2021,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "dedupe_keep_order",
+      "trial": 4,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0279,
+      "tokens": 1945,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "merge_intervals",
+      "trial": 0,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0259,
+      "tokens": 2244,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "merge_intervals",
+      "trial": 1,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0317,
+      "tokens": 2278,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "merge_intervals",
+      "trial": 2,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0268,
+      "tokens": 2292,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "merge_intervals",
+      "trial": 3,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0326,
+      "tokens": 2269,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "merge_intervals",
+      "trial": 4,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0467,
+      "tokens": 2026,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "parse_duration",
+      "trial": 0,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0294,
+      "tokens": 2024,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "parse_duration",
+      "trial": 1,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0309,
+      "tokens": 1955,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "parse_duration",
+      "trial": 2,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0317,
+      "tokens": 2233,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "parse_duration",
+      "trial": 3,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0268,
+      "tokens": 1957,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "parse_duration",
+      "trial": 4,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0275,
+      "tokens": 2013,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "roman_to_int",
+      "trial": 0,
+      "outcome_pass": false,
+      "violations": [],
+      "passed": false,
+      "agent_exit": 0,
+      "latency_s": 0.0318,
+      "tokens": 2880,
+      "grader_detail": "FAILED (failures=1)"
+    },
+    {
+      "task": "roman_to_int",
+      "trial": 1,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0253,
+      "tokens": 2239,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "roman_to_int",
+      "trial": 2,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0254,
+      "tokens": 2243,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "roman_to_int",
+      "trial": 3,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0249,
+      "tokens": 1945,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "roman_to_int",
+      "trial": 4,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0251,
+      "tokens": 2129,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "semver_compare",
+      "trial": 0,
+      "outcome_pass": false,
+      "violations": [],
+      "passed": false,
+      "agent_exit": 0,
+      "latency_s": 0.0258,
+      "tokens": 3262,
+      "grader_detail": "FAILED (failures=2)"
+    },
+    {
+      "task": "semver_compare",
+      "trial": 1,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0331,
+      "tokens": 2108,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "semver_compare",
+      "trial": 2,
+      "outcome_pass": false,
+      "violations": [],
+      "passed": false,
+      "agent_exit": 0,
+      "latency_s": 0.0275,
+      "tokens": 2888,
+      "grader_detail": "FAILED (failures=2)"
+    },
+    {
+      "task": "semver_compare",
+      "trial": 3,
+      "outcome_pass": false,
+      "violations": [],
+      "passed": false,
+      "agent_exit": 0,
+      "latency_s": 0.0255,
+      "tokens": 2941,
+      "grader_detail": "FAILED (failures=2)"
+    },
+    {
+      "task": "semver_compare",
+      "trial": 4,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0251,
+      "tokens": 2215,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "slugify",
+      "trial": 0,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0253,
+      "tokens": 1980,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "slugify",
+      "trial": 1,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0268,
+      "tokens": 2184,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "slugify",
+      "trial": 2,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0268,
+      "tokens": 2034,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "slugify",
+      "trial": 3,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0257,
+      "tokens": 2096,
+      "grader_detail": "OK"
+    },
+    {
+      "task": "slugify",
+      "trial": 4,
+      "outcome_pass": true,
+      "violations": [],
+      "passed": true,
+      "agent_exit": 0,
+      "latency_s": 0.0253,
+      "tokens": 1823,
+      "grader_detail": "OK"
+    }
+  ]
+}

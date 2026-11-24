@@ -185,6 +185,20 @@
 
 逐项说明与公开的恶意 skill 数据见 [第 13 章 §6](./13-skills-catalog#security)。
 
+## 13. 智能体评测（摘自第 16 章） {#eval-checklist}
+
+- [ ] 回归集至少 20 个任务，每个任务写明来自哪次真实失败；能力集单独放，不阻止合并（[第 16 章 §1](./16-agent-evals#design)）
+- [ ] 每个任务跑多次：回归集看 pass^k，能力集看 pass@k，总成功率附置信区间
+- [ ] 隐藏测试和评分脚本不进智能体的环境；受保护文件做哈希比对；过程记录扫描禁用工具（[EV01](/sources/evals#ev01)）
+- [ ] LLM 裁判用人工标签校准，看 kappa 和失败召回率，并和「永远判通过」的笨基线比（[第 16 章 §2](./16-agent-evals#judge)）
+- [ ] 裁判的模型版本和提示词钉死；换版本前先跑校准集（[EV05](/sources/evals#ev05)）
+- [ ] 两两比较换位各问一次，两种顺序都胜出才算赢（[EV03](/sources/evals#ev03)）
+- [ ] 同时记录成本、token 和延迟分位数
+- [ ] 线上 trace 抽样打分，失败样本回流进回归集（[第 16 章 §4](./16-agent-evals#online)）
+- [ ] 引用基准分数时注明版本、试验次数、置信区间和资源配置（[EV06](/sources/evals#ev06)）
+
+可运行的最小示例见 [`examples/evals/`](https://github.com/Atituiset/agent-engineering-handbook/tree/main/examples/evals)。
+
 ## 与传统软件工程认知的对比
 
 这些清单里大部分条目并不新：一键构建、快速测试、小 PR、最小权限、代码评审、ADR、度量交付结果——都是经典的工程纪律。新增的只有三类：

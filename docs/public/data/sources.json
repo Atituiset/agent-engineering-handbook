@@ -59020,5 +59020,348 @@
     "m": "★99",
     "tp": "",
     "co": "字节"
+  },
+  {
+    "n": 3196,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV01 · Who Grades the Agent? Privilege Separation for Coding-Agent Benchmarks（SplitBench）",
+    "a": "Nathan Nour Houlamy",
+    "d": "2026-11-20",
+    "u": "https://arxiv.org/abs/2611.27860",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q04",
+      "Q08"
+    ],
+    "k": "/sources/evals#ev01",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3197,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV02 · Do Androids Dream of Breaking the Game? Systematically Auditing AI Agent Benchmarks with BenchJack",
+    "a": "Hao Wang",
+    "d": "2026-05-12",
+    "u": "https://arxiv.org/abs/2605.12673",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q04",
+      "Q08"
+    ],
+    "k": "/sources/evals#ev02",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3198,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV03 · Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+    "a": "Lianmin Zheng",
+    "d": "2023-06-09",
+    "u": "https://arxiv.org/abs/2306.05685",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev03",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3199,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV04 · LLM Evaluators Recognize and Favor Their Own Generations",
+    "a": "Arjun Panickssery",
+    "d": "2024-04-15",
+    "u": "https://arxiv.org/abs/2404.13076",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev04",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3200,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV05 · LLM-as-a-Judge Version Shift: The Instrument Changed, Not the Standard",
+    "a": "Guijia Zhang",
+    "d": "2026-09-07",
+    "u": "https://arxiv.org/abs/2610.32986",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev05",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3201,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV06 · Quantifying infrastructure noise in agentic coding evals",
+    "a": "Anthropic",
+    "d": "2026-02-05",
+    "u": "https://www.anthropic.com/research/infrastructure-noise",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev06",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3202,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV07 · SWE-Bench Pro: Can AI Agents Solve Long-Horizon Software Engineering Tasks?",
+    "a": "Xiang Deng",
+    "d": "2025-09-21",
+    "u": "https://arxiv.org/abs/2509.16941",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev07",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3203,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV08 · τ²-Bench: Evaluating Conversational Agents in a Dual-Control Environment",
+    "a": "Victor Barres",
+    "d": "2025-06-09",
+    "u": "https://arxiv.org/abs/2506.07982",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev08",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3204,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV09 · OSWorld 与 OSWorld-Verified",
+    "a": "Tianbao Xie",
+    "d": "2024-04-11",
+    "u": "https://arxiv.org/abs/2404.07972",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev09",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3205,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV10 · Terminal-Bench 排行榜",
+    "a": "Terminal-Bench",
+    "d": "",
+    "u": "https://www.tbench.ai/",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev10",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3206,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV11 · CodeReviewBench: An Automated Benchmark for Evaluating the Software Factory",
+    "a": "Ashley Zhang 等",
+    "d": "2026-11-20",
+    "u": "https://arxiv.org/abs/2611.26942",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q06",
+      "Q08"
+    ],
+    "k": "/sources/evals#ev11",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3207,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV12 · Right Verdict, Right Reason? An Execution-Grounded Study of Whether LLM Vulnerability Detectors Understand Vulnerabilities",
+    "a": "Leizhen Zhang",
+    "d": "2026-11-21",
+    "u": "https://arxiv.org/abs/2611.28584",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev12",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3208,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV13 · Inspect（英国 AI 安全研究所）",
+    "a": "UK AI Security Institute 与 Meridian Labs",
+    "d": "",
+    "u": "https://inspect.aisi.org.uk/",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev13",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3209,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV14 · promptfoo",
+    "a": "promptfoo",
+    "d": "",
+    "u": "https://www.promptfoo.dev/docs/intro/",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev14",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3210,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV15 · OpenAI：Working with evals（Evals API）与 openai/evals",
+    "a": "OpenAI",
+    "d": "",
+    "u": "https://platform.openai.com/docs/guides/evals",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev15",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3211,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV16 · LangSmith Evaluation",
+    "a": "LangChain",
+    "d": "",
+    "u": "https://docs.langchain.com/langsmith/evaluation",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev16",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3212,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV17 · Braintrust",
+    "a": "Braintrust",
+    "d": "",
+    "u": "https://www.braintrust.dev/docs",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev17",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3213,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV18 · DeepEval",
+    "a": "Confident AI",
+    "d": "",
+    "u": "https://deepeval.com/docs/getting-started",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev18",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3214,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV19 · Langfuse Evaluation",
+    "a": "Langfuse",
+    "d": "",
+    "u": "https://langfuse.com/docs/evaluation/overview",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev19",
+    "m": "",
+    "tp": "quality-cicd"
+  },
+  {
+    "n": 3215,
+    "s": "精选",
+    "c": "评测专题",
+    "t": "EV20 · EvalScope（魔搭社区）",
+    "a": "ModelScope 社区",
+    "d": "",
+    "u": "https://github.com/modelscope/evalscope",
+    "u2": "",
+    "th": "quality",
+    "p": [
+      "Q08"
+    ],
+    "k": "/sources/evals#ev20",
+    "m": "",
+    "tp": "quality-cicd"
   }
 ]
