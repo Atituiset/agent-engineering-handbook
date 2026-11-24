@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/parse.ts",
+    "find": "new Map([\n  [\"h\", 3600],",
+    "replace": "new Map([\n  [\"d\", 86400],\n  [\"h\", 3600],"
+  },
+  {
+    "file": "test/parse.test.ts",
+    "find": "    [\"1h1m1s\", 3661],\n",
+    "replace": "    [\"1h1m1s\", 3661],\n    [\"1d\", 86400],\n    [\"1d2h\", 93600],\n"
+  }
+]

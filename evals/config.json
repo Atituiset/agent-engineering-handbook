@@ -1,0 +1,10 @@
+{
+  "language": "typescript",
+  "test_files": ["test/parse.test.ts"],
+  "hidden": {
+    "dest": "test/hidden_{task}.test.ts",
+    "cmd": "npx --no-install vitest run test/hidden_{task}.test.ts"
+  },
+  "link": ["node_modules"],
+  "env": {}
+}

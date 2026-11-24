@@ -28,6 +28,8 @@
 ├── .claude/settings.json         # hooks：拦截受保护文件、编辑后格式化、完成前跑 verify
 ├── .pre-commit-config.yaml       # prettier / eslint / tsc / vitest
 ├── .github/workflows/ci.yml      # CI 只做一件事：bash scripts/verify.sh
+├── .github/workflows/evals.yml   # 智能体评测：mock 智能体跑 evals/，低于基线就失败
+├── evals/                        # 评测任务、隐藏测试和 harness（见 evals/README.md）
 ├── scripts/
 │   ├── verify.sh                 # 格式 → lint → 类型 → 测试 → 构建 → skill 副本一致
 │   ├── guard-protected.sh        # PreToolUse hook：受保护文件一律拦截（exit 2）
@@ -290,6 +292,17 @@ skillspector scan .claude/skills/tdd --no-llm
 第 13 章把 obra/superpowers、mattpocock/skills、anthropics/skills 标为「参考」：读懂后改写成自己的版本，不要整包安装。扫描为 SAFE 只说明静态规则没有命中，不等于安全（第 13 章 §6、第 09 章）。
 
 **MCP**：本套件默认不配置任何 MCP 服务器。手册 [第 07 章「CLI vs MCP」](https://atituiset.github.io/agent-engineering-handbook/handbook/07-harness-tools#cli-vs-mcp) 的取舍是：内部工具优先做成 CLI（这里就是 `scripts/verify.sh`）；需要认证、跨应用或厂商已提供的集成再用 MCP，而每加一个服务器都会扩大攻击面。真要接入时，从第 13 章所列的厂商官方来源选（例如 AWS 的 [agent-toolkit-for-aws](https://github.com/aws/agent-toolkit-for-aws)、Cloudflare 的 [skills](https://github.com/cloudflare/skills) 插件），并先用 `skillspector` 的 MCP 扫描或 [Tencent/AI-Infra-Guard](https://github.com/Tencent/AI-Infra-Guard) 检查。
+
+## 智能体评测（evals/）
+
+`scripts/verify.sh` 只回答“这一次改动对不对”；要回答“换了模型、提示词或规则之后，智能体是变好还是变差”，需要评测（手册[第 16 章](https://atituiset.github.io/agent-engineering-handbook/handbook/16-agent-evals)）。`evals/` 是一套最小实现：3 个任务（2 个回归、1 个能力），每个任务跑多次，在不含 `evals/` 的副本里让智能体工作，再在干净副本里跑隐藏测试和 `verify.sh` 判分，报告 pass@k、pass^k 和 Wilson 95% 区间，并由 `.github/workflows/evals.yml` 和 `evals/baseline.json` 比较、回归即失败。默认用离线 mock 智能体，CI 不需要模型密钥。
+
+```bash
+python3 evals/run_evals.py run --trials 5 --k 1 3 5 --out evals/results.json
+python3 evals/run_evals.py gate --baseline evals/baseline.json --current evals/results.json --k 3
+```
+
+本地实测（2026-11-25，mock 智能体）：回归集 8/10 次通过，pass^3 = 0.550；能力集 3/5，pass@3 = 1.000。故意调低 mock 成功率后门禁失败，回归集 pass^3 0.550 → 0.050；让 mock 在失败时改 `scripts/verify.sh`，隔离判分记下 4 次违规、门禁失败，而只在它自己目录里跑 verify 的对照判分是 15/15 全部“通过”。这些数字只说明 harness 能工作，不代表任何真实模型；接入真实智能体的方法见 [evals/README.md](evals/README.md)。
 
 ## 用到你自己的项目
 

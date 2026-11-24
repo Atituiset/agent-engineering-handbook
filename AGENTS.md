@@ -21,6 +21,8 @@ Code in `src/`, tests in `test/`. Package manager: npm (lockfile committed).
   `eslint.config.js`, `tsconfig*.json`, `package.json` or `package-lock.json` (a hook blocks it);
   weaken or delete tests to make them pass; use `any`, `as` casts or `eslint-disable` /
   `@ts-expect-error` to silence a check; commit secrets.
+- `evals/` holds the eval harness and its hidden tests: never edit it (the hook blocks it)
+  and do not read it to solve a task; evals run you in a copy without it.
 
 ## Non-obvious conventions
 

@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/parse.ts",
+    "find": "  while (pos < text.length) {\n    const match = TOKEN.exec(text);\n",
+    "replace": "  while (pos < text.length) {\n    if (pos > 0 && text[pos] === \" \") {\n      const next = text.slice(pos).search(/[^ ]/);\n      if (next === -1) {\n        throw new DurationError(`trailing space in ${JSON.stringify(text)}`);\n      }\n      pos += next;\n      TOKEN.lastIndex = pos;\n    }\n    const match = TOKEN.exec(text);\n"
+  },
+  {
+    "file": "test/parse.test.ts",
+    "find": "    [\"1h1m1s\", 3661],\n",
+    "replace": "    [\"1h1m1s\", 3661],\n    [\"1h 30m\", 5400],\n"
+  }
+]

@@ -1,3 +1,5 @@
 node_modules/
 dist/
 coverage/
+evals/results.json
+evals/__pycache__/

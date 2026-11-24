@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/parse.ts",
+    "find": "    const [whole, digits = \"\", unit = \"\"] = match;\n",
+    "replace": "    const [whole, digits = \"\", unit = \"\"] = match;\n    if (digits.length > 1 && digits.startsWith(\"0\")) {\n      throw new DurationError(`leading zero in ${JSON.stringify(text)}`);\n    }\n"
+  },
+  {
+    "file": "test/parse.test.ts",
+    "find": "\"1h1h\", \" 1h\", \"1h \"])",
+    "replace": "\"1h1h\", \" 1h\", \"1h \", \"01h\"])"
+  }
+]
