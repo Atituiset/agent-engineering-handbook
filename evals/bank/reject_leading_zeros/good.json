@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/main/java/example/durations/Durations.java",
+    "find": "      if (pos == start || pos == text.length()) {\n",
+    "replace": "      if (pos - start > 1 && text.charAt(start) == '0') {\n        throw new DurationException(\"leading zero at \" + start + \" in \\\"\" + text + \"\\\"\");\n      }\n      if (pos == start || pos == text.length()) {\n"
+  },
+  {
+    "file": "src/test/java/example/durations/DurationsTest.java",
+    "find": "\" 1h\", \"1h \", \"99999999999999999999s\"}",
+    "replace": "\" 1h\", \"1h \", \"01h\", \"99999999999999999999s\"}"
+  }
+]

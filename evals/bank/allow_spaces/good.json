@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/main/java/example/durations/Durations.java",
+    "find": "    while (pos < text.length()) {\n      int start = pos;\n",
+    "replace": "    while (pos < text.length()) {\n      if (pos > 0) {\n        pos = skipSpaces(text, pos); // a trailing space then fails below\n      }\n      int start = pos;\n"
+  },
+  {
+    "file": "src/main/java/example/durations/Durations.java",
+    "find": "    return total;\n  }\n}\n",
+    "replace": "    return total;\n  }\n\n  /** Spaces may separate pairs; a leading space is still rejected by the caller. */\n  private static int skipSpaces(String text, int pos) {\n    int next = pos;\n    while (next < text.length() && text.charAt(next) == ' ') {\n      next++;\n    }\n    return next;\n  }\n}\n"
+  },
+  {
+    "file": "src/test/java/example/durations/DurationsTest.java",
+    "find": "  @CsvSource({\"0s, 0\", \"90s, 90\", \"1m, 60\", \"1h30m, 5400\", \"2h5s, 7205\", \"1h1m1s, 3661\"})",
+    "replace": "  @CsvSource({\n    \"0s, 0\",\n    \"90s, 90\",\n    \"1m, 60\",\n    \"1h30m, 5400\",\n    \"2h5s, 7205\",\n    \"1h1m1s, 3661\",\n    \"'1h 30m', 5400\"\n  })"
+  }
+]

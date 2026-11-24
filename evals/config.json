@@ -1,0 +1,12 @@
+{
+  "language": "java",
+  "test_files": [
+    "src/test/java/example/durations/DurationsTest.java"
+  ],
+  "hidden": {
+    "dest": "src/test/java/example/durations/{name}.java",
+    "cmd": "./mvnw -B -ntp -q test -Dtest={name} -Dsurefire.failIfNoSpecifiedTests=false; rc=$?; rm -rf target; exit $rc"
+  },
+  "link": [],
+  "env": {}
+}

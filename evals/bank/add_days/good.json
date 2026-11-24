@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/main/java/example/durations/Durations.java",
+    "find": "      List.of(new Unit('h', 3600), new Unit('m', 60), new Unit('s', 1));",
+    "replace": "      List.of(new Unit('d', 86400), new Unit('h', 3600), new Unit('m', 60), new Unit('s', 1));"
+  },
+  {
+    "file": "src/main/java/example/durations/Durations.java",
+    "find": " * unit at most once. Supported units: {@code h} (hours), {@code m} (minutes), {@code s} (seconds).\n * Examples:",
+    "replace": " * unit at most once. Supported units: {@code d} (days), {@code h} (hours), {@code m} (minutes),\n * {@code s} (seconds). Examples:"
+  },
+  {
+    "file": "src/test/java/example/durations/DurationsTest.java",
+    "find": "  @CsvSource({\"0s, 0\", \"90s, 90\", \"1m, 60\", \"1h30m, 5400\", \"2h5s, 7205\", \"1h1m1s, 3661\"})",
+    "replace": "  @CsvSource({\n    \"0s, 0\",\n    \"90s, 90\",\n    \"1m, 60\",\n    \"1h30m, 5400\",\n    \"2h5s, 7205\",\n    \"1h1m1s, 3661\",\n    \"1d, 86400\",\n    \"1d2h, 93600\"\n  })"
+  }
+]

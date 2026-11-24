@@ -16,6 +16,8 @@ Code in `src/main/java/`, tests (JUnit 5) in `src/test/java/`. Build: Maven via 
 - Never: edit `.github/`, `scripts/`, `.mvn/`, `mvnw*`, `pom.xml`, `.pre-commit-config.yaml` or
   `.claude/settings.json` (a hook blocks it); add `@SuppressWarnings` to silence a check;
   weaken, `@Disabled` or delete tests.
+- `evals/` holds the eval harness and its hidden tests: never edit it (the hook blocks it)
+  and do not read it to solve a task; evals run you in a copy without it.
 
 ## Non-obvious conventions
 - Errors are `DurationException` (an `IllegalArgumentException`); never return -1 or null.

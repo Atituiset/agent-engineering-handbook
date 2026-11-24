@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/main/java/example/durations/Durations.java",
+    "find": "      List.of(new Unit('h', 3600), new Unit('m', 60), new Unit('s', 1));",
+    "replace": "      List.of(new Unit('h', 3600), new Unit('m', 60), new Unit('s', 1), new Unit('d', 86400));"
+  }
+]
