@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/parse.c",
+    "find": "        if (pos == start || text[pos] == '\\0') {\n",
+    "replace": "        if (pos - start > 1 && text[start] == '0') {\n            return DURATIONS_ERR_SYNTAX;\n        }\n        if (pos == start || text[pos] == '\\0') {\n"
+  },
+  {
+    "file": "tests/test_parse.c",
+    "find": "    check_invalid(\"1h \", DURATIONS_ERR_SYNTAX);\n",
+    "replace": "    check_invalid(\"1h \", DURATIONS_ERR_SYNTAX);\n    check_invalid(\"01h\", DURATIONS_ERR_SYNTAX);\n"
+  }
+]

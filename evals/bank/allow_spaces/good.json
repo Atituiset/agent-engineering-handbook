@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/parse.c",
+    "find": "static int is_digit(char c) { return c >= '0' && c <= '9'; }\n",
+    "replace": "static int is_digit(char c) { return c >= '0' && c <= '9'; }\n\n/* Spaces may separate pairs; a leading space is left for the caller to reject. */\nstatic size_t skip_separator(const char *text, size_t pos) {\n    if (pos == 0) {\n        return pos;\n    }\n    while (text[pos] == ' ') {\n        ++pos;\n    }\n    return pos;\n}\n"
+  },
+  {
+    "file": "src/parse.c",
+    "find": "    while (text[pos] != '\\0') {\n        const size_t start = pos;\n",
+    "replace": "    while (text[pos] != '\\0') {\n        pos = skip_separator(text, pos); /* trailing spaces then fail as SYNTAX */\n        const size_t start = pos;\n"
+  },
+  {
+    "file": "tests/test_parse.c",
+    "find": "    check_valid(\"1h1m1s\", 3661);\n",
+    "replace": "    check_valid(\"1h1m1s\", 3661);\n    check_valid(\"1h 30m\", 5400);\n"
+  }
+]

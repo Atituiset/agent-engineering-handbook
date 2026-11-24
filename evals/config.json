@@ -1,0 +1,11 @@
+{
+  "language": "c",
+  "test_files": [
+    "tests/test_parse.c"
+  ],
+  "hidden": {
+    "cmd": "cc -std=c17 -Iinclude -isystem third_party/unity src/parse.c third_party/unity/unity.c {hidden} -o {tmp}/hidden_{task} && {tmp}/hidden_{task}"
+  },
+  "link": [],
+  "env": {}
+}

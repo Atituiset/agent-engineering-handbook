@@ -1,0 +1,17 @@
+[
+  {
+    "file": "src/parse.c",
+    "find": "    SECONDS_PER_HOUR = 60 * SECONDS_PER_MINUTE,\n",
+    "replace": "    SECONDS_PER_HOUR = 60 * SECONDS_PER_MINUTE,\n    SECONDS_PER_DAY = 24 * SECONDS_PER_HOUR,\n"
+  },
+  {
+    "file": "src/parse.c",
+    "find": "static const unit UNITS[] = {\n",
+    "replace": "static const unit UNITS[] = {\n    {.symbol = 'd', .seconds = SECONDS_PER_DAY},\n"
+  },
+  {
+    "file": "tests/test_parse.c",
+    "find": "    check_valid(\"1h1m1s\", 3661);\n",
+    "replace": "    check_valid(\"1h1m1s\", 3661);\n    check_valid(\"1d\", 86400);\n    check_valid(\"1d2h\", 93600);\n"
+  }
+]

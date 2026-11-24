@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/parse.c",
+    "find": "    SECONDS_PER_HOUR = 60 * SECONDS_PER_MINUTE,\n",
+    "replace": "    SECONDS_PER_HOUR = 60 * SECONDS_PER_MINUTE,\n    SECONDS_PER_DAY = 24 * SECONDS_PER_HOUR,\n"
+  },
+  {
+    "file": "src/parse.c",
+    "find": "    {.symbol = 's', .seconds = 1},\n};",
+    "replace": "    {.symbol = 's', .seconds = 1},\n    {.symbol = 'd', .seconds = SECONDS_PER_DAY},\n};"
+  }
+]

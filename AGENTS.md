@@ -17,6 +17,8 @@ Tools: CMake ≥ 3.20, GCC or Clang, clang-format 19.1.7, clang-tidy 19.1.
 - Never: edit `.github/`, `scripts/`, `third_party/`, `CMakeLists.txt`, `.clang-format`, any
   `.clang-tidy`, `.pre-commit-config.yaml` or `.claude/settings.json` (a hook blocks it);
   add `NOLINT` or `#pragma` warning suppressions; cast to silence `-Wconversion`; weaken tests.
+- `evals/` holds the eval harness and its hidden tests: never edit it (the hook blocks it)
+  and do not read it to solve a task; evals run you in a copy without it.
 
 ## Non-obvious conventions
 - Functions report errors via `durations_status`; `*out_seconds` is written only on success.
