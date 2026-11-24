@@ -1,0 +1,12 @@
+{
+  "language": "rust",
+  "test_files": [
+    "tests/parse.rs"
+  ],
+  "hidden": {
+    "dest": "tests/hidden_{task}.rs",
+    "cmd": "cargo test --locked --quiet --test hidden_{task}"
+  },
+  "link": [],
+  "env": {}
+}

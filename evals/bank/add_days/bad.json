@@ -1,0 +1,7 @@
+[
+  {
+    "file": "src/lib.rs",
+    "find": "const UNITS: [(u8, u64); 3] = [(b'h', 3600), (b'm', 60), (b's', 1)];",
+    "replace": "const UNITS: [(u8, u64); 4] = [(b'h', 3600), (b'm', 60), (b's', 1), (b'd', 86_400)];"
+  }
+]

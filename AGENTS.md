@@ -17,6 +17,8 @@ Code in `src/lib.rs`, tests in `tests/parse.rs`. Toolchain pinned in `rust-toolc
 - Never: edit `.github/`, `scripts/`, `.pre-commit-config.yaml`, `.claude/settings.json`,
   `Cargo.toml`, `Cargo.lock` or `rust-toolchain.toml` (a hook blocks it); add `#[allow(...)]`
   or `#![allow(...)]` to silence a lint; use `unwrap()`/`expect()` in library code; use `unsafe`.
+- `evals/` holds the eval harness and its hidden tests: never edit it (the hook blocks it)
+  and do not read it to solve a task; evals run you in a copy without it.
 
 ## Non-obvious conventions
 - Errors are `DurationError`; never panic on bad input.

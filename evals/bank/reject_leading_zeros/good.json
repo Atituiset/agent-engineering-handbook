@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/lib.rs",
+    "find": "        if pos == start {\n            return fail(&format!(\"expected a number at {pos}\"));\n        }\n",
+    "replace": "        if pos == start {\n            return fail(&format!(\"expected a number at {pos}\"));\n        }\n        if pos - start > 1 && bytes[start] == b'0' {\n            return fail(&format!(\"leading zero at {start}\"));\n        }\n"
+  },
+  {
+    "file": "tests/parse.rs",
+    "find": "        \"1h \",\n",
+    "replace": "        \"1h \",\n        \"01h\",\n"
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/lib.rs",
+    "find": "    while pos < bytes.len() {\n        let start = pos;\n",
+    "replace": "    while pos < bytes.len() {\n        if pos > 0 {\n            // Spaces may separate pairs; a trailing space then fails below.\n            while bytes.get(pos) == Some(&b' ') {\n                pos += 1;\n            }\n        }\n        let start = pos;\n"
+  },
+  {
+    "file": "tests/parse.rs",
+    "find": "        (\"1h1m1s\", 3661),\n",
+    "replace": "        (\"1h1m1s\", 3661),\n        (\"1h 30m\", 5400),\n"
+  }
+]
