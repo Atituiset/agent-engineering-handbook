@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/durations/parse.py",
+    "find": "        if match.start() != pos:\n",
+    "replace": "        if match.start() != pos and (pos == 0 or text[pos : match.start()].strip(\" \")):\n"
+  },
+  {
+    "file": "tests/test_parse.py",
+    "find": "        (\"1h1m1s\", 3661),\n",
+    "replace": "        (\"1h1m1s\", 3661),\n        (\"1h 30m\", 5400),\n"
+  }
+]

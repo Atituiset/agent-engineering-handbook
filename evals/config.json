@@ -1,0 +1,12 @@
+{
+  "language": "python",
+  "test_files": [
+    "tests/test_parse.py"
+  ],
+  "hidden": {
+    "dest": "tests/test_hidden_{task}.py",
+    "cmd": "uv run --frozen pytest -q -p no:cacheprovider tests/test_hidden_{task}.py"
+  },
+  "link": [],
+  "env": {}
+}

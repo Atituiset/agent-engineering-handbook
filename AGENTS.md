@@ -18,6 +18,8 @@ Code in `src/durations/`, tests in `tests/`. Package manager: uv.
 - Never: edit `.github/`, `scripts/`, `.pre-commit-config.yaml`, `.claude/settings.json`,
   `pyproject.toml` or `uv.lock` (a hook blocks it); weaken or delete tests to make them pass;
   add `# type: ignore` or `# noqa` without a reason in the same line; commit secrets.
+- `evals/` holds the eval harness and its hidden tests: never edit it (the hook blocks it)
+  and do not read it to solve a task; evals run you in a copy without it.
 
 ## Non-obvious conventions
 - Errors are `DurationError` (a `ValueError`), never bare `ValueError` or `None`.

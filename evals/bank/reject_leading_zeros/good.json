@@ -1,0 +1,12 @@
+[
+  {
+    "file": "src/durations/parse.py",
+    "find": "        amount, unit = int(match.group(1)), match.group(2)\n",
+    "replace": "        amount, unit = int(match.group(1)), match.group(2)\n        if len(match.group(1)) > 1 and match.group(1).startswith(\"0\"):\n            raise DurationError(f\"leading zero in {text!r}\")\n"
+  },
+  {
+    "file": "tests/test_parse.py",
+    "find": "\" 1h\", \"1h \"])",
+    "replace": "\" 1h\", \"1h \", \"01h\"])"
+  }
+]
