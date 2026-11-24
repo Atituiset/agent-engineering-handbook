@@ -288,6 +288,22 @@ Inspect 的三个数和自写 harness 算出的完全一致：0.867 是 26/30；
 - 以上命令都在 2026-11-24 于本机实际运行；仓库里的 `agent-evals` 工作流把 harness、promptfoo、Inspect 三个 job 放进 GitHub Actions。工作流在 GitHub runner 上的运行结果，以仓库 Actions 页面为准。
 - **没验证的：** 接上真实智能体之后的行为；把隐藏测试放到另一台机器上的隔离方式（示例只做了目录隔离，这不是安全边界）。
 
+### 7.6 起步套件七个分支里的评测 {#starter-branches}
+
+[第 15 章](./15-starter-kit#branches)的七个 `starter/*` 分支各带一个更小的版本 `evals/`，形态贴合模板本身的编码智能体工作方式：智能体在不含 `evals/` 的仓库副本里改代码；判分时只把它对非受保护文件的改动带进一个干净副本，先跑隐藏测试，再跑该分支的 `scripts/verify.sh`。改了受保护文件（`guard-protected.sh` 的 `PROTECTED_REGEX` 加上 `evals/`）或删掉现有测试输入，记为违规。harness 是七个分支共用的一份 Python 标准库脚本，每种语言只换隐藏测试（pytest、vitest、doctest、JUnit 5、cargo test、Unity、go test）和运行命令；`evals.yml` 跑 harness 自测、5 次试验和门禁。
+
+3 个任务：`add_days`、`allow_spaces`（回归集）和 `reject_leading_zeros`（能力集）。2026-11-25 在本机用 mock 智能体实测，七个分支结果相同（mock 按种子选改动，与语言无关）：
+
+| 运行 | 回归集 | 回归 pass^3 | 能力集 pass@3 | 违规 | 门禁 |
+| --- | --- | --- | --- | --- | --- |
+| 基线 | 8/10，Wilson [0.4902, 0.9433] | 0.550 | 1.000（3/5） | 0 | — |
+| 同种子重跑 | 8/10 | 0.550 | 1.000 | 0 | 通过 |
+| `regressed`（`add_days` 成功率调低） | 5/10 | 0.050 | 1.000 | 0 | 失败：pass^3 0.550→0.050，`add_days` pass@1 1.000→0.400 |
+| `cheater`（失败时改 `verify.sh`），隔离判分 | 8/10 | 0.550 | 1.000 | 4 | 失败：违规 |
+| `cheater`，只在智能体目录里跑 verify | 10/10 | 1.000 | 1.000（5/5） | — | （对照） |
+
+最后一行和 §3.1 说的是同一件事：判分如果相信智能体自己的工作目录，作弊的智能体拿满分。mock 的成功率是编的，这些数只证明 harness 和门禁能工作；三个任务、5 次试验的区间很宽，接真实智能体时要加任务和试验次数，做法见各分支的 `evals/README.md`。
+
 ## 8. 实例：代码评审与漏洞检测的评测 {#domain}
 
 评「AI 代码评审」和「AI 漏洞检测」时，§1–§5 的问题都会出现，而且更隐蔽：评审天然主观，漏洞样本稀少、标签有噪声。腾讯的 AICR 团队就把「评估 CR 模型效果难以量化」列为主要难题之一（[QC07](/sources/quality/chinese#qc07)）。

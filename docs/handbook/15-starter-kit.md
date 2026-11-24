@@ -38,6 +38,8 @@ bash scripts/verify.sh        # 最后一行应为 verify: OK
 
 这七个分支和 `main` 没有共同历史（orphan 分支），只包含示例项目本身；文档站的构建与部署只用 `main`，互不影响。
 
+每个分支还带一个最小评测套件 `evals/`（[第 16 章 §7.6](./16-agent-evals#starter-branches)）：3 个时长解析的小任务，各跑 5 次，在不含 `evals/` 的副本里让智能体改代码，再在干净副本里跑隐藏测试和该分支自己的 `scripts/verify.sh` 判分，报告 pass@k、pass^k 和 Wilson 区间；`.github/workflows/evals.yml` 把结果和 `evals/baseline.json` 比较，回归就失败。默认用离线 mock 智能体，CI 不需要模型密钥。harness 是七个分支共用的一份 Python 标准库脚本，每种语言只换隐藏测试和运行命令。用法见各分支的 `evals/README.md`。
+
 ## 2. 书里的方法对应到哪个文件 {#mapping}
 
 | 书里的要求 | 对应文件 | 出处 |
@@ -195,6 +197,7 @@ C++、Java、Rust、C、Go 这几行值得多看一眼：类型或转换错误�
 | 智能体完成任务（演练第 5 步） | **需在你的编辑器/CLI 中执行**；README 里的「正确改动」是按任务说明手工完成的参考答案 |
 | 其他工具（Codex、Cursor、Gemini CLI 等）的 hook | 未提供；这些工具里只有 pre-commit 与 CI 两层生效 |
 | pre-commit 在 Python 以外的项目里也需要 Python | 已注明；不想引入 Python 的团队可以换成该语言生态的钩子工具（例如 husky），检查命令不变 |
+| `evals/`（七个分支） | **本机实测**（2026-11-25）：七个分支的基线、重跑过门禁、两种故意制造的回归被门禁拦住都已运行；`evals.yml` **尚未在 GitHub Actions 上运行**。分数来自 mock 智能体，不代表任何真实模型 |
 
 ## 与传统软件工程认知的对比 {#compare}
 
